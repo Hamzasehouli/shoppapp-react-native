@@ -1,6 +1,7 @@
 import HomeScreen from '../screens/HomeScreen';
 import React from 'react';
 import CartScreen from '../screens/CartScreen';
+import SplashScreen from '../screens/SplashScreen';
 import COLORS from '../constants/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
