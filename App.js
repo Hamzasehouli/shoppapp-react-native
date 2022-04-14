@@ -7,15 +7,37 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import SplashScreen from './screens/SplashScreen';
 import HomeScreen from './screens/HomeScreen';
 import CartScreen from './screens/CartScreen';
-
+import COLORS from './constants/Colors';
+import Icon from 'react-native-vector-icons/FontAwesome';
 const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
 const TabNavigator = (
-  <Tab.Navigator initialRouteName="Splash">
-    <Tab.Screen name="Home" component={HomeScreen} />
-    <Tab.Screen name="Cart" component={CartScreen} />
+  <Tab.Navigator
+    id="initBar"
+    inactiveColor="#c2a5ff"
+    activeColor={'white'}
+    barStyle={{backgroundColor: COLORS.secondaryColor}}
+    initialRouteName="Splash">
+    <Tab.Screen
+      options={{
+        tabBarIcon: function () {
+          return <Icon name="home" size={20}></Icon>;
+        },
+      }}
+      name="Home"
+      component={HomeScreen}
+    />
+    <Tab.Screen
+      options={{
+        tabBarIcon: function () {
+          return <Icon name="shopping-cart" size={20}></Icon>;
+        },
+      }}
+      name="Cart"
+      component={CartScreen}
+    />
   </Tab.Navigator>
 );
 
