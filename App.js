@@ -12,14 +12,12 @@ const Stack = createNativeStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
-function TabNavigator() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Settings" component={CartScreen} />
-    </Tab.Navigator>
-  );
-}
+const TabNavigator = (
+  <Tab.Navigator initialRouteName="Splash">
+    <Tab.Screen name="Home" component={HomeScreen} />
+    <Tab.Screen name="Cart" component={CartScreen} />
+  </Tab.Navigator>
+);
 
 const StackNavigator = (
   <Stack.Navigator initialRouteName="Splash">
