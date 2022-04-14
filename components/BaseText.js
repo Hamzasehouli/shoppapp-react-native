@@ -12,7 +12,7 @@ const BaseText = function (props) {
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Black',
   },
 });
 
