@@ -3,24 +3,23 @@ import {View, Text} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import SplashScreen from './screens/splash';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import SplashScreen from './screens/SplashScreen';
+import HomeScreen from './screens/HomeScreen';
+import CartScreen from './screens/CartScreen';
 
 const Stack = createNativeStackNavigator();
 
-const HomeScreen = function () {
+const Tab = createMaterialBottomTabNavigator();
+
+function TabNavigator() {
   return (
-    <View>
-      <Text> homepage</Text>
-    </View>
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Settings" component={CartScreen} />
+    </Tab.Navigator>
   );
-};
-const CartScreen = function () {
-  return (
-    <View>
-      <Text> cart</Text>
-    </View>
-  );
-};
+}
 
 const StackNavigator = (
   <Stack.Navigator initialRouteName="Splash">
@@ -34,7 +33,7 @@ const StackNavigator = (
 );
 
 const App = function () {
-  return <NavigationContainer>{StackNavigator}</NavigationContainer>;
+  return <NavigationContainer>{TabNavigator}</NavigationContainer>;
 };
 
 export default App;
