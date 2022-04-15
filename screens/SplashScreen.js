@@ -10,9 +10,9 @@ const SplashScreen = function ({navigation}) {
     <View style={styles.screen}>
       <Text style={styles.text}>Shoppy</Text>
       {/*<Text style={styles.text}>Check our fancy bags collections</Text> */}
-      <Catalog width={250} height={250} />
+      <Catalog width={280} height={280} />
       <BaseButton
-        onPress={() => navigation.replace('Home')}
+        onPress={() => navigation.replace('MainStackScreen')}
         // style={{marginTop: 3}}
         title="Get Started"
         type="ghost"></BaseButton>

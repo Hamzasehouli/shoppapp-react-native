@@ -1,5 +1,6 @@
 import HomeScreen from '../screens/HomeScreen';
 import CartScreen from '../screens/CartScreen';
+import SplashScreen from '../screens/SplashScreen';
 import React from 'react';
 import COLORS from '../constants/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -13,7 +14,7 @@ const TabNavigator = (
     inactiveColor="#c2a5ff"
     activeColor={'white'}
     barStyle={{backgroundColor: COLORS.secondaryColor}}
-    initialRouteName="Splash">
+    initialRouteName="Home">
     <Tab.Screen
       options={{
         tabBarIcon: function () {

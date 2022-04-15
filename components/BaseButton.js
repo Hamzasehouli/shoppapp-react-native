@@ -31,14 +31,14 @@ const styles = StyleSheet.create({
     // paddingTop: 7,
     // paddingBottom: 7,
     width: '80%',
-    height: 40,
+    height: 55,
     justifyContent: 'center',
     alignItems: 'center',
   },
   text: {
     fontFamily: 'Roboto-Black',
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 23,
   },
   flat: {},
   ghost: {
