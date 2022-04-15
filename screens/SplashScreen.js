@@ -1,13 +1,15 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import Colors from '../constants/Colors';
 import BaseButton from '../components/BaseButton';
 import BaseText from '../components/BaseText';
+import Catalog from '../assets/illustrations/Catalog.svg';
 
 const SplashScreen = function ({navigation}) {
   return (
     <View style={styles.screen}>
       <Text style={styles.text}>shoppy</Text>
+      <Catalog width={250} height={250} />
       <BaseButton
         onPress={() => navigation.replace('Home')}
         // style={{marginTop: 3}}
@@ -29,8 +31,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
-    fontSize: 30,
-    fontFamily: 'Roboto-Italic',
+    fontSize: 40,
+    fontFamily: 'Roboto-Medium',
   },
 });
 
