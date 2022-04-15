@@ -29,13 +29,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingBottom: 40,
-    paddingTop: 40,
+    paddingTop: 50,
   },
   text: {
     color: 'white',
-    fontSize: 25,
+    fontSize: 35,
     textAlign: 'center',
-    fontFamily: 'Roboto-Medium',
+    fontFamily: 'Roboto-Italic',
+    fontWeight: '700',
   },
 });
 
