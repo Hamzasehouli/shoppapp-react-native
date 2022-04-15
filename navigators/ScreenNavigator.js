@@ -14,9 +14,9 @@ const Stack = createNativeStackNavigator();
 
 const Lal1 = function () {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={HomeScreen}></Stack.Screen>
-      <Stack.Screen name="Cart" component={CartScreen}></Stack.Screen>
+    <Stack.Navigator initialRouteName="Categories">
+      <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
+      <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>
     </Stack.Navigator>
     // <View>
     //   <Text>home</Text>
@@ -25,9 +25,9 @@ const Lal1 = function () {
 };
 const Lal2 = function () {
   return (
-    <Stack.Navigator initialRouteName="Cart">
-      <Stack.Screen name="Home" component={HomeScreen}></Stack.Screen>
-      <Stack.Screen name="Cart" component={CartScreen}></Stack.Screen>
+    <Stack.Navigator initialRouteName="CartScreen">
+      <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
+      <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>
     </Stack.Navigator>
     // <View>
     //   <Text>cart</Text>
@@ -41,23 +41,54 @@ const MainStackScreen = function () {
       id="initBar"
       inactiveColor="#c2a5ff"
       activeColor={'white'}
-      barStyle={{backgroundColor: COLORS.secondaryColor}}>
+      barStyle={{
+        backgroundColor: COLORS.secondaryColor,
+        height: 65,
+        justifyContent: 'center',
+      }}>
       <Tab.Screen
         options={{
           tabBarIcon: function () {
-            return <Icon name="home" size={20}></Icon>;
+            return <Icon name="home" size={25}></Icon>;
           },
         }}
-        name="HomeScreen"
+        name="Home"
         component={Lal1}
       />
       <Tab.Screen
         options={{
           tabBarIcon: function () {
-            return <Icon name="shopping-cart" size={20}></Icon>;
+            return <Icon name="shopping-bag" size={25}></Icon>;
           },
         }}
-        name="CartScreen"
+        name="Bag"
+        component={Lal2}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: function () {
+            return <Icon name="heart" size={25}></Icon>;
+          },
+        }}
+        name="Favorites"
+        component={Lal2}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: function () {
+            return <Icon name="user" size={25}></Icon>;
+          },
+        }}
+        name="Account"
+        component={Lal2}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: function () {
+            return <Icon name="cog" size={25}></Icon>;
+          },
+        }}
+        name="Settings"
         component={Lal2}
       />
     </Tab.Navigator>

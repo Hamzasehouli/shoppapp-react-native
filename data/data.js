@@ -32,7 +32,7 @@ export const cataegories = [
   ),
   new Category(
     'c7',
-    'Shirts',
-    'https://images.unsplash.com/photo-1602810319428-019690571b5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YXBwYXJlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60',
+    'Jackets',
+    'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8amFja2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
   ),
 ];

@@ -13,7 +13,9 @@ import {cataegories} from '../data/data';
 const HomeScreen = function () {
   const renderItemHandler = function (item) {
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate({name: 'dd', params: {}})}
+        style={styles.container}>
         <ImageBackground
           resizeMode="cover"
           style={{
@@ -29,14 +31,15 @@ const HomeScreen = function () {
             style={{
               fontWeight: '700',
               margin: 10,
-              backgroundColor: 'black',
+              backgroundColor: '#999',
               color: 'white',
               padding: 5,
               borderRadius: 10,
+              opacity: 0.7,
             }}
             color="white"
             size={25}>
-            <Text>{item.item.title}</Text>
+            <Text style={{opacity: 0.9}}>{item.item.title}</Text>
           </BaseText>
         </ImageBackground>
       </TouchableOpacity>
