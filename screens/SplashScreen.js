@@ -8,7 +8,8 @@ import Catalog from '../assets/illustrations/Catalog.svg';
 const SplashScreen = function ({navigation}) {
   return (
     <View style={styles.screen}>
-      <Text style={styles.text}>shoppy</Text>
+      <Text style={styles.text}>Shoppy</Text>
+      {/*<Text style={styles.text}>Check our fancy bags collections</Text> */}
       <Catalog width={250} height={250} />
       <BaseButton
         onPress={() => navigation.replace('Home')}
@@ -28,10 +29,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingBottom: 40,
+    paddingTop: 40,
   },
   text: {
     color: 'white',
-    fontSize: 40,
+    fontSize: 25,
+    textAlign: 'center',
     fontFamily: 'Roboto-Medium',
   },
 });

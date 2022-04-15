@@ -3,7 +3,11 @@ import {Text, StyleSheet} from 'react-native';
 const BaseText = function (props) {
   return (
     <Text
-      style={{...styles.text, fontSize: props.size, color: props.color}}
+      style={{
+        ...styles.text,
+        fontSize: props.size ?? 16,
+        color: props.color ?? 'gray',
+      }}
       {...props}>
       {props.title}
     </Text>

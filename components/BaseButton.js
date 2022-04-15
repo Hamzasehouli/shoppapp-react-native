@@ -26,14 +26,19 @@ const BaseButton = function (props) {
 const styles = StyleSheet.create({
   button: {
     borderRadius: 5,
-    paddingRight: 20,
-    paddingLeft: 20,
-    paddingTop: 7,
-    paddingBottom: 7,
+    // paddingRight: 20,
+    // paddingLeft: 20,
+    // paddingTop: 7,
+    // paddingBottom: 7,
+    width: '80%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     fontFamily: 'Roboto-Black',
     fontWeight: '700',
+    fontSize: 16,
   },
   flat: {},
   ghost: {
