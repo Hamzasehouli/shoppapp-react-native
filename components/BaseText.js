@@ -5,11 +5,11 @@ const BaseText = function (props) {
     <Text
       style={{
         ...styles.text,
+        ...props.style,
         fontSize: props.size ?? 16,
         color: props.color ?? 'gray',
-      }}
-      {...props}>
-      {props.title}
+      }}>
+      {props.children}
     </Text>
   );
 };
