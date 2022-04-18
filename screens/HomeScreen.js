@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {cataegories} from '../data/data';
-const HomeScreen = function () {
+const HomeScreen = function ({navigation}) {
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity

@@ -7,6 +7,7 @@ import COLORS from '../constants/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import CollectionsScreen from '../screens/CollectionsScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -14,7 +15,10 @@ const Stack = createNativeStackNavigator();
 
 const Lal1 = function () {
   return (
-    <Stack.Navigator initialRouteName="Categories">
+    <Stack.Navigator initialRouteName="CollectionsScreen">
+      <Stack.Screen
+        name="CollectionsScreen"
+        component={CollectionsScreen}></Stack.Screen>
       <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
       <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>
     </Stack.Navigator>
