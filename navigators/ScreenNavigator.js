@@ -15,10 +15,10 @@ const Stack = createNativeStackNavigator();
 
 const Lal1 = function () {
   return (
-    <Stack.Navigator initialRouteName="CollectionsScreen">
+    <Stack.Navigator initialRouteName="Collections">
       <Stack.Screen
         options={{headerShown: false}}
-        name="CollectionsScreen"
+        name="Collections"
         component={CollectionsScreen}></Stack.Screen>
       <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
       <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>

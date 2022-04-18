@@ -1,3 +1,4 @@
+import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {View, FlatList, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import BaseScreen from '../components/BaseScreen';
@@ -16,7 +17,12 @@ const CollectionsScreen = function (props) {
     return (
       <TouchableOpacity
         style={{marginBottom: 20}}
-        onPress={() => console.log('ss')}>
+        onPress={() =>
+          props.navigation.navigate({
+            name: 'Categories',
+            params: {collection: item.item.title},
+          })
+        }>
         <BaseText
           style={{
             textAlign: 'center',

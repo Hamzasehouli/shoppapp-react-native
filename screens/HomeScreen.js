@@ -9,8 +9,29 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {cataegories} from '../data/data';
-const HomeScreen = function ({navigation}) {
+import {
+  MenCategories as Men,
+  WomenCategories as Women,
+  BabyCataegories as Baby,
+  KidsCataegories as Kids,
+  SaleCataegories as Sale,
+} from '../data/data';
+const HomeScreen = function ({navigation, route}) {
+  const collection = route.params.collection;
+  console.log(Men);
+
+  const categories =
+    collection === 'Men'
+      ? Men
+      : 'Women'
+      ? Women
+      : 'Baby'
+      ? Baby
+      : 'Kids'
+      ? Kids
+      : 'Sale'
+      ? Sale
+      : [];
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
@@ -48,7 +69,7 @@ const HomeScreen = function ({navigation}) {
   return (
     <View style={styles.screen}>
       <FlatList
-        data={cataegories}
+        data={categories}
         renderItem={renderItemHandler}
         numColumns={2}></FlatList>
     </View>
