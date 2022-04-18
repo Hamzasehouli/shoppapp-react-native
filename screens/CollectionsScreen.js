@@ -1,6 +1,13 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {View, FlatList, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  FlatList,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import BaseScreen from '../components/BaseScreen';
 import BaseText from '../components/BaseText';
 
@@ -29,6 +36,7 @@ const CollectionsScreen = function (props) {
             fontWeight: '700',
             fontFamily: 'Roboto-Bold',
           }}
+          color="black"
           size={30}>
           {item.item.title}
         </BaseText>
@@ -36,21 +44,32 @@ const CollectionsScreen = function (props) {
     );
   };
   return (
-    <BaseScreen>
+    <ImageBackground
+      resizeMode="cover"
+      style={{
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+      source={{
+        uri: 'https://images.unsplash.com/photo-1543076447-215ad9ba6923?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8amFja2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
+      }}>
       <View style={styles.screen}>
-        <FlatList
-          data={collectionsData}
-          renderItem={renderItemHandler}></FlatList>
+        <FlatList data={collectionsData} renderItem={renderItemHandler} />
       </View>
-    </BaseScreen>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
     justifyContent: 'center',
+    width: '100%',
+    height: '100%',
     alignItems: 'center',
     flexDirection: 'row',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
   },
 });
 
