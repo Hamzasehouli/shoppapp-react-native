@@ -1,41 +1,29 @@
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {
   View,
+  StyleSheet,
   FlatList,
   Text,
-  StyleSheet,
-  TouchableOpacity,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
-import BaseScreen from '../components/BaseScreen';
 import BaseText from '../components/BaseText';
 
 const collectionsData = [
-  {id: 'cl1', title: 'Men'},
-  {id: 'cl2', title: 'Women'},
-  //   {id: 'cl3', title: 'Kids'},
-  //   {id: 'cl4', title: 'Baby'},
-  {id: 'cl5', title: 'Sale'},
+  {id: 'cl1', title: 'Men Sales'},
+  {id: 'cl2', title: 'Women Sales'},
 ];
-
-const CollectionsScreen = function (props) {
+const SaleScreen = function () {
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
         style={{marginBottom: 20}}
-        onPress={() => {
-          if (item.item.title === 'Sale') {
-            props.navigation.navigate({
-              name: 'Sale',
-            });
-          } else {
-            props.navigation.navigate({
-              name: 'Categories',
-              params: {collection: item.item.title},
-            });
-          }
-        }}>
+        onPress={() =>
+          props.navigation.navigate({
+            name: 'Categories',
+            params: {collection: item.item.title},
+          })
+        }>
         <BaseText
           style={{
             textAlign: 'center',
@@ -79,4 +67,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CollectionsScreen;
+export default SaleScreen;

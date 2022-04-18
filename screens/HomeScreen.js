@@ -1,5 +1,6 @@
 import React from 'react';
 import BaseText from '../components/BaseText';
+import SaleScreen from './SaleScreen';
 import {
   View,
   Text,
@@ -18,10 +19,9 @@ import {
 } from '../data/data';
 const HomeScreen = function ({navigation, route}) {
   const collection = route.params.collection;
-  console.log(Men);
+  const isSale = collection === 'Sale' ? true : false;
 
-  const categories =
-    collection === 'Men' ? Men : 'Women' ? Women : 'Sale' ? Sale : [];
+  const categories = collection === 'Men' ? Men : 'Women' ? Women : [];
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
@@ -56,6 +56,10 @@ const HomeScreen = function ({navigation, route}) {
       </TouchableOpacity>
     );
   };
+
+  if (isSale) {
+    return <SaleScreen />;
+  }
   return (
     <View style={styles.screen}>
       <FlatList

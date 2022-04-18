@@ -2,6 +2,7 @@ import HomeScreen from '../screens/HomeScreen';
 import React from 'react';
 import {View, Text} from 'react-native';
 import CartScreen from '../screens/CartScreen';
+import SaleScreen from '../screens/SaleScreen';
 import SplashScreen from '../screens/SplashScreen';
 import COLORS from '../constants/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -106,6 +107,7 @@ const StackNavigator = (
       options={{headerShown: false}}
       name="Splash"
       component={SplashScreen}></Stack.Screen>
+    <Stack.Screen name="Sale" component={SaleScreen}></Stack.Screen>
     <Stack.Screen
       options={{headerShown: false}}
       name="MainStackScreen"
