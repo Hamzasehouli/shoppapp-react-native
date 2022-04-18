@@ -17,6 +17,7 @@ const Lal1 = function () {
   return (
     <Stack.Navigator initialRouteName="CollectionsScreen">
       <Stack.Screen
+        options={{headerShown: false}}
         name="CollectionsScreen"
         component={CollectionsScreen}></Stack.Screen>
       <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
