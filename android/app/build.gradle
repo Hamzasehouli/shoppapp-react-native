@@ -197,7 +197,6 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     
 
-
     // implementation project(':react-native-vector-icons')
     implementation project(':react-native-vector-icons')
 

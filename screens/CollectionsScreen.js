@@ -14,8 +14,8 @@ import BaseText from '../components/BaseText';
 const collectionsData = [
   {id: 'cl1', title: 'Men'},
   {id: 'cl2', title: 'Women'},
-  {id: 'cl3', title: 'Kids'},
-  {id: 'cl4', title: 'Baby'},
+  //   {id: 'cl3', title: 'Kids'},
+  //   {id: 'cl4', title: 'Baby'},
   {id: 'cl5', title: 'Sale'},
 ];
 

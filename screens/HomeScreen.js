@@ -21,17 +21,7 @@ const HomeScreen = function ({navigation, route}) {
   console.log(Men);
 
   const categories =
-    collection === 'Men'
-      ? Men
-      : 'Women'
-      ? Women
-      : 'Baby'
-      ? Baby
-      : 'Kids'
-      ? Kids
-      : 'Sale'
-      ? Sale
-      : [];
+    collection === 'Men' ? Men : 'Women' ? Women : 'Sale' ? Sale : [];
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
