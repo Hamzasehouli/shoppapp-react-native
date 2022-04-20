@@ -14,9 +14,26 @@ const SplashScreen = function ({navigation}) {
         height={150}
         fill={'red'}></Blue>
       <Catalog width={280} height={280} />
+      <View>
+        <Text
+          style={{
+            fontSize: 18,
+            fontFamily: 'Roboto-Black',
+            fontWeight: '700',
+            textAlign: 'center',
+          }}>
+          Sustainable shopping choices
+        </Text>
+        <Text
+          style={{
+            fontSize: 16,
+            fontFamily: 'Roboto-Black',
+          }}>
+          Consciuous picks for a fashion future
+        </Text>
+      </View>
       <BaseButton
         onPress={() => navigation.replace('MainStackScreen')}
-        // style={{marginTop: 3}}
         title="Get Started"
         type="flat"></BaseButton>
     </View>
