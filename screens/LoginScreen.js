@@ -67,7 +67,9 @@ const LoginScreen = function (props) {
     //     uri: 'https://images.unsplash.com/photo-1543076447-215ad9ba6923?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8amFja2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
     //   }}>
     // </ImageBackground>
-    <KeyboardAvoidingView behavior="height">
+    <KeyboardAvoidingView
+      behavior="position"
+      style={{backgroundColor: 'white'}}>
       <View style={styles.screen}>
         <Blue width={100} height={100} style={{marginBottom: 14}}></Blue>
         <Text
@@ -87,6 +89,7 @@ const LoginScreen = function (props) {
               backgroundColor: 'transparent',
               fontSize: 20,
             }}
+            keyboardType="email-address"
             placeholder="Email"></TextInput>
           <TextInput
             style={{
@@ -94,6 +97,7 @@ const LoginScreen = function (props) {
               backgroundColor: 'transparent',
               fontSize: 20,
             }}
+            secureTextEntry={true}
             placeholder="Password"></TextInput>
           <BaseButton width="100%" title="Login" type="flat"></BaseButton>
           <BaseButton
