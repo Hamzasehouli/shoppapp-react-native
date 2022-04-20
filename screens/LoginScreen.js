@@ -67,17 +67,36 @@ const LoginScreen = function (props) {
     //     uri: 'https://images.unsplash.com/photo-1543076447-215ad9ba6923?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8amFja2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
     //   }}>
     // </ImageBackground>
-    <KeyboardAvoidingView behavior="position">
+    <KeyboardAvoidingView behavior="height">
       <View style={styles.screen}>
         <Blue width={150} height={150} style={{marginBottom: 0}}></Blue>
         <View style={{flexDirection: 'column', width: '70%'}}>
           <TextInput
-            style={{marginBottom: 20, backgroundColor: 'transparent'}}
+            style={{
+              marginBottom: 20,
+              backgroundColor: 'transparent',
+              fontSize: 20,
+            }}
             placeholder="Email"></TextInput>
           <TextInput
-            style={{marginBottom: 20, backgroundColor: 'transparent'}}
+            style={{
+              marginBottom: 20,
+              backgroundColor: 'transparent',
+              fontSize: 20,
+            }}
             placeholder="Password"></TextInput>
           <BaseButton width="100%" title="Login" type="flat"></BaseButton>
+          <BaseButton
+            width="100%"
+            title="Forget password ?"
+            type="ghost"></BaseButton>
+        </View>
+        <View style={{marginTop: 40}}>
+          <BaseButton
+            fontSize={15}
+            width="50%"
+            title="Do not have an accout yet? Register here"
+            type="ghost"></BaseButton>
         </View>
       </View>
     </KeyboardAvoidingView>

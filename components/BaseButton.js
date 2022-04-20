@@ -10,6 +10,7 @@ const BaseButton = function (props) {
       <Text
         style={{
           ...styles.text,
+          fontSize: props.fontSize ?? 20,
           color:
             props.type === 'flat'
               ? 'white'
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Black',
     fontWeight: '700',
     fontSize: 23,
+    textAlign: 'center',
   },
   flat: {
     backgroundColor: Colors.primaryColor,
