@@ -40,7 +40,9 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 23,
   },
-  flat: {},
+  flat: {
+    backgroundColor: Colors.primaryColor,
+  },
   ghost: {
     backgroundColor: 'white',
   },

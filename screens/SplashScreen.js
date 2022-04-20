@@ -3,13 +3,16 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import Colors from '../constants/Colors';
 import BaseButton from '../components/BaseButton';
 import BaseText from '../components/BaseText';
-import Catalog from '../assets/illustrations/Catalog.svg';
+import Catalog from '../assets/illustrations/online-shopping.svg';
 import Logo from '../assets/images/Logo.svg';
 
 const SplashScreen = function ({navigation}) {
   return (
     <View style={styles.screen}>
-      <Logo height={200} fill={'red'}></Logo>
+      <Logo
+        style={{padding: 10, marginBottom: -70}}
+        height={150}
+        fill={'red'}></Logo>
       <Catalog width={280} height={280} />
       <BaseButton
         onPress={() => navigation.replace('MainStackScreen')}
