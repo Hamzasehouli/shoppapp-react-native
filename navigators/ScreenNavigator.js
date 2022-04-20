@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import CollectionsScreen from '../screens/CollectionsScreen';
+import Colors from '../constants/Colors';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -45,17 +46,19 @@ const MainStackScreen = function () {
   return (
     <Tab.Navigator
       id="initBar"
-      inactiveColor="#c2a5ff"
-      activeColor={'white'}
+      inactiveColor={Colors.primaryColor}
+      activeColor={Colors.secondaryColor}
       barStyle={{
-        backgroundColor: COLORS.secondaryColor,
+        backgroundColor: 'white',
         height: 65,
         justifyContent: 'center',
       }}>
       <Tab.Screen
         options={{
           tabBarIcon: function () {
-            return <Icon name="home" size={25}></Icon>;
+            return (
+              <Icon color={Colors.primaryColor} name="home" size={25}></Icon>
+            );
           },
         }}
         name="Home"
@@ -64,7 +67,12 @@ const MainStackScreen = function () {
       <Tab.Screen
         options={{
           tabBarIcon: function () {
-            return <Icon name="shopping-bag" size={25}></Icon>;
+            return (
+              <Icon
+                color={Colors.primaryColor}
+                name="shopping-bag"
+                size={25}></Icon>
+            );
           },
         }}
         name="Bag"
@@ -73,7 +81,9 @@ const MainStackScreen = function () {
       <Tab.Screen
         options={{
           tabBarIcon: function () {
-            return <Icon name="heart" size={25}></Icon>;
+            return (
+              <Icon color={Colors.primaryColor} name="heart" size={25}></Icon>
+            );
           },
         }}
         name="Favorites"
@@ -82,7 +92,9 @@ const MainStackScreen = function () {
       <Tab.Screen
         options={{
           tabBarIcon: function () {
-            return <Icon name="user" size={25}></Icon>;
+            return (
+              <Icon color={Colors.primaryColor} name="user" size={25}></Icon>
+            );
           },
         }}
         name="Account"
@@ -91,7 +103,9 @@ const MainStackScreen = function () {
       <Tab.Screen
         options={{
           tabBarIcon: function () {
-            return <Icon name="cog" size={25}></Icon>;
+            return (
+              <Icon color={Colors.primaryColor} name="cog" size={25}></Icon>
+            );
           },
         }}
         name="Settings"
