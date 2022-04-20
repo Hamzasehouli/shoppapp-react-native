@@ -13,6 +13,7 @@ import StartScreen from '../screens/StartScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
 import Colors from '../constants/Colors';
+import ForgetScreen from '../screens/ForgetScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -49,6 +50,9 @@ const Account = function () {
     <Stack.Navigator initialRouteName="CartScreen">
       <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
       <Stack.Screen name="Signup" component={SignupScreen}></Stack.Screen>
+      <Stack.Screen
+        name="Reset Password"
+        component={ForgetScreen}></Stack.Screen>
     </Stack.Navigator>
     // <View>
     //   <Text>cart</Text>

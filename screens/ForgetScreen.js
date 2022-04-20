@@ -24,7 +24,7 @@ const collectionsData = [
   {id: 'cl5', title: 'Sale'},
 ];
 
-const LoginScreen = function (props) {
+const ForgetScreen = function (props) {
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
@@ -68,20 +68,10 @@ const LoginScreen = function (props) {
     //   }}>
     // </ImageBackground>
     <KeyboardAvoidingView
-      behavior="position"
-      style={{backgroundColor: 'white'}}>
+      style={{backgroundColor: 'white'}}
+      behavior="position">
       <View style={styles.screen}>
         <Blue width={100} height={100} style={{marginBottom: 14}}></Blue>
-        <Text
-          style={{
-            fontWeight: '700',
-            textAlign: 'left',
-            color: Colors.primaryColor,
-            fontSize: 30,
-            marginBottom: 30,
-          }}>
-          Login
-        </Text>
         <View style={{flexDirection: 'column', width: '70%'}}>
           <TextInput
             style={{
@@ -91,28 +81,8 @@ const LoginScreen = function (props) {
             }}
             keyboardType="email-address"
             placeholder="Email"></TextInput>
-          <TextInput
-            style={{
-              marginBottom: 20,
-              backgroundColor: 'transparent',
-              fontSize: 20,
-            }}
-            secureTextEntry={true}
-            placeholder="Password"></TextInput>
-          <BaseButton width="100%" title="Login" type="flat"></BaseButton>
-          <BaseButton
-            onPress={() => props.navigation.push('Reset Password')}
-            width="100%"
-            title="Forget password ?"
-            type="ghost"></BaseButton>
-        </View>
-        <View style={{marginTop: 40}}>
-          <BaseButton
-            onPress={() => props.navigation.push('Signup')}
-            fontSize={15}
-            width="50%"
-            title="Do not have an accout yet? Register here"
-            type="ghost"></BaseButton>
+
+          <BaseButton width="100%" title="Reset" type="flat"></BaseButton>
         </View>
       </View>
     </KeyboardAvoidingView>
@@ -131,4 +101,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default ForgetScreen;
