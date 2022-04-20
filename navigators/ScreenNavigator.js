@@ -12,6 +12,7 @@ import CollectionsScreen from '../screens/CollectionsScreen';
 import StartScreen from '../screens/StartScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 import Colors from '../constants/Colors';
 import ForgetScreen from '../screens/ForgetScreen';
 
@@ -79,6 +80,9 @@ const Account = function () {
         component={ForgetScreen}></Stack.Screen>
     </Stack.Navigator>
   );
+};
+const Settings = function () {
+  return <SettingsScreen />;
 };
 
 const MainStackScreen = function () {
@@ -157,7 +161,7 @@ const MainStackScreen = function () {
           },
         }}
         name="Settings"
-        component={Cart}
+        component={Settings}
       />
     </Tab.Navigator>
   );
