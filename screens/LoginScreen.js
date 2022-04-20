@@ -69,7 +69,17 @@ const LoginScreen = function (props) {
     // </ImageBackground>
     <KeyboardAvoidingView behavior="height">
       <View style={styles.screen}>
-        <Blue width={150} height={150} style={{marginBottom: 0}}></Blue>
+        <Blue width={100} height={100} style={{marginBottom: 14}}></Blue>
+        <Text
+          style={{
+            fontWeight: '700',
+            textAlign: 'left',
+            color: Colors.primaryColor,
+            fontSize: 30,
+            marginBottom: 30,
+          }}>
+          Login
+        </Text>
         <View style={{flexDirection: 'column', width: '70%'}}>
           <TextInput
             style={{
@@ -93,6 +103,7 @@ const LoginScreen = function (props) {
         </View>
         <View style={{marginTop: 40}}>
           <BaseButton
+            onPress={() => props.navigation.push('Signup')}
             fontSize={15}
             width="50%"
             title="Do not have an accout yet? Register here"

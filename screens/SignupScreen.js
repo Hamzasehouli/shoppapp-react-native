@@ -1,4 +1,3 @@
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {
   View,
@@ -7,11 +6,15 @@ import {
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
+  KeyboardAvoidingView,
 } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 import BaseScreen from '../components/BaseScreen';
 import BaseText from '../components/BaseText';
 import Colors from '../constants/Colors';
 import Blue from '../assets/images/Blue.svg';
+import {TextInput} from 'react-native-paper';
+import BaseButton from '../components/BaseButton';
 
 const collectionsData = [
   {id: 'cl1', title: 'Men'},
@@ -21,7 +24,7 @@ const collectionsData = [
   {id: 'cl5', title: 'Sale'},
 ];
 
-const SignupScreen = function (props) {
+const LoginScreen = function (props) {
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
@@ -64,23 +67,63 @@ const SignupScreen = function (props) {
     //     uri: 'https://images.unsplash.com/photo-1543076447-215ad9ba6923?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8amFja2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
     //   }}>
     // </ImageBackground>
-    <View style={styles.screen}>
-      <Blue width={200} height={200} style={{marginBottom: 40}}></Blue>
-      <FlatList data={collectionsData} renderItem={renderItemHandler} />
-    </View>
+    <KeyboardAvoidingView behavior="height">
+      <View style={styles.screen}>
+        <Blue width={100} height={100} style={{marginBottom: 14}}></Blue>
+        <Text
+          style={{
+            fontWeight: '700',
+            textAlign: 'left',
+            color: Colors.primaryColor,
+            fontSize: 30,
+            marginBottom: 30,
+          }}>
+          Login
+        </Text>
+        <View style={{flexDirection: 'column', width: '70%'}}>
+          <TextInput
+            style={{
+              marginBottom: 20,
+              backgroundColor: 'transparent',
+              fontSize: 20,
+            }}
+            placeholder="Email"></TextInput>
+          <TextInput
+            style={{
+              marginBottom: 20,
+              backgroundColor: 'transparent',
+              fontSize: 20,
+            }}
+            placeholder="Password"></TextInput>
+          <BaseButton width="100%" title="Login" type="flat"></BaseButton>
+          <BaseButton
+            width="100%"
+            title="Forget password ?"
+            type="ghost"></BaseButton>
+        </View>
+        <View style={{marginTop: 40}}>
+          <BaseButton
+            onPress={() => props.navigation.push('Signup')}
+            fontSize={15}
+            width="50%"
+            title="Do not have an accout yet? Register here"
+            type="ghost"></BaseButton>
+        </View>
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     width: '100%',
     height: '100%',
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    backgroundColor: 'white',
     flexDirection: 'column',
   },
 });
 
-export default SignupScreen;
+export default LoginScreen;
