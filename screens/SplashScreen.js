@@ -4,15 +4,15 @@ import Colors from '../constants/Colors';
 import BaseButton from '../components/BaseButton';
 import BaseText from '../components/BaseText';
 import Catalog from '../assets/illustrations/online-shopping.svg';
-import Logo from '../assets/images/Logo.svg';
+import Blue from '../assets/images/Blue.svg';
 
 const SplashScreen = function ({navigation}) {
   return (
     <View style={styles.screen}>
-      <Logo
+      <Blue
         style={{padding: 10, marginBottom: -70}}
         height={150}
-        fill={'red'}></Logo>
+        fill={'red'}></Blue>
       <Catalog width={280} height={280} />
       <BaseButton
         onPress={() => navigation.replace('MainStackScreen')}

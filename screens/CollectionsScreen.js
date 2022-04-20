@@ -11,7 +11,7 @@ import {
 import BaseScreen from '../components/BaseScreen';
 import BaseText from '../components/BaseText';
 import Colors from '../constants/Colors';
-import Logo from '../assets/images/Logo.svg';
+import Blue from '../assets/images/Blue.svg';
 
 const collectionsData = [
   {id: 'cl1', title: 'Men'},
@@ -65,7 +65,7 @@ const CollectionsScreen = function (props) {
     //   }}>
     // </ImageBackground>
     <View style={styles.screen}>
-      <Logo width={200} height={200} style={{marginBottom: 40}}></Logo>
+      <Blue width={200} height={200} style={{marginBottom: 40}}></Blue>
       <FlatList data={collectionsData} renderItem={renderItemHandler} />
     </View>
   );
