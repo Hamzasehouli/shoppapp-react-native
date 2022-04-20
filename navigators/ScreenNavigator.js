@@ -19,9 +19,19 @@ const Tab = createMaterialBottomTabNavigator();
 
 const Stack = createNativeStackNavigator();
 
-const Lal1 = function () {
+const Home = function () {
   return (
-    <Stack.Navigator initialRouteName="Collections">
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: 'white',
+        },
+        headerTintColor: Colors.primaryColor,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}
+      initialRouteName="Collections">
       <Stack.Screen
         options={{headerShown: false}}
         name="Collections"
@@ -29,34 +39,45 @@ const Lal1 = function () {
       <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
       <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>
     </Stack.Navigator>
-    // <View>
-    //   <Text>home</Text>
-    // </View>
   );
 };
-const Lal2 = function () {
+const Cart = function () {
   return (
-    <Stack.Navigator initialRouteName="CartScreen">
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: 'white',
+        },
+        headerTintColor: Colors.primaryColor,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}
+      initialRouteName="CartScreen">
       <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
       <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>
     </Stack.Navigator>
-    // <View>
-    //   <Text>cart</Text>
-    // </View>
   );
 };
 const Account = function () {
   return (
-    <Stack.Navigator initialRouteName="CartScreen">
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: 'white',
+        },
+        headerTintColor: Colors.primaryColor,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}
+      initialRouteName="CartScreen">
       <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
       <Stack.Screen name="Signup" component={SignupScreen}></Stack.Screen>
       <Stack.Screen
         name="Reset Password"
         component={ForgetScreen}></Stack.Screen>
     </Stack.Navigator>
-    // <View>
-    //   <Text>cart</Text>
-    // </View>
   );
 };
 
@@ -83,7 +104,7 @@ const MainStackScreen = function () {
           },
         }}
         name="Home"
-        component={Lal1}
+        component={Home}
       />
       <Tab.Screen
         options={{
@@ -97,7 +118,7 @@ const MainStackScreen = function () {
           },
         }}
         name="Bag"
-        component={Lal2}
+        component={Cart}
       />
       <Tab.Screen
         options={{
@@ -111,7 +132,7 @@ const MainStackScreen = function () {
           },
         }}
         name="Favorites"
-        component={Lal2}
+        component={Cart}
       />
       <Tab.Screen
         options={{
@@ -136,7 +157,7 @@ const MainStackScreen = function () {
           },
         }}
         name="Settings"
-        component={Lal2}
+        component={Cart}
       />
     </Tab.Navigator>
   );
