@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import CollectionsScreen from '../screens/CollectionsScreen';
+import StartScreen from '../screens/StartScreen';
 import Colors from '../constants/Colors';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -116,12 +117,16 @@ const MainStackScreen = function () {
 };
 
 const StackNavigator = (
-  <Stack.Navigator initialRouteName="Splash">
+  <Stack.Navigator initialRouteName="Start">
     <Stack.Screen
       options={{headerShown: false}}
       name="Splash"
       component={SplashScreen}></Stack.Screen>
     <Stack.Screen name="Sale" component={SaleScreen}></Stack.Screen>
+    <Stack.Screen
+      options={{headerShown: false}}
+      name="Start"
+      component={StartScreen}></Stack.Screen>
     <Stack.Screen
       options={{headerShown: false}}
       name="MainStackScreen"
