@@ -47,7 +47,7 @@ const SaleScreen = function () {
         alignItems: 'center',
       }}
       source={{
-        uri: 'https://images.unsplash.com/photo-1543076447-215ad9ba6923?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8amFja2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
+        uri: 'https://images.unsplash.com/photo-1577387196112-579d95312c6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c2FsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60',
       }}>
       <View style={styles.screen}>
         <FlatList data={collectionsData} renderItem={renderItemHandler} />

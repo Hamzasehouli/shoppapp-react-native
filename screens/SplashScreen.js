@@ -4,18 +4,18 @@ import Colors from '../constants/Colors';
 import BaseButton from '../components/BaseButton';
 import BaseText from '../components/BaseText';
 import Catalog from '../assets/illustrations/Catalog.svg';
+import Logo from '../assets/images/Logo.svg';
 
 const SplashScreen = function ({navigation}) {
   return (
     <View style={styles.screen}>
-      <Text style={styles.text}>Shoppy</Text>
-      {/*<Text style={styles.text}>Check our fancy bags collections</Text> */}
+      <Logo height={200} fill={'red'}></Logo>
       <Catalog width={280} height={280} />
       <BaseButton
         onPress={() => navigation.replace('MainStackScreen')}
         // style={{marginTop: 3}}
         title="Get Started"
-        type="ghost"></BaseButton>
+        type="flat"></BaseButton>
     </View>
   );
 };
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   screen: {
     width: '100%',
     height: '100%',
-    backgroundColor: Colors.primaryColor,
+    backgroundColor: 'white',
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Roboto-Italic',
     fontWeight: '700',
+    marginRight: 4,
   },
 });
 
