@@ -33,6 +33,7 @@ const SplashScreen = function ({navigation}) {
         </Text>
       </View>
       <BaseButton
+        width={'65%'}
         onPress={() => navigation.replace('MainStackScreen')}
         title="Get Started"
         type="flat"></BaseButton>

@@ -10,6 +10,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import CollectionsScreen from '../screens/CollectionsScreen';
 import StartScreen from '../screens/StartScreen';
+import LoginScreen from '../screens/LoginScreen';
+import SignupScreen from '../screens/SignupScreen';
 import Colors from '../constants/Colors';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -36,6 +38,17 @@ const Lal2 = function () {
     <Stack.Navigator initialRouteName="CartScreen">
       <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
       <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>
+    </Stack.Navigator>
+    // <View>
+    //   <Text>cart</Text>
+    // </View>
+  );
+};
+const Account = function () {
+  return (
+    <Stack.Navigator initialRouteName="CartScreen">
+      <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+      <Stack.Screen name="Signup" component={SignupScreen}></Stack.Screen>
     </Stack.Navigator>
     // <View>
     //   <Text>cart</Text>
@@ -108,7 +121,7 @@ const MainStackScreen = function () {
           },
         }}
         name="Account"
-        component={Lal2}
+        component={Account}
       />
       <Tab.Screen
         options={{
