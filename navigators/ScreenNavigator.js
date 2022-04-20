@@ -5,7 +5,7 @@ import CartScreen from '../screens/CartScreen';
 import SaleScreen from '../screens/SaleScreen';
 import SplashScreen from '../screens/SplashScreen';
 import COLORS from '../constants/Colors';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import CollectionsScreen from '../screens/CollectionsScreen';
@@ -58,7 +58,10 @@ const MainStackScreen = function () {
         options={{
           tabBarIcon: function () {
             return (
-              <Icon color={Colors.primaryColor} name="home" size={25}></Icon>
+              <Icon
+                color={Colors.primaryColor}
+                name="ios-home-outline"
+                size={25}></Icon>
             );
           },
         }}
@@ -71,7 +74,7 @@ const MainStackScreen = function () {
             return (
               <Icon
                 color={Colors.primaryColor}
-                name="shopping-bag"
+                name="ios-cart-outline"
                 size={25}></Icon>
             );
           },
@@ -83,7 +86,10 @@ const MainStackScreen = function () {
         options={{
           tabBarIcon: function () {
             return (
-              <Icon color={Colors.primaryColor} name="heart" size={25}></Icon>
+              <Icon
+                color={Colors.primaryColor}
+                name="ios-heart-outline"
+                size={25}></Icon>
             );
           },
         }}
@@ -94,7 +100,10 @@ const MainStackScreen = function () {
         options={{
           tabBarIcon: function () {
             return (
-              <Icon color={Colors.primaryColor} name="user" size={25}></Icon>
+              <Icon
+                color={Colors.primaryColor}
+                name="ios-person-outline"
+                size={25}></Icon>
             );
           },
         }}
