@@ -24,7 +24,7 @@ const collectionsData = [
   {id: 'cl5', title: 'Sale'},
 ];
 
-const LoginScreen = function (props) {
+const SignupScreen = function (props) {
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
@@ -67,7 +67,9 @@ const LoginScreen = function (props) {
     //     uri: 'https://images.unsplash.com/photo-1543076447-215ad9ba6923?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8amFja2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
     //   }}>
     // </ImageBackground>
-    <KeyboardAvoidingView behavior="height">
+    <KeyboardAvoidingView
+      style={{backgroundColor: 'white'}}
+      behavior="position">
       <View style={styles.screen}>
         <Blue width={100} height={100} style={{marginBottom: 14}}></Blue>
         <Text
@@ -78,7 +80,7 @@ const LoginScreen = function (props) {
             fontSize: 30,
             marginBottom: 30,
           }}>
-          Login
+          Signup
         </Text>
         <View style={{flexDirection: 'column', width: '70%'}}>
           <TextInput
@@ -87,6 +89,14 @@ const LoginScreen = function (props) {
               backgroundColor: 'transparent',
               fontSize: 20,
             }}
+            placeholder="Full name"></TextInput>
+          <TextInput
+            style={{
+              marginBottom: 20,
+              backgroundColor: 'transparent',
+              fontSize: 20,
+            }}
+            keyboardType="email-address"
             placeholder="Email"></TextInput>
           <TextInput
             style={{
@@ -94,20 +104,9 @@ const LoginScreen = function (props) {
               backgroundColor: 'transparent',
               fontSize: 20,
             }}
+            secureTextEntry={true}
             placeholder="Password"></TextInput>
-          <BaseButton width="100%" title="Login" type="flat"></BaseButton>
-          <BaseButton
-            width="100%"
-            title="Forget password ?"
-            type="ghost"></BaseButton>
-        </View>
-        <View style={{marginTop: 40}}>
-          <BaseButton
-            onPress={() => props.navigation.push('Signup')}
-            fontSize={15}
-            width="50%"
-            title="Do not have an accout yet? Register here"
-            type="ghost"></BaseButton>
+          <BaseButton width="100%" title="Signup" type="flat"></BaseButton>
         </View>
       </View>
     </KeyboardAvoidingView>
@@ -126,4 +125,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default SignupScreen;
