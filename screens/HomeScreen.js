@@ -1,6 +1,7 @@
 import React from 'react';
 import BaseText from '../components/BaseText';
 import SaleScreen from './SaleScreen';
+import Colors from '../constants/Colors';
 import {
   View,
   Text,
@@ -17,6 +18,7 @@ import {
   KidsCataegories as Kids,
   SaleCataegories as Sale,
 } from '../data/data';
+
 const HomeScreen = function ({navigation, route}) {
   const collection = route.params.collection;
   const isSale = collection === 'Sale' ? true : false;
@@ -33,7 +35,7 @@ const HomeScreen = function ({navigation, route}) {
             width: '100%',
             height: '100%',
             justifyContent: 'flex-end',
-            alignItems: 'flex-start',
+            alignItems: 'flex-end',
           }}
           source={{
             uri: item.item.imageUrl,
@@ -42,14 +44,12 @@ const HomeScreen = function ({navigation, route}) {
             style={{
               fontWeight: '700',
               margin: 10,
-              backgroundColor: '#999',
-              color: 'white',
+              backgroundColor: 'rgba(0,0,0,.6)',
               padding: 5,
               borderRadius: 10,
-              opacity: 0.7,
             }}
             color="white"
-            size={25}>
+            size={20}>
             <Text style={{opacity: 0.9}}>{item.item.title}</Text>
           </BaseText>
         </ImageBackground>
@@ -79,10 +79,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   container: {
-    width: 160,
+    width: 150,
     height: 160,
     borderRadius: 20,
-    backgroundColor: 'white',
+    backgroundColor: 'red',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     margin: 15,
