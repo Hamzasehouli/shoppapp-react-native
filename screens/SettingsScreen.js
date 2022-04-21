@@ -13,30 +13,31 @@ const data = [
 ];
 
 const SettingsScreen = function (props) {
-  const renderItemHandler = function (item) {
-    return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          marginBottom: 10,
-          flexDirection: 'row',
-        }}>
-        <Icon
-          style={{marginRight: 8}}
-          size={18}
-          color={Colors.primaryColor}
-          name="ios-trash-outline"
-        />
-        <BaseButton type="ghost" title={item.item.title}></BaseButton>
-      </View>
-    );
-  };
+  // const renderItemHandler = function (item) {
+  //   return (
+  //     <View
+  //       style={{
+  //         flex: 1,
+  //         justifyContent: 'flex-start',
+  //         alignItems: 'center',
+  //         marginBottom: 10,
+  //         flexDirection: 'row',
+  //       }}>
+  //       <Icon
+  //         style={{marginRight: 8}}
+  //         size={18}
+  //         color={Colors.primaryColor}
+  //         name="ios-trash-outline"
+  //       />
+  //       <BaseButton type="ghost" title={item.item.title}></BaseButton>
+  //     </View>
+  //   );
+  // };
+
   return (
     <View style={styles.screen}>
       <Blue width={100} height={100} style={{marginBottom: 14}}></Blue>
-      <View style={{height: 150, marginTop: 40}}>
+      <View style={{height: 100, marginTop: 40}}>
         <View
           style={{
             flex: 1,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, StatusBar} from 'react-native';
 import Logo from '../assets/images/Logo';
 import Colors from '../constants/Colors';
 
@@ -9,6 +9,11 @@ const StartScreen = function ({navigation}) {
   }, 3000);
   return (
     <View style={styles.screen}>
+      <StatusBar
+        animated={true}
+        backgroundColor={Colors.primaryColor}
+        barStyle="light"
+      />
       <Logo width={200} height={200}></Logo>
     </View>
   );

@@ -5,10 +5,16 @@ import BaseButton from '../components/BaseButton';
 import BaseText from '../components/BaseText';
 import Catalog from '../assets/illustrations/online-shopping.svg';
 import Blue from '../assets/images/Blue.svg';
+import {StatusBar} from 'react-native';
 
 const SplashScreen = function ({navigation}) {
   return (
     <View style={styles.screen}>
+      <StatusBar
+        animated={true}
+        backgroundColor="white"
+        barStyle="dark-content"
+      />
       <Blue
         style={{padding: 10, marginBottom: -70}}
         height={150}
