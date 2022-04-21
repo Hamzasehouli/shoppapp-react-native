@@ -10,7 +10,6 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   MenCategories as Men,
   WomenCategories as Women,
@@ -20,6 +19,11 @@ import {
 } from '../data/data';
 
 const HomeScreen = function ({navigation, route}) {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      title: route.params.collection + ' ' + 'Collection',
+    });
+  }, [navigation]);
   const collection = route.params.collection;
   const isSale = collection === 'Sale' ? true : false;
 
