@@ -31,7 +31,12 @@ const HomeScreen = function ({navigation, route}) {
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate({name: 'dd', params: {}})}
+        onPress={() =>
+          navigation.navigate({
+            name: 'ApparelScreen',
+            params: {title: item.item.title},
+          })
+        }
         style={styles.container}>
         <ImageBackground
           resizeMode="cover"

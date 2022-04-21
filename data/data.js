@@ -1,4 +1,5 @@
-import Category from '../models/Catagory';
+import Category from '../models/Category';
+import Apparel from '../models/Apparel';
 export const MenCategories = [
   new Category(
     'c1',
@@ -219,5 +220,20 @@ export const SaleCataegories = [
     'c35',
     'Jackets',
     'https://images.unsplash.com/photo-1551028719-00167b16eac5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8amFja2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
+  ),
+];
+
+export const SNEAKERS = [
+  new Apparel(
+    's1',
+    'Hiking trainers',
+    39.99,
+    'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2313/940/002/01/2313940002_2_1_8.jpg?t=1642439839013&imwidth=750',
+  ),
+  new Apparel(
+    's2',
+    'Retro casual trainers',
+    19.99,
+    'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2215/940/100/01/2215940100_2_1_8.jpg?t=1642679701509&imwidth=750',
   ),
 ];

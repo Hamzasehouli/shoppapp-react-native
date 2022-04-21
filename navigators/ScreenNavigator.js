@@ -2,6 +2,7 @@ import HomeScreen from '../screens/HomeScreen';
 import React from 'react';
 import {View, Text} from 'react-native';
 import CartScreen from '../screens/CartScreen';
+import ApparelScreen from '../screens/ApparelScreen';
 import SaleScreen from '../screens/SaleScreen';
 import SplashScreen from '../screens/SplashScreen';
 import COLORS from '../constants/Colors';
@@ -39,6 +40,9 @@ const Home = function () {
         component={CollectionsScreen}></Stack.Screen>
       <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
       <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>
+      <Stack.Screen
+        name="ApparelScreen"
+        component={ApparelScreen}></Stack.Screen>
     </Stack.Navigator>
   );
 };
