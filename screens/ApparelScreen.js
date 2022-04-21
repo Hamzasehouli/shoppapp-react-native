@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {SNEAKERS, BAGS} from '../data/data';
 import {JEANS} from '../data/JEANS.js';
+import {CAPS} from '../data/CAPS.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 import BaseText from '../components/BaseText';
@@ -25,6 +26,9 @@ const Apparel = function (props) {
         break;
       case 'Jeans':
         setData(JEANS);
+        break;
+      case 'Cap':
+        setData(CAPS);
         break;
 
       default:
