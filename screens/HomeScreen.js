@@ -50,7 +50,7 @@ const HomeScreen = function ({navigation, route}) {
             }}
             color="white"
             size={20}>
-            <Text style={{opacity: 0.9}}>{item.item.title}</Text>
+            <Text style={{fontWeight: '400'}}>{item.item.title}</Text>
           </BaseText>
         </ImageBackground>
       </TouchableOpacity>
