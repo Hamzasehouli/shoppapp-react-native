@@ -253,3 +253,20 @@ export const SNEAKERS = [
     'Sneaker',
   ),
 ];
+
+export const BAGS = [
+  new Apparel(
+    'b1',
+    'Wildcraft',
+    'https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12361350/2020/9/12/5eecd2dc-d684-4a71-8640-ff6db02fdad01599889647840-Wildcraft-Unisex-Black-Lunar-Laptop-Backpack-851599889646488-1.jpg',
+    17.99,
+    'Bag',
+  ),
+  new Apparel(
+    'b2',
+    'Tommy Hilfiger',
+    'https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9137557/2019/4/24/5ff8d9b7-b517-4a81-9a69-9282490c70e41556107194454-Tommy-Hilfiger-Printed-Bold-branding-with-signature-tape-992-1.jpg',
+    37.99,
+    'Bag',
+  ),
+];

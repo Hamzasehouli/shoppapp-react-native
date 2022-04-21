@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -7,13 +7,30 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import {SNEAKERS} from '../data/data';
+import {SNEAKERS, BAGS} from '../data/data';
+import {JEANS} from '../data/JEANS.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 import BaseText from '../components/BaseText';
 
 const Apparel = function (props) {
+  const [data, setData] = useState([]);
   useEffect(() => {
+    switch (props.route.params.title) {
+      case 'Sneakers':
+        setData(SNEAKERS);
+        break;
+      case 'Bags':
+        setData(BAGS);
+        break;
+      case 'Jeans':
+        setData(JEANS);
+        break;
+
+      default:
+        setData([]);
+        break;
+    }
     props.navigation.setOptions({
       title: props.route.params.title,
     });
@@ -45,7 +62,7 @@ const Apparel = function (props) {
     <View style={styles.screen}>
       <FlatList
         numColumns={2}
-        data={SNEAKERS}
+        data={data}
         renderItem={renderItemHandler}></FlatList>
     </View>
   );
