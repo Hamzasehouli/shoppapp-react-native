@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 160,
     borderRadius: 20,
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     margin: 15,
