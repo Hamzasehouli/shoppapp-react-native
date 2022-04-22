@@ -15,6 +15,7 @@ import {SHIRTS} from '../data/SHIRTS.js';
 import {JACKETS} from '../data/JACKETS.js';
 import {SUITS} from '../data/SUITS.js';
 import {SHOES} from '../data/SHOES.js';
+import {SHOESWOMEN} from '../data/women/SHOESWOMEN.js';
 import {SPORTWEAR} from '../data/SPORTWEAR.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
@@ -24,35 +25,38 @@ const Apparel = function (props) {
   const [data, setData] = useState([]);
   useEffect(() => {
     switch (props.route.params.title) {
-      case 'Sneakers':
+      case 'Sneakers men':
         setData(SNEAKERS);
         break;
-      case 'Bags':
+      case 'Bags men':
         setData(BAGS);
         break;
-      case 'Jeans':
+      case 'Jeans men':
         setData(JEANS);
         break;
-      case 'Cap':
+      case 'Cap men':
         setData(CAPS);
         break;
-      case 'Pullover':
+      case 'Pullover men':
         setData(PULLOVER);
         break;
-      case 'Shirts':
+      case 'Shirts men':
         setData(SHIRTS);
         break;
-      case 'Jackets':
+      case 'Jackets men':
         setData(JACKETS);
         break;
-      case 'Suit':
+      case 'Suit men':
         setData(SUITS);
         break;
-      case 'Sportwear':
+      case 'Sportwear men':
         setData(SPORTWEAR);
         break;
-      case 'Shoes':
+      case 'Shoes men':
         setData(SHOES);
+        break;
+      case 'Shoes women':
+        setData(SHOESWOMEN);
         break;
 
       default:
@@ -60,12 +64,14 @@ const Apparel = function (props) {
         break;
     }
     props.navigation.setOptions({
-      title: props.route.params.title,
+      title: props.route.params.title + ' ' + props.route.params.collection,
     });
   }, []);
   const renderItemHandler = function (item) {
     return (
-      <TouchableOpacity style={styles.box}>
+      <TouchableOpacity
+        style={styles.box}
+        onPress={() => props.navigation.push('DetailsScreen')}>
         <ImageBackground
           source={{uri: item.item.imageUrl}}
           resizeMode="cover"

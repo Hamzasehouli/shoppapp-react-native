@@ -34,7 +34,10 @@ const HomeScreen = function ({navigation, route}) {
         onPress={() =>
           navigation.navigate({
             name: 'ApparelScreen',
-            params: {title: item.item.title},
+            params: {
+              title: item.item.title,
+              collection: route.params.collection,
+            },
           })
         }
         style={styles.container}>
