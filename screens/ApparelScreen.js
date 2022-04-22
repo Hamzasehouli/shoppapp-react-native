@@ -8,18 +8,18 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {SNEAKERS, BAGS} from '../data/data';
-import {JEANS} from '../data/JEANS.js';
-import {CAPS} from '../data/CAPS.js';
-import {PULLOVER} from '../data/PULLOVER.js';
-import {SHIRTS} from '../data/SHIRTS.js';
-import {JACKETS} from '../data/JACKETS.js';
-import {SUITS} from '../data/SUITS.js';
-import {SHOES} from '../data/SHOES.js';
+import {JEANS} from '../data/men/JEANS.js';
+import {CAPS} from '../data/men/CAPS.js';
+import {PULLOVER} from '../data/men/PULLOVER.js';
+import {SHIRTS} from '../data/men/SHIRTS.js';
+import {JACKETS} from '../data/men/JACKETS.js';
+import {SUITS} from '../data/men/SUITS.js';
+import {SHOES} from '../data/men/SHOES.js';
 import {SHOESWOMEN} from '../data/women/SHOESWOMEN.js';
 import {HATSWOMEN} from '../data/women/HATSWOMEN.js';
 import {JEANSWOMEN} from '../data/women/JEANSWOMEN.js';
 import {BAGSWOMEN} from '../data/women/BAGSWOMEN.js';
-import {SPORTWEAR} from '../data/SPORTWEAR.js';
+import {SPORTWEAR} from '../data/men/SPORTWEAR.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 import BaseText from '../components/BaseText';

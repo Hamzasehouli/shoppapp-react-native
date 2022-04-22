@@ -1,4 +1,4 @@
-import Apparel from '../models/Apparel';
+import Apparel from '../../models/Apparel';
 export const SHIRTS = [
   new Apparel(
     's1',
