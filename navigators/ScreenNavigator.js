@@ -94,7 +94,7 @@ const MainStackScreen = function () {
     <Tab.Navigator
       id="initBar"
       inactiveColor={Colors.primaryColor}
-      activeColor={Colors.secondaryColor}
+      activeColor={Colors.primaryColor}
       barStyle={{
         backgroundColor: 'white',
         height: 65,
