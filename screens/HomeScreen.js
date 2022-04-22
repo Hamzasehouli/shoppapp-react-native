@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   container: {
     width: 150,
     height: 160,
-    borderRadius: 20,
+    borderRadius: 5,
     // backgroundColor: 'red',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
