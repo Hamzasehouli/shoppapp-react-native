@@ -16,6 +16,7 @@ import SignupScreen from '../screens/SignupScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import Colors from '../constants/Colors';
 import ForgetScreen from '../screens/ForgetScreen';
+import DetailsScreen from '../screens/DetailsScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -43,6 +44,9 @@ const Home = function () {
       <Stack.Screen
         name="ApparelScreen"
         component={ApparelScreen}></Stack.Screen>
+      <Stack.Screen
+        name="DetailsScreen"
+        component={DetailsScreen}></Stack.Screen>
     </Stack.Navigator>
   );
 };
