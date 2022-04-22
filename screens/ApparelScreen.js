@@ -16,6 +16,7 @@ import {JACKETS} from '../data/men/JACKETS.js';
 import {SUITS} from '../data/men/SUITS.js';
 import {SHOES} from '../data/men/SHOES.js';
 import {SHOESWOMEN} from '../data/women/SHOESWOMEN.js';
+import {PULLOVERWOMEN} from '../data/women/PULLOVERWOMEN.js';
 import {HATSWOMEN} from '../data/women/HATSWOMEN.js';
 import {JEANSWOMEN} from '../data/women/JEANSWOMEN.js';
 import {BAGSWOMEN} from '../data/women/BAGSWOMEN.js';
@@ -69,6 +70,9 @@ const Apparel = function (props) {
         break;
       case 'Hats women':
         setData(HATSWOMEN);
+        break;
+      case 'Pullover women':
+        setData(PULLOVERWOMEN);
         break;
 
       default:
