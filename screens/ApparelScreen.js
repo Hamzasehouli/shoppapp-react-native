@@ -14,6 +14,8 @@ import {PULLOVER} from '../data/PULLOVER.js';
 import {SHIRTS} from '../data/SHIRTS.js';
 import {JACKETS} from '../data/JACKETS.js';
 import {SUITS} from '../data/SUITS.js';
+import {SHOES} from '../data/SHOES.js';
+import {SPORTWEAR} from '../data/SPORTWEAR.js';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 import BaseText from '../components/BaseText';
@@ -45,6 +47,12 @@ const Apparel = function (props) {
         break;
       case 'Suit':
         setData(SUITS);
+        break;
+      case 'Sportwear':
+        setData(SPORTWEAR);
+        break;
+      case 'Shoes':
+        setData(SHOES);
         break;
 
       default:
