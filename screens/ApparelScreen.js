@@ -16,6 +16,7 @@ import {JACKETS} from '../data/JACKETS.js';
 import {SUITS} from '../data/SUITS.js';
 import {SHOES} from '../data/SHOES.js';
 import {SHOESWOMEN} from '../data/women/SHOESWOMEN.js';
+import {JEANSWOMEN} from '../data/women/JEANSWOMEN.js';
 import {BAGSWOMEN} from '../data/women/BAGSWOMEN.js';
 import {SPORTWEAR} from '../data/SPORTWEAR.js';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -61,6 +62,9 @@ const Apparel = function (props) {
         break;
       case 'Bags women':
         setData(BAGSWOMEN);
+        break;
+      case 'Jeans women':
+        setData(JEANSWOMEN);
         break;
 
       default:
