@@ -64,7 +64,10 @@ const Apparel = function (props) {
         break;
     }
     props.navigation.setOptions({
-      title: props.route.params.title + ' ' + props.route.params.collection,
+      title:
+        props.route.params.title.split(' ')[0] +
+        ' ' +
+        props.route.params.collection,
     });
   }, []);
   const renderItemHandler = function (item) {

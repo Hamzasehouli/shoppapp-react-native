@@ -21,7 +21,7 @@ import {
 const HomeScreen = function ({navigation, route}) {
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      title: route.params.collection + ' ' + 'Collection',
+      title: route.params.collection.split(' ')[0] + ' ' + 'Collection',
     });
   }, [navigation]);
   const collection = route.params.collection;
@@ -62,7 +62,9 @@ const HomeScreen = function ({navigation, route}) {
             }}
             color="white"
             size={20}>
-            <Text style={{fontWeight: '400'}}>{item.item.title}</Text>
+            <Text style={{fontWeight: '400'}}>
+              {item.item.title.split(' ')[0]}
+            </Text>
           </BaseText>
         </ImageBackground>
       </TouchableOpacity>
