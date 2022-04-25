@@ -11,25 +11,20 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import BaseText from '../components/BaseText';
 import Colors from '../constants/Colors';
-import {useSelector} from 'react-redux';
-import {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {useEffect, useState} from 'react';
 
 const FavoritesScreen = function (props) {
-  //   const data = [
-  //     {
-  //       id: 'j2',
-  //       title: 'Basic hooded jacket',
-  //       imageUrl:
-  //         'https://static.pullandbear.net/2/photos//2022/V/0/2/p/4714/558/537/4714558537_2_1_8.jpg?t=1647875435766&imwidth=750',
-  //       price: 25.99,
-  //       category: 'Shirts',
-  //     },
-  //   ];
+  const dispatch = useDispatch();
   const data = useSelector(state => state.favorites.favorites);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(props);
+  // }, [data]);
+
+  const favoriteHandler = function (apparel) {
+    dispatch({type: 'removeFavorite', apparel});
+  };
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
@@ -40,12 +35,9 @@ const FavoritesScreen = function (props) {
           resizeMode="cover"
           style={styles.imageBackground}>
           <TouchableOpacity
-            // onPress={favoriteHandler.bind(this, item.item.id)}
+            onPress={favoriteHandler.bind(this, item.item)}
             style={styles.favorite}>
-            <Icon
-              size={25}
-              color={Colors.primaryColor}
-              name="ios-heart-outline"></Icon>
+            <Icon size={25} color={Colors.primaryColor} name="ios-heart"></Icon>
           </TouchableOpacity>
         </ImageBackground>
         <View style={styles.details}>
@@ -57,6 +49,13 @@ const FavoritesScreen = function (props) {
       </TouchableOpacity>
     );
   };
+  if (data.length <= 0) {
+    return (
+      <View>
+        <Text>No favorites</Text>
+      </View>
+    );
+  }
   return (
     <View style={styles.screen}>
       <FlatList

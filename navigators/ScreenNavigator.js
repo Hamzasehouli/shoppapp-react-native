@@ -1,5 +1,5 @@
 import HomeScreen from '../screens/HomeScreen';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text} from 'react-native';
 import CartScreen from '../screens/CartScreen';
 import ApparelScreen from '../screens/ApparelScreen';
@@ -18,6 +18,8 @@ import Colors from '../constants/Colors';
 import ForgetScreen from '../screens/ForgetScreen';
 import DetailsScreen from '../screens/DetailsScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useSelector} from 'react-redux';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -94,12 +96,36 @@ const Settings = function () {
   return <SettingsScreen />;
 };
 const Favorites = function () {
-  return <FavoritesScreen />;
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: 'white',
+        },
+        headerTintColor: Colors.primaryColor,
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}
+      initialRouteName="FavoritesScreen">
+      <Stack.Screen name="FavoritesScreen">
+        {function () {
+          return <FavoritesScreen></FavoritesScreen>;
+        }}
+      </Stack.Screen>
+      <Stack.Screen
+        name="DetailsScreen"
+        component={DetailsScreen}></Stack.Screen>
+    </Stack.Navigator>
+  );
 };
 
 const MainStackScreen = function () {
+  const data = useSelector(state => state.favorites.favorites);
+
   return (
     <Tab.Navigator
+      name="ss"
       id="initBar"
       inactiveColor={Colors.primaryColor}
       activeColor={Colors.primaryColor}
@@ -146,10 +172,15 @@ const MainStackScreen = function () {
                 size={25}></Icon>
             );
           },
+          tabBarButton: function () {
+            return <TouchableOpacity style={{color: red}}></TouchableOpacity>;
+          },
         }}
-        name="Favorites"
-        component={Favorites}
-      />
+        name="Favorites">
+        {function () {
+          return <Favorites data={data} />;
+        }}
+      </Tab.Screen>
       <Tab.Screen
         options={{
           tabBarIcon: function () {
@@ -191,10 +222,11 @@ const StackNavigator = (
       name="Start"
       component={StartScreen}></Stack.Screen>
     <Stack.Screen
-      options={{headerShown: false}}
+      options={{
+        headerShown: false,
+      }}
       name="MainStackScreen"
       component={MainStackScreen}></Stack.Screen>
-    {/* <Stack.Screen name="Cart" component={CartScreen}></Stack.Screen> */}
   </Stack.Navigator>
 );
 

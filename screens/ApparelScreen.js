@@ -28,6 +28,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 import BaseText from '../components/BaseText';
 import {favoriteToggler} from '../store/actions/favoritesAction';
+import {CommonActions} from '@react-navigation/native';
 
 const Apparel = function (props) {
   const [data, setData] = useState([]);
@@ -35,6 +36,7 @@ const Apparel = function (props) {
 
   const favoriteHandler = function (apparel) {
     dispatch(favoriteToggler(apparel));
+    props.navigation.setParams({apparel});
   };
   useEffect(() => {
     switch (props.route.params.title) {
