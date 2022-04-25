@@ -17,6 +17,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import Colors from '../constants/Colors';
 import ForgetScreen from '../screens/ForgetScreen';
 import DetailsScreen from '../screens/DetailsScreen';
+import FavoritesScreen from '../screens/FavoritesScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -92,6 +93,9 @@ const Account = function () {
 const Settings = function () {
   return <SettingsScreen />;
 };
+const Favorites = function () {
+  return <FavoritesScreen />;
+};
 
 const MainStackScreen = function () {
   return (
@@ -144,7 +148,7 @@ const MainStackScreen = function () {
           },
         }}
         name="Favorites"
-        component={Cart}
+        component={Favorites}
       />
       <Tab.Screen
         options={{
