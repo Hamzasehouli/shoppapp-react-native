@@ -27,14 +27,14 @@ import {JACKETSWOMEN} from '../data/women/JACKETSWOMEN';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 import BaseText from '../components/BaseText';
-import {favoriteToggler} from '../store/actions/favoritsAction';
+import {favoriteToggler} from '../store/actions/favoritesAction';
 
 const Apparel = function (props) {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
 
-  const favoriteHandler = function (id) {
-    dispatch(favoriteToggler(id));
+  const favoriteHandler = function (apparel) {
+    dispatch(favoriteToggler(apparel));
   };
   useEffect(() => {
     switch (props.route.params.title) {
@@ -111,7 +111,7 @@ const Apparel = function (props) {
           resizeMode="cover"
           style={styles.imageBackground}>
           <TouchableOpacity
-            onPress={favoriteHandler.bind(this, item.item.id)}
+            onPress={favoriteHandler.bind(this, item.item)}
             style={styles.favorite}>
             <Icon
               size={25}

@@ -5,10 +5,10 @@ import TabNavigator from './navigators/TabNavigator';
 import ScreenNavigator from './navigators/ScreenNavigator';
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
-import favoritsReducer from './store/reducers/favorits';
+import favoritesReducer from './store/reducers/favorites';
 
 const rootReducers = combineReducers({
-  favorits: favoritsReducer,
+  favorites: favoritesReducer,
 });
 
 const store = createStore(rootReducers);

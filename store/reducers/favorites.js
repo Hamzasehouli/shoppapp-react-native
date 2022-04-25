@@ -1,12 +1,13 @@
-import {TOGGLE_FAVORITE} from '../actions/favoritsAction';
+import {TOGGLE_FAVORITE} from '../actions/favoritesAction';
 const initialReducer = {
-  favorits: [],
+  favorites: [],
 };
 
 const favoritesReducer = function (state = initialReducer, action) {
   switch (action.type) {
     case TOGGLE_FAVORITE:
-      console.log(action.apparelId);
+      state.favorites.push(action.apparel);
+
       break;
 
     default:
