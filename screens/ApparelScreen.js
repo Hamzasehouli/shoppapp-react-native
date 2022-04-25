@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
+import {useSelectore, useDispatch} from 'react-redux';
 import {SNEAKERS, BAGS} from '../data/data';
 import {JEANS} from '../data/men/JEANS.js';
 import {CAPS} from '../data/men/CAPS.js';
@@ -26,9 +27,15 @@ import {JACKETSWOMEN} from '../data/women/JACKETSWOMEN';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 import BaseText from '../components/BaseText';
+import {favoriteToggler} from '../store/actions/favoritsAction';
 
 const Apparel = function (props) {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+
+  const favoriteHandler = function (id) {
+    dispatch(favoriteToggler(id));
+  };
   useEffect(() => {
     switch (props.route.params.title) {
       case 'Sneakers men':
@@ -103,7 +110,9 @@ const Apparel = function (props) {
           source={{uri: item.item.imageUrl}}
           resizeMode="cover"
           style={styles.imageBackground}>
-          <TouchableOpacity style={styles.favorite}>
+          <TouchableOpacity
+            onPress={favoriteHandler.bind(this, item.item.id)}
+            style={styles.favorite}>
             <Icon
               size={25}
               color={Colors.primaryColor}
