@@ -22,8 +22,9 @@ const FavoritesScreen = function (props) {
 
   const favoriteHandler = function (apparel) {
     dispatch({type: 'removeFavorite', apparel});
+    console.log(apparel);
     // props.navigation.setParams({apparel});
-    setData(props.data);
+    setData(props.data.filter(i => i.id !== apparel.id));
   };
   const renderItemHandler = function (item) {
     return (
