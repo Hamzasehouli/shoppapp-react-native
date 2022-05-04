@@ -1,11 +1,53 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, KeyboardAvoidingView} from 'react-native';
 
 import Blue from '../assets/images/Blue.svg';
 import {TextInput} from 'react-native-paper';
 import BaseButton from '../components/BaseButton';
+import {useSelector, useDispatch} from 'react-redux';
 
 const ForgetScreen = function (props) {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState();
+  const [emailStateError, setEmailStateError] = useState(false);
+  async function handleSubmit() {
+    let emailError = false;
+    try {
+      if (!email || !email.includes('@')) {
+        emailError = true;
+      }
+
+      setEmailStateError(emailError);
+      if (emailError || passwordError) {
+        throw new Error('error');
+      }
+      const res = await fetch(
+        `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyAhMHIC_IVXX0deef5sMnqrOnN617B0rmc`,
+        {
+          method: 'POST',
+          header: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({email}),
+        },
+      );
+
+      const data = await res.json();
+      console.log(res);
+      if (!res.ok) {
+        throw new Error('errr');
+      }
+      dispatch({
+        type: '',
+        status: true,
+        email: data.email,
+        tokenId: data.idToken,
+      });
+      props.navigation.push('MainStackScreen');
+    } catch (err) {
+      console.log('error');
+    }
+  }
   return (
     <KeyboardAvoidingView
       style={{backgroundColor: 'white'}}

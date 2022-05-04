@@ -68,6 +68,7 @@ const LoginScreen = function (props) {
         email: data.email,
         tokenId: data.idToken,
       });
+      props.navigation.push('MainStackScreen');
     } catch (err) {
       console.log('error');
     }

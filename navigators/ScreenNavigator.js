@@ -1,6 +1,6 @@
 import HomeScreen from '../screens/HomeScreen';
 import React, {useEffect, useState} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Button} from 'react-native';
 import CartScreen from '../screens/CartScreen';
 import ApparelScreen from '../screens/ApparelScreen';
 import SaleScreen from '../screens/SaleScreen';
@@ -19,7 +19,7 @@ import ForgetScreen from '../screens/ForgetScreen';
 import DetailsScreen from '../screens/DetailsScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -71,7 +71,26 @@ const Cart = function () {
     </Stack.Navigator>
   );
 };
-const Account = function () {
+const Account = function (props) {
+  const [status, setStatus] = useState(props.data.isLoggedin);
+  // console.log(props.data);
+  useEffect(() => {
+    setStatus(props.data.isLoggedin);
+  }, [props.data.isLoggedin]);
+  const dispatch = useDispatch();
+  if (status) {
+    return (
+      <View>
+        <Text>loggedn in </Text>
+        <Button
+          onPress={() => {
+            dispatch({type: '', status: false});
+            setStatus(false);
+          }}
+          title="logout"></Button>
+      </View>
+    );
+  }
   return (
     <Stack.Navigator
       screenOptions={{
@@ -123,6 +142,8 @@ const Favorites = function (props) {
 const MainStackScreen = function () {
   const data = useSelector(state => state.favorites.favorites);
   // console.log(data);
+  const initData = useSelector(state => state.auth);
+  // console.log(initData, 'dd');
 
   return (
     <Tab.Navigator
@@ -193,9 +214,11 @@ const MainStackScreen = function () {
             );
           },
         }}
-        name="Account"
-        component={Account}
-      />
+        name="Account">
+        {function () {
+          return <Account data={initData} />;
+        }}
+      </Tab.Screen>
       <Tab.Screen
         options={{
           tabBarIcon: function () {
