@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   FlatList,
@@ -15,6 +15,7 @@ import Colors from '../constants/Colors';
 import Blue from '../assets/images/Blue.svg';
 import {TextInput} from 'react-native-paper';
 import BaseButton from '../components/BaseButton';
+import {useDispatch, useSelector} from 'react-redux';
 
 const collectionsData = [
   {id: 'cl1', title: 'Men'},
@@ -25,6 +26,52 @@ const collectionsData = [
 ];
 
 const LoginScreen = function (props) {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [emailStateError, setEmailStateError] = useState(false);
+  const [passwordStateError, setPaswordStateError] = useState(false);
+  async function handleSubmit() {
+    let emailError = false;
+    let passwordError = false;
+    try {
+      if (!email || !email.includes('@')) {
+        emailError = true;
+      }
+      if (!password || password.length < 8) {
+        passwordError = true;
+      }
+      setEmailStateError(emailError);
+      setPaswordStateError(passwordError);
+      if (emailError || passwordError) {
+        throw new Error('error');
+      }
+      const res = await fetch(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAhMHIC_IVXX0deef5sMnqrOnN617B0rmc`,
+        {
+          method: 'POST',
+          header: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({email, password}),
+        },
+      );
+
+      const data = await res.json();
+      console.log(res);
+      if (!res.ok) {
+        throw new Error('errr');
+      }
+      dispatch({
+        type: '',
+        status: true,
+        email: data.email,
+        tokenId: data.idToken,
+      });
+    } catch (err) {
+      console.log('error');
+    }
+  }
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
@@ -89,6 +136,7 @@ const LoginScreen = function (props) {
               backgroundColor: 'transparent',
               fontSize: 20,
             }}
+            onChangeText={v => setEmail(v)}
             keyboardType="email-address"
             placeholder="Email"></TextInput>
           <TextInput
@@ -97,10 +145,11 @@ const LoginScreen = function (props) {
               backgroundColor: 'transparent',
               fontSize: 20,
             }}
+            onChangeText={v => setPassword(v)}
             secureTextEntry={true}
             placeholder="Password"></TextInput>
           <BaseButton
-            onPress={() => console.log('ddd')}
+            onPress={handleSubmit}
             width="100%"
             title="Login"
             type="flat"></BaseButton>
