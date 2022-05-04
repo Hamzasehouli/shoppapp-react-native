@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import '@react-native-firebase/app';
 import {
   View,
   FlatList,
@@ -15,6 +16,7 @@ import Colors from '../constants/Colors';
 import Blue from '../assets/images/Blue.svg';
 import {TextInput} from 'react-native-paper';
 import BaseButton from '../components/BaseButton';
+import {useDispatch, useSelector} from 'react-redux';
 
 const collectionsData = [
   {id: 'cl1', title: 'Men'},
@@ -25,6 +27,52 @@ const collectionsData = [
 ];
 
 const SignupScreen = function (props) {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState();
+  const [password, setPasword] = useState();
+  const [emailStateError, setEmailStateError] = useState(false);
+  const [passwordStateError, setPaswordStateError] = useState(false);
+  async function handleSubmit() {
+    let emailError = false;
+    let passwordError = false;
+    try {
+      if (!email || !email.includes('@')) {
+        emailError = true;
+      }
+      if (!password || password.length < 8) {
+        passwordError = true;
+      }
+      setEmailStateError(emailError);
+      setPaswordStateError(passwordError);
+      if (emailError || passwordError) {
+        throw new Error('error');
+      }
+      const res = await fetch(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAhMHIC_IVXX0deef5sMnqrOnN617B0rmc`,
+        {
+          method: 'POST',
+          header: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({email, password}),
+        },
+      );
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error('errr');
+      }
+      dispatch({
+        type: '',
+        status: true,
+        email: data.email,
+        tokenId: data.idToken,
+      });
+    } catch (err) {
+      console.log('error');
+    }
+  }
+
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
@@ -83,19 +131,20 @@ const SignupScreen = function (props) {
           Signup
         </Text>
         <View style={{flexDirection: 'column', width: '70%'}}>
+          {/* <TextInput
+            style={{
+              marginBottom: 20,
+              backgroundColor: 'transparent',
+              fontSize: 20,
+            }}
+            placeholder="Full name"></TextInput> */}
           <TextInput
             style={{
               marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
             }}
-            placeholder="Full name"></TextInput>
-          <TextInput
-            style={{
-              marginBottom: 20,
-              backgroundColor: 'transparent',
-              fontSize: 20,
-            }}
+            onChangeText={val => setEmail(val)}
             keyboardType="email-address"
             placeholder="Email"></TextInput>
           <TextInput
@@ -105,8 +154,13 @@ const SignupScreen = function (props) {
               fontSize: 20,
             }}
             secureTextEntry={true}
+            onChangeText={val => setPasword(val)}
             placeholder="Password"></TextInput>
-          <BaseButton width="100%" title="Signup" type="flat"></BaseButton>
+          <BaseButton
+            onPress={handleSubmit}
+            width="100%"
+            title="Signup"
+            type="flat"></BaseButton>
         </View>
       </View>
     </KeyboardAvoidingView>

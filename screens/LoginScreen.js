@@ -99,7 +99,11 @@ const LoginScreen = function (props) {
             }}
             secureTextEntry={true}
             placeholder="Password"></TextInput>
-          <BaseButton width="100%" title="Login" type="flat"></BaseButton>
+          <BaseButton
+            onPress={() => console.log('ddd')}
+            width="100%"
+            title="Login"
+            type="flat"></BaseButton>
           <BaseButton
             onPress={() => props.navigation.push('Reset Password')}
             width="100%"

@@ -95,7 +95,7 @@ const Account = function () {
 const Settings = function () {
   return <SettingsScreen />;
 };
-const Favorites = function () {
+const Favorites = function (props) {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -110,7 +110,7 @@ const Favorites = function () {
       initialRouteName="FavoritesScreen">
       <Stack.Screen name="FavoritesScreen">
         {function () {
-          return <FavoritesScreen></FavoritesScreen>;
+          return <FavoritesScreen data={props.data}></FavoritesScreen>;
         }}
       </Stack.Screen>
       <Stack.Screen
@@ -122,6 +122,7 @@ const Favorites = function () {
 
 const MainStackScreen = function () {
   const data = useSelector(state => state.favorites.favorites);
+  // console.log(data);
 
   return (
     <Tab.Navigator

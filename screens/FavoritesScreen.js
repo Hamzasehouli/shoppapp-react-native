@@ -16,14 +16,16 @@ import {useEffect, useState} from 'react';
 
 const FavoritesScreen = function (props) {
   const dispatch = useDispatch();
-  const data = useSelector(state => state.favorites.favorites);
-
-  // useEffect(() => {
-  //   console.log(props);
-  // }, [data]);
+  const initData = useSelector(state => state.favorites.favorites);
+  const [data, setData] = useState(initData);
+  useEffect(() => console.log(data));
+  // console.log(initData);
 
   const favoriteHandler = function (apparel) {
     dispatch({type: 'removeFavorite', apparel});
+    // props.navigation.setParams({apparel});
+    setData(props.data);
+    // console.log(data);
   };
   const renderItemHandler = function (item) {
     return (

@@ -6,9 +6,11 @@ import ScreenNavigator from './navigators/ScreenNavigator';
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import favoritesReducer from './store/reducers/favorites';
+import auth from './store/reducers/auth';
 
 const rootReducers = combineReducers({
   favorites: favoritesReducer,
+  auth,
 });
 
 const store = createStore(rootReducers);
