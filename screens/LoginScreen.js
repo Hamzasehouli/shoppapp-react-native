@@ -58,7 +58,6 @@ const LoginScreen = function (props) {
       );
 
       const data = await res.json();
-      console.log(res);
       if (!res.ok) {
         throw new Error('errr');
       }

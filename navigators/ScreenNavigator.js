@@ -73,7 +73,7 @@ const Cart = function () {
 };
 const Account = function (props) {
   const [status, setStatus] = useState(props.data.isLoggedin);
-  // console.log(props.data);
+
   useEffect(() => {
     setStatus(props.data.isLoggedin);
   }, [props.data.isLoggedin]);
@@ -141,9 +141,8 @@ const Favorites = function (props) {
 
 const MainStackScreen = function () {
   const data = useSelector(state => state.favorites.favorites);
-  // console.log(data);
+
   const initData = useSelector(state => state.auth);
-  // console.log(initData, 'dd');
 
   return (
     <Tab.Navigator

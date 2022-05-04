@@ -18,14 +18,12 @@ const FavoritesScreen = function (props) {
   const dispatch = useDispatch();
   const initData = useSelector(state => state.favorites.favorites);
   const [data, setData] = useState(initData);
-  useEffect(() => console.log(data));
-  // console.log(initData);
+  // useEffect(() => console.log(data));
 
   const favoriteHandler = function (apparel) {
     dispatch({type: 'removeFavorite', apparel});
     // props.navigation.setParams({apparel});
     setData(props.data);
-    // console.log(data);
   };
   const renderItemHandler = function (item) {
     return (
