@@ -158,7 +158,7 @@ const LoginScreen = function (props) {
             title="Login"
             type="flat"></BaseButton>
           <BaseButton
-            onPress={() => props.navigation.replace('Reset Password')}
+            onPress={() => props.navigation.push('Reset Password')}
             width="100%"
             title="Forget password ?"
             type="ghost"></BaseButton>

@@ -93,7 +93,7 @@ const Account = function (props) {
       }}
       initialRouteName={status ? 'Test' : 'Login'}>
       <Stack.Screen
-        // options={{headerShown: false}}
+        options={{headerShown: false}}
         name="Login"
         component={LoginScreen}></Stack.Screen>
       <Stack.Screen
@@ -111,7 +111,6 @@ const Account = function (props) {
                 <Text>sss</Text>
                 <Button
                   title="logout"
-                  // navigation.dispatch(StackActions.popToTop())
                   onPress={() => props.navigation.replace('Login')}></Button>
               </View>
             );
