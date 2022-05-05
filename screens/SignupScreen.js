@@ -134,6 +134,11 @@ const SignupScreen = function (props) {
             width="100%"
             title="Signup"
             type="flat"></BaseButton>
+          <BaseButton
+            onPress={() => props.navigation.replace('Login')}
+            width="100%"
+            title="Login"
+            type="ghost"></BaseButton>
         </View>
       </View>
     </KeyboardAvoidingView>

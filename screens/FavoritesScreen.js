@@ -17,7 +17,6 @@ import {useEffect, useState} from 'react';
 const FavoritesScreen = function (props) {
   const dispatch = useDispatch();
   const [data, setData] = useState(props.data);
-  const raw = useSelector(state => state.favorites.favorites);
   useEffect(() => setData(props.data));
   const favoriteHandler = apparel => {
     setData(props.data.filter(a => a.id !== apparel.id));

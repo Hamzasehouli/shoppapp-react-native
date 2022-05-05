@@ -71,13 +71,13 @@ const Cart = function () {
     </Stack.Navigator>
   );
 };
-const Account = function (props) {
-  const [status, setStatus] = useState(props.data.isLoggedin);
 
-  useEffect(() => {
-    setStatus(props.data.isLoggedin);
-  }, [props.data.isLoggedin]);
-  const dispatch = useDispatch();
+const Account = function (props) {
+  // const [status, setStatus] = useState(props.data.isLoggedin);
+
+  // useEffect(() => {
+  //   setStatus(props.data.isLoggedin);
+  // }, [props.data.isLoggedin]);
 
   return (
     <Stack.Navigator
@@ -90,35 +90,20 @@ const Account = function (props) {
           fontWeight: 'bold',
         },
       }}
-      initialRouteName="CartScreen">
-      {status ? (
-        <Stack.Screen name="status">
-          {function () {
-            return (
-              <View>
-                <Text>sss</Text>
-                <Button
-                  title="loggout"
-                  onPress={() => setStatus(false)}></Button>
-              </View>
-            );
-          }}
-        </Stack.Screen>
-      ) : (
-        <>
-          <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-          <Stack.Screen name="Signup" component={SignupScreen}></Stack.Screen>
-          <Stack.Screen
-            name="Reset Password"
-            component={ForgetScreen}></Stack.Screen>
-        </>
-      )}
+      initialRouteName="Login">
+      <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+      <Stack.Screen name="Signup" component={SignupScreen}></Stack.Screen>
+      <Stack.Screen
+        name="Reset Password"
+        component={ForgetScreen}></Stack.Screen>
     </Stack.Navigator>
   );
 };
+
 const Settings = function () {
   return <SettingsScreen />;
 };
+
 const Favorites = function (props) {
   return (
     <Stack.Navigator
@@ -219,8 +204,8 @@ const MainStackScreen = function () {
           },
         }}
         name="Account">
-        {function () {
-          return <Account data={initData} />;
+        {function (props) {
+          return <Account navigation={props.navigation} data={initData} />;
         }}
       </Tab.Screen>
       <Tab.Screen
