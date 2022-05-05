@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import '@react-native-firebase/app';
 import {
   View,
   FlatList,
