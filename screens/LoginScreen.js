@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   FlatList,
@@ -31,6 +31,7 @@ const LoginScreen = function (props) {
   const [password, setPassword] = useState();
   const [emailStateError, setEmailStateError] = useState(false);
   const [passwordStateError, setPaswordStateError] = useState(false);
+
   async function handleSubmit() {
     let emailError = false;
     let passwordError = false;
@@ -61,17 +62,20 @@ const LoginScreen = function (props) {
       if (!res.ok) {
         throw new Error('errr');
       }
+      // setEmail('');
+      // setPassword('');
       dispatch({
         type: '',
         status: true,
         email: data.email,
         tokenId: data.idToken,
       });
-      props.navigation.push('MainStackScreen');
+      props.navigation.replace('MainStackScreen');
     } catch (err) {
       console.log('error');
     }
   }
+
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity

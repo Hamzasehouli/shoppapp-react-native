@@ -20,6 +20,7 @@ import DetailsScreen from '../screens/DetailsScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useSelector, useDispatch} from 'react-redux';
+import {StackActions} from '@react-navigation/native';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -73,11 +74,11 @@ const Cart = function () {
 };
 
 const Account = function (props) {
-  // const [status, setStatus] = useState(props.data.isLoggedin);
+  const [status, setStatus] = useState(props.data.isLoggedin);
 
-  // useEffect(() => {
-  //   setStatus(props.data.isLoggedin);
-  // }, [props.data.isLoggedin]);
+  useEffect(() => {
+    setStatus(props.data.isLoggedin);
+  }, [props.data.isLoggedin]);
 
   return (
     <Stack.Navigator
@@ -90,20 +91,39 @@ const Account = function (props) {
           fontWeight: 'bold',
         },
       }}
-      initialRouteName="Login">
-      <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-      <Stack.Screen name="Signup" component={SignupScreen}></Stack.Screen>
+      initialRouteName={status ? 'Test' : 'Login'}>
+      <Stack.Screen
+        // options={{headerShown: false}}
+        name="Login"
+        component={LoginScreen}></Stack.Screen>
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="Signup"
+        component={SignupScreen}></Stack.Screen>
       <Stack.Screen
         name="Reset Password"
         component={ForgetScreen}></Stack.Screen>
+      <Stack.Screen options={{headerShown: false}} name="Test">
+        {() => {
+          if (status) {
+            return (
+              <View>
+                <Text>sss</Text>
+                <Button
+                  title="logout"
+                  // navigation.dispatch(StackActions.popToTop())
+                  onPress={() => props.navigation.replace('Login')}></Button>
+              </View>
+            );
+          }
+        }}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };
-
 const Settings = function () {
   return <SettingsScreen />;
 };
-
 const Favorites = function (props) {
   return (
     <Stack.Navigator
