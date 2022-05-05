@@ -93,21 +93,21 @@ export const WomenCategories = [
   //   'Bride Dress',
   //   'https://images.unsplash.com/photo-1525257944500-61a4fae4cf3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGJyaWRlJTIwZHJlc3N8ZW58MHx8MHx8&auto=format&fit=crop&w=700&q=60',
   // ),
-  new Category(
-    'c1999',
-    'Sportswear women',
-    'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tZW4lMjBzcG9ydHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60',
-  ),
+  // new Category(
+  //   'c1999',
+  //   'Sportswear women',
+  //   'https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tZW4lMjBzcG9ydHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60',
+  // ),
   // new Category(
   //   'c19999',
   //   'Maternity women',
   //   'https://images.unsplash.com/photo-1457342813143-a1ae27448a82?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWF0ZXJuaXR5JTIwY2xvdGh8ZW58MHx8MHx8&auto=format&fit=crop&w=700&q=60',
   // ),
-  new Category(
-    'c199999',
-    'Uniform women',
-    'https://images.unsplash.com/photo-1615349719958-8e6381dd2f3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIwfHx3b21lbiUyMHN1aXRzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
-  ),
+  // new Category(
+  //   'c199999',
+  //   'Uniform women',
+  //   'https://images.unsplash.com/photo-1615349719958-8e6381dd2f3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIwfHx3b21lbiUyMHN1aXRzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
+  // ),
 ];
 export const KidsCataegories = [
   new Category(

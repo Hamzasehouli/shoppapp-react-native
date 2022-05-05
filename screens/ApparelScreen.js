@@ -91,6 +91,18 @@ const Apparel = function (props) {
       case 'Jackets women':
         setData(JACKETSWOMEN);
         break;
+      case 'Men Sales':
+        setData([
+          {
+            id: 'd4',
+            title: 'Tie-belt Jacket',
+            imageUrl:
+              'https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F3e%2F58%2F3e581ebd1d3ff7287e6475d6564d22dbc0634a15.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D',
+            price: 29.99,
+            collection: 'Jeans',
+          },
+        ]);
+        break;
 
       default:
         setData([]);

@@ -13,7 +13,8 @@ const collectionsData = [
   {id: 'cl1', title: 'Men Sales'},
   {id: 'cl2', title: 'Women Sales'},
 ];
-const SaleScreen = function () {
+
+const SaleScreen = function (props) {
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
@@ -21,7 +22,7 @@ const SaleScreen = function () {
         onPress={() =>
           props.navigation.navigate({
             name: 'Categories',
-            params: {collection: item.item.title},
+            params: {collection: 'Men'},
           })
         }>
         <BaseText
@@ -37,6 +38,7 @@ const SaleScreen = function () {
       </TouchableOpacity>
     );
   };
+
   return (
     <ImageBackground
       resizeMode="cover"
@@ -47,7 +49,7 @@ const SaleScreen = function () {
         alignItems: 'center',
       }}
       source={{
-        uri: 'https://images.unsplash.com/photo-1577387196112-579d95312c6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c2FsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=700&q=60',
+        uri: 'https://i.pinimg.com/736x/37/5e/0b/375e0bb9628b7a4c987421d752db88ae.jpg',
       }}>
       <View style={styles.screen}>
         <FlatList data={collectionsData} renderItem={renderItemHandler} />
