@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "453876192846",
+    "project_id": "react-native-shoppy",
+    "storage_bucket": "react-native-shoppy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453876192846:android:9cbeab8c756b99a8b5951f",
+        "android_client_info": {
+          "package_name": "com.fashion.fashionapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453876192846-k1kb871fvbtsc8c5e7o60c2j23q36q5v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhMHIC_IVXX0deef5sMnqrOnN617B0rmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453876192846-k1kb871fvbtsc8c5e7o60c2j23q36q5v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

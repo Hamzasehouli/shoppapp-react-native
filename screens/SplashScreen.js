@@ -3,7 +3,8 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import Colors from '../constants/Colors';
 import BaseButton from '../components/BaseButton';
 import BaseText from '../components/BaseText';
-import Catalog from '../assets/illustrations/online-shopping.svg';
+// import Catalog from '../assets/illustrations/online-shopping.svg';
+import Catalog from '../assets/illustrations/start-illus.svg';
 import Blue from '../assets/images/Blue.svg';
 import {StatusBar} from 'react-native';
 
