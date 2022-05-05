@@ -78,19 +78,7 @@ const Account = function (props) {
     setStatus(props.data.isLoggedin);
   }, [props.data.isLoggedin]);
   const dispatch = useDispatch();
-  if (status) {
-    return (
-      <View>
-        <Text>loggedn in </Text>
-        <Button
-          onPress={() => {
-            dispatch({type: '', status: false});
-            setStatus(false);
-          }}
-          title="logout"></Button>
-      </View>
-    );
-  }
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -103,11 +91,28 @@ const Account = function (props) {
         },
       }}
       initialRouteName="CartScreen">
-      <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-      <Stack.Screen name="Signup" component={SignupScreen}></Stack.Screen>
-      <Stack.Screen
-        name="Reset Password"
-        component={ForgetScreen}></Stack.Screen>
+      {status ? (
+        <Stack.Screen name="status">
+          {function () {
+            return (
+              <View>
+                <Text>sss</Text>
+                <Button
+                  title="loggout"
+                  onPress={() => setStatus(false)}></Button>
+              </View>
+            );
+          }}
+        </Stack.Screen>
+      ) : (
+        <>
+          <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+          <Stack.Screen name="Signup" component={SignupScreen}></Stack.Screen>
+          <Stack.Screen
+            name="Reset Password"
+            component={ForgetScreen}></Stack.Screen>
+        </>
+      )}
     </Stack.Navigator>
   );
 };
