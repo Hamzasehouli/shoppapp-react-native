@@ -230,6 +230,11 @@ export const SNEAKERS = [
     'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2313/940/002/01/2313940002_2_1_8.jpg?t=1642439839013&imwidth=750',
     39.99,
     'Sneaker',
+    [
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2313/940/002/01/2313940002_2_2_8.jpg?t=1642439839013&imwidth=750',
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2313/940/002/01/2313940002_2_3_8.jpg?t=1642439839013&imwidth=750',
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2313/940/002/01/2313940002_2_4_8.jpg?t=1642439839013&imwidth=750',
+    ],
   ),
   new Apparel(
     's2',
@@ -237,6 +242,11 @@ export const SNEAKERS = [
     'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2215/940/100/01/2215940100_2_1_8.jpg?t=1642679701509&imwidth=750',
     19.99,
     'Sneaker',
+    [
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2215/940/100/2215940100_2_2_8.jpg?t=1642679700612&imwidth=750',
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2215/940/100/2215940100_2_4_8.jpg?t=1642679700612&imwidth=750',
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2215/940/100/2215940100_2_3_8.jpg?t=1642679700612&imwidth=750',
+    ],
   ),
   new Apparel(
     's3',
@@ -244,6 +254,11 @@ export const SNEAKERS = [
     'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2302/940/002/2302940002_2_1_8.jpg?t=1637073135601&imwidth=750',
     39.99,
     'Sneaker',
+    [
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2302/940/002/2302940002_2_2_8.jpg?t=1637073135601&imwidth=750',
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2302/940/002/2302940002_2_3_8.jpg?t=1637073135601&imwidth=750',
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2302/940/002/2302940002_2_4_8.jpg?t=1637073135601&imwidth=750',
+    ],
     true,
     29.99,
   ),
@@ -253,6 +268,11 @@ export const SNEAKERS = [
     'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2300/940/030/2300940030_2_1_8.jpg?t=1640598803685&imwidth=750',
     22.99,
     'Sneaker',
+    [
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2300/940/030/2300940030_2_2_8.jpg?t=1640598803685&imwidth=750',
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2300/940/030/2300940030_2_3_8.jpg?t=1640598803685&imwidth=750',
+      'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2300/940/030/2300940030_2_4_8.jpg?t=1640598803685&imwidth=750',
+    ],
     true,
     12.99,
   ),
@@ -265,6 +285,7 @@ export const BAGS = [
     'https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12361350/2020/9/12/5eecd2dc-d684-4a71-8640-ff6db02fdad01599889647840-Wildcraft-Unisex-Black-Lunar-Laptop-Backpack-851599889646488-1.jpg',
     17.99,
     'Bag',
+    [],
   ),
   new Apparel(
     'b2',
