@@ -1,49 +1,25 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useRef, useState, useLayoutEffect, useEffect} from 'react';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
+import {Picker} from '@react-native-picker/picker';
 import {
   View,
   Text,
   Dimensions,
   StyleSheet,
-  TouchableOpacity,
+  Button,
   Platform,
   ScrollView,
 } from 'react-native';
+import BaseButton from '../components/BaseButton';
 
-// const ENTRIES1 = [
-//   {
-//     title: 'Beautiful and dramatic Antelope Canyon',
-//     subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-//     illustration: 'https://i.imgur.com/UYiroysl.jpg',
-//   },
-//   {
-//     title: 'Earlier this morning, NYC',
-//     subtitle: 'Lorem ipsum dolor sit amet',
-//     illustration: 'https://i.imgur.com/UPrs1EWl.jpg',
-//   },
-//   {
-//     title: 'White Pocket Sunset',
-//     subtitle: 'Lorem ipsum dolor sit amet et nuncat ',
-//     illustration: 'https://i.imgur.com/MABUbpDl.jpg',
-//   },
-//   {
-//     title: 'Acrocorinth, Greece',
-//     subtitle: 'Lorem ipsum dolor sit amet et nuncat mergitur',
-//     illustration: 'https://i.imgur.com/KZsmUi2l.jpg',
-//   },
-//   {
-//     title: 'The lone tree, majestic landscape of New Zealand',
-//     subtitle: 'Lorem ipsum dolor sit amet',
-//     illustration: 'https://i.imgur.com/2nCt3Sbl.jpg',
-//   },
-// ];
 const {width: screenWidth} = Dimensions.get('window');
 
 const MyCarousel = props => {
-  useEffect(() => {
-    console.log(props.route.params.apparel);
-  });
-  const [entries, setEntries] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState('jjjjjjjjjjjjj');
+  const [apparel, setApparel] = useState(props.route.params.apparel);
+  useLayoutEffect(() => {
+    setApparel(props.route.params.apparel);
+  }, [apparel]);
   const carouselRef = useRef(null);
 
   const goForward = () => {
@@ -72,84 +48,66 @@ const MyCarousel = props => {
   };
 
   return (
-    <ScrollView style={{width: screenWidth, backgroundColor: 'white'}}>
-      {/* <View style={styles.container}> */}
-      <Carousel
-        ref={carouselRef}
-        sliderWidth={screenWidth}
-        sliderHeight={screenWidth}
-        itemWidth={screenWidth}
-        data={[
-          props.route.params.apparel.imageUrl,
-          ...props.route.params.apparel.images,
-        ]}
-        renderItem={renderItem}
-        hasParallaxImages={true}
-      />
-      {/* </View> */}
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-      <Text>sssssssssssss</Text>
-    </ScrollView>
+    <View>
+      <ScrollView
+        style={{width: screenWidth, backgroundColor: 'white', height: '90%'}}>
+        {/* <View style={styles.container}> */}
+        <Carousel
+          ref={carouselRef}
+          sliderWidth={screenWidth}
+          sliderHeight={screenWidth}
+          itemWidth={screenWidth}
+          data={[apparel.imageUrl, ...apparel.images]}
+          renderItem={renderItem}
+          hasParallaxImages={true}
+        />
+        {/* </View> */}
+        <View style={{padding: 9}}>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.price}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+          <Text>{apparel.title}</Text>
+        </View>
+      </ScrollView>
+      <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <Picker
+          style={{backgroundColor: 'white', width: 180}}
+          selectedValue={selectedLanguage}
+          onValueChange={(itemValue, itemIndex) =>
+            setSelectedLanguage(itemValue)
+          }>
+          <Picker.Item label="Select size" value="salect size" />
+          <Picker.Item label="44" value="44" />
+          <Picker.Item label="45" value="45" />
+          <Picker.Item label="43" value="43" />
+          <Picker.Item label="42" value="42" />
+          <Picker.Item label="41" value="41" />
+        </Picker>
+        <BaseButton
+          fontSize={15}
+          width="50%"
+          title="Add"
+          type="flat"></BaseButton>
+      </View>
+    </View>
   );
 };
 

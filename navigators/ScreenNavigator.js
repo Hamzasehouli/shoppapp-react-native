@@ -123,6 +123,7 @@ const Account = function (props) {
 const Settings = function () {
   return <SettingsScreen />;
 };
+
 const Favorites = function (props) {
   return (
     <Stack.Navigator
