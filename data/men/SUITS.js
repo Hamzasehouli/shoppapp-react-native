@@ -13,6 +13,8 @@ export const SUITS = [
     'https://cdn.shopify.com/s/files/1/1874/2805/products/black_e59eefb3-8b50-40f2-810f-7857897b6ba2_1024x.jpg?v=1547539057',
     225.99,
     'Suits',
+    true,
+    111.99,
   ),
   new Apparel(
     'su3',

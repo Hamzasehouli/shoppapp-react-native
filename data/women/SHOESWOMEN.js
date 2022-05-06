@@ -13,6 +13,8 @@ export const SHOESWOMEN = [
     'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/17335866/2022/3/1/945ca334-dba1-40e6-b516-cca59cffa18a1646119446668shoexpressBrownPUSandals1.jpg',
     25.99,
     'Shoes women',
+    true,
+    11.99,
   ),
   new Apparel(
     'shw3',

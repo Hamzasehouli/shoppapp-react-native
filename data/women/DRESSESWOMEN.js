@@ -27,5 +27,7 @@ export const DRESSESWOMEN = [
     'https://lcw-ma.akinoncdn.com/products/2020/02/15/1411156/da1045e1-3948-434a-9a53-e04f7aaaf756_size561x730.jpg',
     29.99,
     'Jeans',
+    true,
+    11.99,
   ),
 ];

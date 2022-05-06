@@ -6,6 +6,8 @@ export const SHOES = [
     'https://lcw-ma.akinoncdn.com/products/2022/03/15/3263224/31aab031-4d80-4e84-b25c-0d3457557e65_size561x730.jpg',
     29.99,
     'Shoes',
+    true,
+    21.99,
   ),
   new Apparel(
     'sh2',

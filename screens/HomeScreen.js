@@ -27,6 +27,7 @@ const HomeScreen = function ({navigation, route}) {
   }, [navigation]);
   const collection = route.params.collection;
   const isSale = collection === 'Sale' ? true : false;
+  const saleApparel = route.params.saleApparel ? true : false;
 
   const categories = collection === 'Men' ? Men : 'Women' ? Women : [];
   const renderItemHandler = function (item) {
@@ -38,6 +39,7 @@ const HomeScreen = function ({navigation, route}) {
             params: {
               title: item.item.title,
               collection: route.params.collection,
+              saleApparel,
             },
           })
         }

@@ -20,6 +20,8 @@ export const JEANSWOMEN = [
     'https://lcw-ma.akinoncdn.com/products/2022/02/13/3185976/48525c4a-cc8a-4ec6-bb84-48511e325771_size561x730.jpg',
     29.99,
     'Jeans',
+    true,
+    11.99,
   ),
   new Apparel(
     'j4',

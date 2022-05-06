@@ -20,6 +20,8 @@ export const PULLOVERWOMEN = [
     'https://lcw-ma.akinoncdn.com/products/2022/02/02/3153514/37e1e351-dad3-4505-9f9c-9a780c751e08_size561x730.jpg',
     29.99,
     'Jeans',
+    true,
+    11.99,
   ),
   new Apparel(
     'pulw4',

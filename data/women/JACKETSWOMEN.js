@@ -13,6 +13,8 @@ export const JACKETSWOMEN = [
     'https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F56%2Fd4%2F56d476948066c764b59ad433cf6b773de836f073.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D',
     29.99,
     'Jeans',
+    true,
+    11.99,
   ),
   new Apparel(
     'd3',

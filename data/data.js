@@ -244,6 +244,8 @@ export const SNEAKERS = [
     'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2302/940/002/2302940002_2_1_8.jpg?t=1637073135601&imwidth=750',
     39.99,
     'Sneaker',
+    true,
+    29.99,
   ),
   new Apparel(
     's4',
@@ -251,6 +253,8 @@ export const SNEAKERS = [
     'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2300/940/030/2300940030_2_1_8.jpg?t=1640598803685&imwidth=750',
     22.99,
     'Sneaker',
+    true,
+    12.99,
   ),
 ];
 
@@ -268,5 +272,7 @@ export const BAGS = [
     'https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9137557/2019/4/24/5ff8d9b7-b517-4a81-9a69-9282490c70e41556107194454-Tommy-Hilfiger-Printed-Bold-branding-with-signature-tape-992-1.jpg',
     37.99,
     'Bag',
+    true,
+    15.99,
   ),
 ];

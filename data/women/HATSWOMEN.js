@@ -27,5 +27,7 @@ export const HATSWOMEN = [
     'https://lcw-ma.akinoncdn.com/products/2020/12/17/2019871/244b9719-3b7d-4e0a-9f65-12d6cd6166d3_size561x730.jpg',
     29.99,
     'Jeans',
+    true,
+    11.99,
   ),
 ];

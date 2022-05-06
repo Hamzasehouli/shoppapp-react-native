@@ -6,6 +6,8 @@ export const JEANS = [
     'https://static.pullandbear.net/2/photos//2022/V/0/2/p/8686/501/434/8686501434_2_1_8.jpg?t=1648482880974&imwidth=750',
     29.99,
     'Jeans',
+    true,
+    14.99,
   ),
   new Apparel(
     'j2',
@@ -13,6 +15,8 @@ export const JEANS = [
     'https://static.pullandbear.net/2/photos//2022/V/0/2/p/4684/525/802/4684525802_2_1_8.jpg?t=1647362428157&imwidth=750',
     29.99,
     'Jeans',
+    true,
+    18.99,
   ),
   new Apparel(
     'j3',

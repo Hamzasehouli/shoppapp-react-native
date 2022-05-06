@@ -20,6 +20,8 @@ export const BAGSWOMEN = [
     'https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/17327910/2022/3/30/adca5734-a8f3-4951-8418-d3f5253796521648642525204-Tommy-Hilfiger-Pink-Textured-PU-Structured-Sling-Bag-9121648-1.jpg',
     37.99,
     'Bag',
+    true,
+    11.99,
   ),
   new Apparel(
     'bw2',

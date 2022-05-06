@@ -22,7 +22,10 @@ const SaleScreen = function (props) {
         onPress={() =>
           props.navigation.navigate({
             name: 'Categories',
-            params: {collection: 'Men'},
+            params: {
+              collection: item.item.title.split(' ')[0],
+              saleApparel: true,
+            },
           })
         }>
         <BaseText

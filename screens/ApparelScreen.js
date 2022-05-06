@@ -39,71 +39,127 @@ const Apparel = function (props) {
     props.navigation.setParams({apparel});
   };
   useEffect(() => {
+    // console.log(props.route.params);
     switch (props.route.params.title) {
       case 'Sneakers men':
+        if (props.route.params.saleApparel) {
+          setData(SNEAKERS.filter(i => i.sale));
+          break;
+        }
         setData(SNEAKERS);
         break;
       case 'Bags men':
+        if (props.route.params.saleApparel) {
+          setData(BAGS.filter(i => i.sale));
+          break;
+        }
         setData(BAGS);
         break;
       case 'Jeans men':
+        if (props.route.params.saleApparel) {
+          setData(JEANS.filter(i => i.sale));
+          break;
+        }
         setData(JEANS);
         break;
       case 'Cap men':
+        if (props.route.params.saleApparel) {
+          setData(CAPS.filter(i => i.sale));
+          break;
+        }
         setData(CAPS);
         break;
       case 'Pullover men':
+        if (props.route.params.saleApparel) {
+          setData(PULLOVER.filter(i => i.sale));
+          break;
+        }
         setData(PULLOVER);
         break;
       case 'Shirts men':
+        if (props.route.params.saleApparel) {
+          setData(SHIRTS.filter(i => i.sale));
+          break;
+        }
         setData(SHIRTS);
         break;
       case 'Jackets men':
+        if (props.route.params.saleApparel) {
+          setData(JACKETS.filter(i => i.sale));
+          break;
+        }
         setData(JACKETS);
         break;
       case 'Suit men':
+        if (props.route.params.saleApparel) {
+          setData(SUITS.filter(i => i.sale));
+          break;
+        }
         setData(SUITS);
         break;
       case 'Sportwear men':
+        if (props.route.params.saleApparel) {
+          setData(SPORTWEAR.filter(i => i.sale));
+          break;
+        }
         setData(SPORTWEAR);
         break;
       case 'Shoes men':
+        if (props.route.params.saleApparel) {
+          setData(SHOES.filter(i => i.sale));
+          break;
+        }
         setData(SHOES);
         break;
       case 'Shoes women':
+        if (props.route.params.saleApparel) {
+          setData(SHOESWOMEN.filter(i => i.sale));
+          break;
+        }
         setData(SHOESWOMEN);
         break;
       case 'Bags women':
+        if (props.route.params.saleApparel) {
+          setData(BAGSWOMEN.filter(i => i.sale));
+          break;
+        }
         setData(BAGSWOMEN);
         break;
       case 'Jeans women':
+        if (props.route.params.saleApparel) {
+          setData(JEANSWOMEN.filter(i => i.sale));
+          break;
+        }
         setData(JEANSWOMEN);
         break;
       case 'Hats women':
+        if (props.route.params.saleApparel) {
+          setData(HATSWOMEN.filter(i => i.sale));
+          break;
+        }
         setData(HATSWOMEN);
         break;
       case 'Pullover women':
+        if (props.route.params.saleApparel) {
+          setData(PULLOVERWOMEN.filter(i => i.sale));
+          break;
+        }
         setData(PULLOVERWOMEN);
         break;
       case 'Dress women':
+        if (props.route.params.saleApparel) {
+          setData(DRESSESWOMEN.filter(i => i.sale));
+          break;
+        }
         setData(DRESSESWOMEN);
         break;
       case 'Jackets women':
+        if (props.route.params.saleApparel) {
+          setData(JACKETSWOMEN.filter(i => i.sale));
+          break;
+        }
         setData(JACKETSWOMEN);
         break;
-      case 'Men Sales':
-        setData([
-          {
-            id: 'd4',
-            title: 'Tie-belt Jacket',
-            imageUrl:
-              'https://lp2.hm.com/hmgoepprod?set=format%5Bwebp%5D%2Cquality%5B79%5D%2Csource%5B%2F3e%2F58%2F3e581ebd1d3ff7287e6475d6564d22dbc0634a15.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5B%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url%5Bfile%3A%2Fproduct%2Fmain%5D',
-            price: 29.99,
-            collection: 'Jeans',
-          },
-        ]);
-        break;
-
       default:
         setData([]);
         break;
@@ -135,8 +191,24 @@ const Apparel = function (props) {
         </ImageBackground>
         <View style={styles.details}>
           <BaseText>{item.item.title}</BaseText>
-          <BaseText color={Colors.primaryColor} style={{fontWeight: '700'}}>
-            ${item.item.price}
+          <BaseText
+            color={Colors.primaryColor}
+            size={item.item.sale ? 14 : 20}
+            style={{fontWeight: '700'}}>
+            <Text
+              style={
+                item.item.sale
+                  ? {
+                      textDecorationLine: 'line-through',
+                      textDecorationStyle: 'solid',
+                    }
+                  : {}
+              }>
+              ${item.item.price}
+            </Text>
+          </BaseText>
+          <BaseText color={'red'} style={{fontWeight: '700'}}>
+            {item.item.discountPrice && `$${item.item.discountPrice}`}
           </BaseText>
         </View>
       </TouchableOpacity>

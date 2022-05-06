@@ -6,6 +6,8 @@ export const SHIRTS = [
     'https://static.pullandbear.net/2/photos//2022/V/0/2/p/4474/550/251/4474550251_2_1_8.jpg?t=1648806307564&imwidth=750',
     29.99,
     'Shirts',
+    true,
+    11.99,
   ),
   new Apparel(
     's2',
@@ -20,6 +22,8 @@ export const SHIRTS = [
     'https://static.pullandbear.net/2/photos//2022/V/0/2/p/4474/515/620/4474515620_2_1_8.jpg?t=1649170374152&imwidth=750',
     25.99,
     'Shirts',
+    true,
+    11.99,
   ),
   new Apparel(
     's4',

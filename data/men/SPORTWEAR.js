@@ -13,6 +13,8 @@ export const SPORTWEAR = [
     'https://lcw-ma.akinoncdn.com/products/2022/04/04/3181468/585e5cf0-1cb1-40d2-849b-be91589a639a_size561x730.jpg',
     25.99,
     'Sportwear',
+    true,
+    11.99,
   ),
   new Apparel(
     'sp3',

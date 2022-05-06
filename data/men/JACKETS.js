@@ -6,6 +6,8 @@ export const JACKETS = [
     'https://static.pullandbear.net/2/photos//2022/V/0/2/p/4713/510/427/4713510427_2_1_8.jpg?t=1649689354603&imwidth=750',
     29.99,
     'Shirts',
+    true,
+    11.99,
   ),
   new Apparel(
     'j2',
@@ -27,5 +29,7 @@ export const JACKETS = [
     'https://static.pullandbear.net/2/photos//2022/V/0/2/p/8711/507/505/8711507505_2_1_8.jpg?t=1627904637994&imwidth=750',
     29.99,
     'Shirts',
+    true,
+    11.99,
   ),
 ];
