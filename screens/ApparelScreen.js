@@ -198,7 +198,7 @@ const Apparel = function (props) {
           <BaseText>{item.item.title}</BaseText>
           <BaseText
             color={Colors.primaryColor}
-            size={item.item.sale ? 14 : 20}
+            size={item.item.sale ? 15 : 18}
             style={{fontWeight: '700'}}>
             <Text
               style={
@@ -212,7 +212,7 @@ const Apparel = function (props) {
               ${item.item.price}
             </Text>
           </BaseText>
-          <BaseText color={'red'} style={{fontWeight: '700'}}>
+          <BaseText color={'red'} style={{fontWeight: '700'}} size={18}>
             {item.item.discountPrice && `$${item.item.discountPrice}`}
           </BaseText>
         </View>

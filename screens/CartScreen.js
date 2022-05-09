@@ -1,16 +1,103 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const CartScreen = function () {
+import BaseText from '../components/BaseText';
+import Colors from '../constants/Colors';
+import {useSelector, useDispatch} from 'react-redux';
+import {useEffect, useState} from 'react';
+
+const CartScreen = function (props) {
+  const dispatch = useDispatch();
+  const [data, setData] = useState(props.data);
+  useEffect(() => setData(props.data));
+  const favoriteHandler = apparel => {
+    setData(props.data.filter(a => a.id !== apparel.id));
+    dispatch({type: 'removeFavorite', apparel});
+    apparel = {};
+  };
+  const renderItemHandler = function (item) {
+    return (
+      <TouchableOpacity
+        style={styles.box}
+        onPress={() => props.navigation.push('DetailsScreen')}>
+        <ImageBackground
+          source={{uri: item.item.imageUrl}}
+          resizeMode="cover"
+          style={styles.imageBackground}>
+          <TouchableOpacity
+            onPress={favoriteHandler.bind(this, item.item)}
+            style={styles.favorite}>
+            <Icon size={25} color={Colors.primaryColor} name="ios-heart"></Icon>
+          </TouchableOpacity>
+        </ImageBackground>
+        <View style={styles.details}>
+          <BaseText>{item.item.title}</BaseText>
+          <BaseText color={Colors.primaryColor} style={{fontWeight: '700'}}>
+            ${item.item.price}
+          </BaseText>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+  if (data.length <= 0) {
+    return (
+      <View>
+        <Text>No favorites</Text>
+      </View>
+    );
+  }
   return (
-    <Image
-      width={100}
-      height={100}
-      source={{
-        url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/375px-Image_created_with_a_mobile_phone.png',
-      }}
-    />
+    <View style={styles.screen}>
+      <FlatList
+        numColumns={2}
+        data={data}
+        renderItem={renderItemHandler}></FlatList>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  screen: {
+    backgroundColor: 'white',
+    flex: 1,
+    height: '100%',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  box: {
+    width: '50%',
+    height: 300,
+    position: 'relative',
+    marginBottom: 40,
+    marginRight: 5,
+  },
+  imageBackground: {
+    position: 'relative',
+    flex: 1,
+  },
+  favorite: {
+    position: 'absolute',
+    right: 10,
+    top: 10,
+    backgroundColor: 'white',
+    borderRadius: 10000000,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 40,
+    height: 40,
+  },
+  details: {
+    padding: 5,
+    height: '20%',
+  },
+});
 
 export default CartScreen;
