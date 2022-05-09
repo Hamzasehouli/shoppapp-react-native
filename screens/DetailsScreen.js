@@ -9,6 +9,7 @@ import {
   Button,
   Platform,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import BaseButton from '../components/BaseButton';
 
@@ -63,28 +64,20 @@ const MyCarousel = props => {
         />
         {/* </View> */}
         <View style={{padding: 9}}>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.price}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
-          <Text>{apparel.title}</Text>
+          <Text style={{...styles.marginBottom3, fontSize: 20}}>
+            {apparel.title}
+          </Text>
+          <Text
+            style={{
+              ...styles.marginBottom3,
+              fontSize: 25,
+              fontWeight: '700',
+              color: 'black',
+            }}>
+            ${apparel.price}
+          </Text>
+
+          <Text style={{...styles.marginBottom3}}>Ref 28864/9927</Text>
         </View>
       </ScrollView>
       <View style={{flexDirection: 'row', justifyContent: 'center'}}>
@@ -128,6 +121,9 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     resizeMode: 'cover',
     height: 900,
+  },
+  marginBottom3: {
+    marginBottom: 7,
   },
 });
 
