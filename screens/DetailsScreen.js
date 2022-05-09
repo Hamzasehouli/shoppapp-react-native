@@ -12,6 +12,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import BaseButton from '../components/BaseButton';
+import BaseText from '../components/BaseText';
+import Colors from '../constants/Colors';
 
 const {width: screenWidth} = Dimensions.get('window');
 
@@ -64,18 +66,25 @@ const MyCarousel = props => {
         />
         {/* </View> */}
         <View style={{padding: 9}}>
-          <Text style={{...styles.marginBottom3, fontSize: 20}}>
-            {apparel.title}
-          </Text>
-          <Text
-            style={{
-              ...styles.marginBottom3,
-              fontSize: 25,
-              fontWeight: '700',
-              color: 'black',
-            }}>
-            ${apparel.price}
-          </Text>
+          <BaseText
+            color={Colors.primaryColor}
+            size={apparel.sale ? 15 : 18}
+            style={{fontWeight: '700'}}>
+            <Text
+              style={
+                apparel.sale
+                  ? {
+                      textDecorationLine: 'line-through',
+                      textDecorationStyle: 'solid',
+                    }
+                  : {}
+              }>
+              ${apparel.price}
+            </Text>
+          </BaseText>
+          <BaseText color={'red'} style={{fontWeight: '700'}} size={18}>
+            {apparel.discountPrice && `$${apparel.discountPrice}`}
+          </BaseText>
 
           <Text style={{...styles.marginBottom3}}>Ref 28864/9927</Text>
         </View>
