@@ -66,6 +66,7 @@ const MyCarousel = props => {
         />
         {/* </View> */}
         <View style={{padding: 9}}>
+          <BaseText>{apparel.title}</BaseText>
           <BaseText
             color={Colors.primaryColor}
             size={apparel.sale ? 15 : 18}

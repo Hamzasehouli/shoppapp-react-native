@@ -20,7 +20,6 @@ import {
 
 const HomeScreen = function ({navigation, route}) {
   React.useLayoutEffect(() => {
-    console.log(route.params.collection);
     navigation.setOptions({
       title: route.params.collection?.split(' ')[0] + ' ' + 'Collection',
     });

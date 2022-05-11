@@ -40,8 +40,24 @@ const FavoritesScreen = function (props) {
         </ImageBackground>
         <View style={styles.details}>
           <BaseText>{item.item.title}</BaseText>
-          <BaseText color={Colors.primaryColor} style={{fontWeight: '700'}}>
-            ${item.item.price}
+          <BaseText
+            color={Colors.primaryColor}
+            size={item.item.sale ? 15 : 18}
+            style={{fontWeight: '700'}}>
+            <Text
+              style={
+                item.item.sale
+                  ? {
+                      textDecorationLine: 'line-through',
+                      textDecorationStyle: 'solid',
+                    }
+                  : {}
+              }>
+              ${item.item.price}
+            </Text>
+          </BaseText>
+          <BaseText color={'red'} style={{fontWeight: '700'}} size={18}>
+            {item.item.discountPrice && `$${item.item.discountPrice}`}
           </BaseText>
         </View>
       </TouchableOpacity>

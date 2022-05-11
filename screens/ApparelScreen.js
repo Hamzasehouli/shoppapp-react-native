@@ -7,7 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import {useSelectore, useDispatch} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {SNEAKERS, BAGS} from '../data/data';
 import {JEANS} from '../data/men/JEANS.js';
 import {CAPS} from '../data/men/CAPS.js';
@@ -32,14 +32,19 @@ import {CommonActions} from '@react-navigation/native';
 
 const Apparel = function (props) {
   const [data, setData] = useState([]);
+  const [favorites, setFavorites] = useState(favs);
+  const favs = useSelector(state => state.favorites.favorites);
   const dispatch = useDispatch();
+  // const favorites = useSelector(state => state.favorites.favorites);
+  useEffect(() => {
+    setFavorites(favs);
+  }, [favs]);
 
   const favoriteHandler = function (apparel) {
     dispatch(favoriteToggler(apparel));
     props.navigation.setParams({apparel});
   };
   useEffect(() => {
-    // console.log(props.route.params);
     switch (props.route.params.title) {
       case 'Sneakers men':
         if (props.route.params.saleApparel) {
@@ -191,7 +196,11 @@ const Apparel = function (props) {
             <Icon
               size={25}
               color={Colors.primaryColor}
-              name="ios-heart-outline"></Icon>
+              name={
+                favorites.find(d => d.id === item.item.id)
+                  ? 'ios-heart'
+                  : 'ios-heart-outline'
+              }></Icon>
           </TouchableOpacity>
         </ImageBackground>
         <View style={styles.details}>

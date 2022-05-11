@@ -45,9 +45,9 @@ const Home = function () {
         component={CollectionsScreen}></Stack.Screen>
       <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
       <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>
-      <Stack.Screen
-        name="ApparelScreen"
-        component={ApparelScreen}></Stack.Screen>
+      <Stack.Screen name="ApparelScreen">
+        {props => <ApparelScreen {...props} fav={props.favs}></ApparelScreen>}
+      </Stack.Screen>
       <Stack.Screen
         name="DetailsScreen"
         component={DetailsScreen}></Stack.Screen>
@@ -123,7 +123,6 @@ const Account = function (props) {
 const Settings = function () {
   return <SettingsScreen />;
 };
-
 const Favorites = function (props) {
   return (
     <Stack.Navigator
@@ -151,7 +150,6 @@ const Favorites = function (props) {
 
 const MainStackScreen = function () {
   const data = useSelector(state => state.favorites.favorites);
-
   const initData = useSelector(state => state.auth);
 
   return (
@@ -176,9 +174,11 @@ const MainStackScreen = function () {
             );
           },
         }}
-        name="Home"
-        component={Home}
-      />
+        name="Home">
+        {function (props) {
+          return <Home favs={data}></Home>;
+        }}
+      </Tab.Screen>
       <Tab.Screen
         options={{
           tabBarIcon: function () {
