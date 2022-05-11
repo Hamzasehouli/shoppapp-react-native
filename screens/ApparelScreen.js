@@ -35,23 +35,15 @@ const Apparel = function (props) {
   const favs = useSelector(state => state.favorites.favorites);
   const [favorites, setFavorites] = useState(favs);
   const dispatch = useDispatch();
-  // const favorites = useSelector(state => state.favorites.favorites);
-  // useEffect(() => {
-  //   setFavorites(favs);
-  // }, [favs]);
-  console.log('dsssssssssssss');
 
   const favoriteHandler = function (apparel) {
     if (favs.includes(apparel)) {
       dispatch({type: 'removeFavorite', apparel});
-      // setFavorites(ff);
-      console.log(favs);
     } else {
       dispatch(favoriteToggler(apparel));
     }
     setFavorites(favs);
 
-    // console.log(favs);
     props.navigation.setParams({apparel});
   };
   useEffect(() => {

@@ -27,7 +27,12 @@ const FavoritesScreen = function (props) {
     return (
       <TouchableOpacity
         style={styles.box}
-        onPress={() => props.navigation.push('DetailsScreen')}>
+        onPress={() =>
+          props.navigation.navigate({
+            name: 'DetailsScreen',
+            params: {apparel: item.item},
+          })
+        }>
         <ImageBackground
           source={{uri: item.item.imageUrl}}
           resizeMode="cover"

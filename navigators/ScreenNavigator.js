@@ -138,7 +138,9 @@ const Favorites = function (props) {
       initialRouteName="FavoritesScreen">
       <Stack.Screen name="FavoritesScreen">
         {function () {
-          return <FavoritesScreen data={props.data}></FavoritesScreen>;
+          return (
+            <FavoritesScreen {...props} data={props.data}></FavoritesScreen>
+          );
         }}
       </Stack.Screen>
       <Stack.Screen
@@ -208,8 +210,8 @@ const MainStackScreen = function () {
           },
         }}
         name="Favorites">
-        {function () {
-          return <Favorites data={data} />;
+        {function (props) {
+          return <Favorites {...props} data={data} />;
         }}
       </Tab.Screen>
       <Tab.Screen
