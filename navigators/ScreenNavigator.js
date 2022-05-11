@@ -49,6 +49,13 @@ const Home = function () {
         {props => <ApparelScreen {...props} fav={props.favs}></ApparelScreen>}
       </Stack.Screen>
       <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTransparent: true,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+        }}
         name="DetailsScreen"
         component={DetailsScreen}></Stack.Screen>
     </Stack.Navigator>
@@ -120,9 +127,11 @@ const Account = function (props) {
     </Stack.Navigator>
   );
 };
+
 const Settings = function () {
   return <SettingsScreen />;
 };
+
 const Favorites = function (props) {
   return (
     <Stack.Navigator
@@ -145,6 +154,13 @@ const Favorites = function (props) {
       </Stack.Screen>
       <Stack.Screen
         name="DetailsScreen"
+        options={{
+          headerShown: true,
+          headerTransparent: true,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+        }}
         component={DetailsScreen}></Stack.Screen>
     </Stack.Navigator>
   );

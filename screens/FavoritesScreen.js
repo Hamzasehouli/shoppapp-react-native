@@ -77,7 +77,7 @@ const FavoritesScreen = function (props) {
           alignItems: 'center',
           height: '100%',
         }}>
-        <Text style={{fontSize: 20}}>Your favorites list is empty</Text>
+        <Text style={{fontSize: 20}}>Your favorites list is empty🖤</Text>
       </View>
     );
   }
