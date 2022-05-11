@@ -70,8 +70,14 @@ const FavoritesScreen = function (props) {
   };
   if (data.length <= 0) {
     return (
-      <View>
-        <Text>No favorites</Text>
+      <View
+        style={{
+          backgroundColor: 'white',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100%',
+        }}>
+        <Text style={{fontSize: 20}}>Your favorites list is empty</Text>
       </View>
     );
   }

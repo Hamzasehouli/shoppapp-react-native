@@ -135,8 +135,8 @@ const Favorites = function (props) {
           fontWeight: 'bold',
         },
       }}
-      initialRouteName="FavoritesScreen">
-      <Stack.Screen name="FavoritesScreen">
+      initialRouteName="Your favorites">
+      <Stack.Screen name="Your favorites">
         {function () {
           return (
             <FavoritesScreen {...props} data={props.data}></FavoritesScreen>
