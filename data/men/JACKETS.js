@@ -6,6 +6,7 @@ export const JACKETS = [
     'https://lcw-ma.akinoncdn.com/products/2022/02/22/3097854/97f85db2-7ec0-43a2-9eed-7d8b3ec913d2_size561x730.jpg',
     29.99,
     'Shirts',
+    ['S', 'M', 'L', 'XL'],
     [
       'https://lcw-ma.akinoncdn.com/products/2022/01/14/3097806/a8002016-da40-4141-8209-9b85ddcff467_size561x730.jpg',
       'https://lcw-ma.akinoncdn.com/products/2022/01/14/3097806/bbf8e8ef-77e4-43fe-a410-4ea89ef90cdc_size561x730.jpg',
@@ -20,6 +21,7 @@ export const JACKETS = [
     'https://lcw-ma.akinoncdn.com/products/2021/10/25/1310206/1fb03f67-367a-4432-a3a6-0d751bcf0d7c_size561x730.jpg',
     25.99,
     'Shirts',
+    ['S', 'M', 'L', 'XL'],
     [
       'https://lcw-ma.akinoncdn.com/products/2021/10/25/1310629/d4e34037-0050-4773-aeb5-cefac0ada6c7_size561x730.jpg',
       'https://lcw-ma.akinoncdn.com/products/2020/01/11/1310211/81c931da-56e8-42b4-97d1-dc082cfbc525_size561x730.jpg',
@@ -32,6 +34,7 @@ export const JACKETS = [
     'https://lcw-ma.akinoncdn.com/products/2022/01/16/3094313/6081869a-251e-439f-bec2-0a13ff8f97db_size561x730.jpg',
     25.99,
     'Shirts',
+    ['S', 'M', 'L', 'XL'],
     [
       'https://lcw-ma.akinoncdn.com/products/2022/01/16/3094327/d3a79e0f-5f10-4e7f-9b1e-3fb77c864623_size561x730.jpg',
       'https://lcw-ma.akinoncdn.com/products/2022/01/16/3094472/d1ccee76-88a9-4050-bc34-d05a082fc9e1_size561x730.jpg',
@@ -44,6 +47,7 @@ export const JACKETS = [
     'https://lcw-ma.akinoncdn.com/products/2022/03/15/3262128/20d40159-31fd-4eb4-87b8-64b904c7d738_size561x730.jpg',
     29.99,
     'Shirts',
+    ['S', 'M', 'L', 'XL'],
     [
       'https://lcw-ma.akinoncdn.com/products/2022/03/15/3262128/16d4823e-3ac9-4e2b-bc55-78212a8ba418_size561x730.jpg',
       'https://lcw-ma.akinoncdn.com/products/2022/03/15/3262128/16d4823e-3ac9-4e2b-bc55-78212a8ba418_size561x730.jpg',

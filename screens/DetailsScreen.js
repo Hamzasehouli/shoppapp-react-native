@@ -97,12 +97,10 @@ const MyCarousel = props => {
           onValueChange={(itemValue, itemIndex) =>
             setSelectedLanguage(itemValue)
           }>
-          <Picker.Item label="Select size" value="salect size" />
-          <Picker.Item label="44" value="44" />
-          <Picker.Item label="45" value="45" />
-          <Picker.Item label="43" value="43" />
-          <Picker.Item label="42" value="42" />
-          <Picker.Item label="41" value="41" />
+          <Picker.Item label="Select size" invalid />
+          {apparel.sizes?.map(s => (
+            <Picker.Item label={s} value={s} />
+          ))}
         </Picker>
         <BaseButton
           fontSize={15}

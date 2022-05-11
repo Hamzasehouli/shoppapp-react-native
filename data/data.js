@@ -230,6 +230,7 @@ export const SNEAKERS = [
     'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2313/940/002/01/2313940002_2_1_8.jpg?t=1642439839013&imwidth=750',
     39.99,
     'Sneaker',
+    ['41', '42', '43', '44'],
     [
       'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2313/940/002/01/2313940002_2_2_8.jpg?t=1642439839013&imwidth=750',
       'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2313/940/002/01/2313940002_2_3_8.jpg?t=1642439839013&imwidth=750',
@@ -242,6 +243,7 @@ export const SNEAKERS = [
     'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2215/940/100/01/2215940100_2_1_8.jpg?t=1642679701509&imwidth=750',
     19.99,
     'Sneaker',
+    ['41', '42', '43', '44'],
     [
       'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2215/940/100/2215940100_2_2_8.jpg?t=1642679700612&imwidth=750',
       'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2215/940/100/2215940100_2_4_8.jpg?t=1642679700612&imwidth=750',
@@ -254,6 +256,7 @@ export const SNEAKERS = [
     'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2302/940/002/2302940002_2_1_8.jpg?t=1637073135601&imwidth=750',
     39.99,
     'Sneaker',
+    ['41', '42', '43', '44'],
     [
       'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2302/940/002/2302940002_2_2_8.jpg?t=1637073135601&imwidth=750',
       'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2302/940/002/2302940002_2_3_8.jpg?t=1637073135601&imwidth=750',
@@ -268,6 +271,7 @@ export const SNEAKERS = [
     'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2300/940/030/2300940030_2_1_8.jpg?t=1640598803685&imwidth=750',
     22.99,
     'Sneaker',
+    ['41', '42', '43', '44'],
     [
       'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2300/940/030/2300940030_2_2_8.jpg?t=1640598803685&imwidth=750',
       'https://static.pullandbear.net/2/photos//2022/V/1/2/p/2300/940/030/2300940030_2_3_8.jpg?t=1640598803685&imwidth=750',
@@ -285,6 +289,7 @@ export const BAGS = [
     'https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12361350/2020/9/12/5eecd2dc-d684-4a71-8640-ff6db02fdad01599889647840-Wildcraft-Unisex-Black-Lunar-Laptop-Backpack-851599889646488-1.jpg',
     17.99,
     'Bag',
+    [],
     [
       'https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12361350/2020/9/12/5295a6a0-ba7e-4b38-b5db-35dea296ec0e1599889647481-Wildcraft-Unisex-Black-Lunar-Laptop-Backpack-851599889646488-7.jpg',
       'https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/12361350/2020/9/12/32ae21ea-7fdd-48e7-8422-5c6061004fab1599889647657-Wildcraft-Unisex-Black-Lunar-Laptop-Backpack-851599889646488-4.jpg',
@@ -298,6 +303,7 @@ export const BAGS = [
     'https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9137557/2019/4/24/5ff8d9b7-b517-4a81-9a69-9282490c70e41556107194454-Tommy-Hilfiger-Printed-Bold-branding-with-signature-tape-992-1.jpg',
     37.99,
     'Bag',
+    [],
     [
       'https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9137557/2019/5/22/bdca9cfd-5b56-407f-be5f-7b09361863881558517534529-Tommy-Hilfiger-Unisex-Black-Solid-Backpack-6221558517534191-6.jpg',
       'https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/9137557/2019/4/24/9088b0a8-0b7b-4e96-806d-16379b5b6d9e1556107194352-Tommy-Hilfiger-Printed-Bold-branding-with-signature-tape-992-4.jpg',
