@@ -27,21 +27,13 @@ const MyCarousel = props => {
   }, [apparel]);
   const carouselRef = useRef(null);
 
-  const goForward = () => {
-    carouselRef.current.snapToNext();
-  };
+  // const goForward = () => {
+  //   carouselRef.current.snapToNext();
+  // };
 
-  const IsFromCart = props.route.params.isFromCartScreen && (
-    <View>
-      <Text>ssss</Text>
-    </View>
-  );
-
-  useEffect(() => {
-    // setEntries(ENTRIES1);
-    console.log('ddddddddddddddddd');
-    console.log(props.route.params.isFromCartScreen);
-  }, []);
+  props.navigation.setOptions({
+    title: '',
+  });
 
   const renderItem = ({item, index}, parallaxProps) => {
     return (

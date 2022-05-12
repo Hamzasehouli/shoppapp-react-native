@@ -80,6 +80,16 @@ const Cart = function (props) {
           return <CartScreen {...props} cartData={props.cartData}></CartScreen>;
         }}
       </Stack.Screen>
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTransparent: true,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+        }}
+        name="DetailsScreen"
+        component={DetailsScreen}></Stack.Screen>
     </Stack.Navigator>
   );
 };
