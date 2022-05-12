@@ -7,11 +7,15 @@ import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import favoritesReducer from './store/reducers/favorites';
 import cartReducer from './store/reducers/cart';
+import regionReducer from './store/reducers/region';
+import languageReducer from './store/reducers/language';
 import auth from './store/reducers/auth';
 
 const rootReducers = combineReducers({
   favorites: favoritesReducer,
   cart: cartReducer,
+  region: regionReducer,
+  language: languageReducer,
   auth,
 });
 

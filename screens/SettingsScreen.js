@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, FlatList, Text} from 'react-native';
+import {useDispatch} from 'react-redux';
 
 import Blue from '../assets/images/Blue.svg';
 import BaseButton from '../components/BaseButton';
@@ -16,6 +17,7 @@ const data = [
 const SettingsScreen = function (props) {
   const [selectedLanguage, setSelectedLanguage] = useState('En');
   const [selectedRegion, setSelectedRegion] = useState('US');
+  const dispatch = useDispatch();
   // const renderItemHandler = function (item) {
   //   return (
   //     <View
@@ -58,9 +60,10 @@ const SettingsScreen = function (props) {
           <Picker
             style={{backgroundColor: 'white', width: 180}}
             selectedValue={selectedRegion}
-            onValueChange={(itemValue, itemIndex) =>
-              setSelectedRegion(itemValue)
-            }>
+            onValueChange={(itemValue, itemIndex) => {
+              setSelectedRegion(itemValue);
+              dispatch({type: 'region', region: itemValue});
+            }}>
             <Picker.Item label={'Morocco'} value={'Morocco'} />
             <Picker.Item label={'US'} value={'US'} />
             <Picker.Item label={'UK'} value={'UK'} />
@@ -83,9 +86,10 @@ const SettingsScreen = function (props) {
           <Picker
             style={{backgroundColor: 'white', width: 180}}
             selectedValue={selectedLanguage}
-            onValueChange={(itemValue, itemIndex) =>
-              setSelectedLanguage(itemValue)
-            }>
+            onValueChange={(itemValue, itemIndex) => {
+              setSelectedLanguage(itemValue);
+              dispatch({type: 'language', language: itemValue});
+            }}>
             <Picker.Item label={'Arabic'} value={'Arabic'} />
             <Picker.Item label={'French'} value={'French'} />
             <Picker.Item label={'English'} value={'English'} />

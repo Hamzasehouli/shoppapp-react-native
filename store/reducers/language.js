@@ -3,8 +3,14 @@ const initialReducer = {
 };
 
 const languageReducer = function (state = initialReducer, action) {
-  state.language = action.language;
-  return state;
+  switch (action.type) {
+    case 'language':
+      state.language = action.language;
+      return state;
+
+    default:
+      return state;
+  }
 };
 
 export default languageReducer;

@@ -3,8 +3,14 @@ const initialReducer = {
 };
 
 const regionReducer = function (state = initialReducer, action) {
-  state.region = action.region;
-  return state;
+  switch (action.type) {
+    case 'region':
+      state.region = action.region;
+      return state;
+
+    default:
+      return state;
+  }
 };
 
 export default regionReducer;
