@@ -65,13 +65,7 @@ const Cart = function (props) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: {
-          backgroundColor: 'white',
-        },
-        headerTintColor: Colors.primaryColor,
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
+        headerShown: false,
       }}
       initialRouteName="CartScreen">
       {/* <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen> */}
@@ -150,13 +144,7 @@ const Favorites = function (props) {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerStyle: {
-          backgroundColor: 'white',
-        },
-        headerTintColor: Colors.primaryColor,
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
+        headerShown: false,
       }}
       initialRouteName="Your favorites">
       <Stack.Screen name="Your favorites">
