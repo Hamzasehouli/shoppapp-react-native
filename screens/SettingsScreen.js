@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, StyleSheet, FlatList, Text} from 'react-native';
 
 import Blue from '../assets/images/Blue.svg';
@@ -6,6 +6,7 @@ import BaseButton from '../components/BaseButton';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 
+import {Picker} from '@react-native-picker/picker';
 const data = [
   {id: 'b1', title: 'Change region', nav: ''},
   {id: 'b2', title: 'Clear cache', nav: ''},
@@ -13,6 +14,8 @@ const data = [
 ];
 
 const SettingsScreen = function (props) {
+  const [selectedLanguage, setSelectedLanguage] = useState('En');
+  const [selectedRegion, setSelectedRegion] = useState('US');
   // const renderItemHandler = function (item) {
   //   return (
   //     <View
@@ -52,7 +55,16 @@ const SettingsScreen = function (props) {
             color={Colors.primaryColor}
             name="md-globe"
           />
-          <BaseButton type="ghost" title="Change the region"></BaseButton>
+          <Picker
+            style={{backgroundColor: 'white', width: 180}}
+            selectedValue={selectedRegion}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedRegion(itemValue)
+            }>
+            <Picker.Item label={'Morocco'} value={'Morocco'} />
+            <Picker.Item label={'US'} value={'US'} />
+            <Picker.Item label={'UK'} value={'UK'} />
+          </Picker>
         </View>
         <View
           style={{
@@ -68,7 +80,16 @@ const SettingsScreen = function (props) {
             color={Colors.primaryColor}
             name="ios-phone-portrait-outline"
           />
-          <BaseButton type="ghost" title="Change the language"></BaseButton>
+          <Picker
+            style={{backgroundColor: 'white', width: 180}}
+            selectedValue={selectedLanguage}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedLanguage(itemValue)
+            }>
+            <Picker.Item label={'Arabic'} value={'Arabic'} />
+            <Picker.Item label={'French'} value={'French'} />
+            <Picker.Item label={'English'} value={'English'} />
+          </Picker>
         </View>
       </View>
     </View>
