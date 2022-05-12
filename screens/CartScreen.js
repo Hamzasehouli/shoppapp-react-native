@@ -16,10 +16,10 @@ import {useEffect, useState} from 'react';
 
 const CartScreen = function (props) {
   const dispatch = useDispatch();
-  const [data, setData] = useState(props.data);
-  useEffect(() => setData(props.data));
+  const [data, setData] = useState(props.cartData);
+  useEffect(() => setData(props.cartData));
   const favoriteHandler = apparel => {
-    setData(props.data.filter(a => a.id !== apparel.id));
+    setData(props.cartData.filter(a => a.id !== apparel.id));
     dispatch({type: 'removeFavorite', apparel});
     apparel = {};
   };
@@ -50,14 +50,14 @@ const CartScreen = function (props) {
   if (data.length <= 0) {
     return (
       <View>
-        <Text>No favorites</Text>
+        <Text>No items in your cart yet 🛒</Text>
       </View>
     );
   }
   return (
     <View style={styles.screen}>
       <FlatList
-        numColumns={2}
+        numColumns={1}
         data={data}
         renderItem={renderItemHandler}></FlatList>
     </View>

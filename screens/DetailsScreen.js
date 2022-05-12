@@ -14,12 +14,14 @@ import {
 import BaseButton from '../components/BaseButton';
 import BaseText from '../components/BaseText';
 import Colors from '../constants/Colors';
+import {useDispatch} from 'react-redux';
 
 const {width: screenWidth} = Dimensions.get('window');
 
 const MyCarousel = props => {
   const [selectedLanguage, setSelectedLanguage] = useState('jjjjjjjjjjjjj');
   const [apparel, setApparel] = useState(props.route.params.apparel);
+  const dispatch = useDispatch();
   useLayoutEffect(() => {
     setApparel(props.route.params.apparel);
   }, [apparel]);
@@ -103,6 +105,7 @@ const MyCarousel = props => {
           ))}
         </Picker>
         <BaseButton
+          onPress={() => dispatch({type: 'ADD_TO_CART', apparel})}
           fontSize={15}
           width="50%"
           title="Add"

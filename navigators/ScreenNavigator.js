@@ -61,7 +61,7 @@ const Home = function () {
     </Stack.Navigator>
   );
 };
-const Cart = function () {
+const Cart = function (props) {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -74,8 +74,12 @@ const Cart = function () {
         },
       }}
       initialRouteName="CartScreen">
-      <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
-      <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>
+      {/* <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen> */}
+      <Stack.Screen name="CartScreen">
+        {function () {
+          return <CartScreen {...props} cartData={props.cartData}></CartScreen>;
+        }}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };
@@ -168,6 +172,7 @@ const Favorites = function (props) {
 
 const MainStackScreen = function () {
   const data = useSelector(state => state.favorites.favorites);
+  const cartData = useSelector(state => state.cart.cart);
   const initData = useSelector(state => state.auth);
 
   return (
@@ -208,9 +213,11 @@ const MainStackScreen = function () {
             );
           },
         }}
-        name="Bag"
-        component={Cart}
-      />
+        name="Bag">
+        {function (props) {
+          return <Cart {...props} cartData={cartData} />;
+        }}
+      </Tab.Screen>
       <Tab.Screen
         options={{
           tabBarIcon: function () {
