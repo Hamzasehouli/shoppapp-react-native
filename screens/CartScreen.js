@@ -10,6 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import BaseText from '../components/BaseText';
+import BaseButton from '../components/BaseButton';
 import Colors from '../constants/Colors';
 import {useSelector, useDispatch} from 'react-redux';
 import {useEffect, useState} from 'react';
@@ -17,49 +18,112 @@ import {useEffect, useState} from 'react';
 const CartScreen = function (props) {
   const dispatch = useDispatch();
   const [data, setData] = useState(props.cartData);
+  const totalPrice = data.reduce((a, v) => v.price + a, 0);
   useEffect(() => setData(props.cartData));
-  const favoriteHandler = apparel => {
+  const cartHandler = apparel => {
     setData(props.cartData.filter(a => a.id !== apparel.id));
-    dispatch({type: 'removeFavorite', apparel});
+    dispatch({type: 'removeFromCart', apparel});
     apparel = {};
   };
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
         style={styles.box}
-        onPress={() => props.navigation.push('DetailsScreen')}>
+        onPress={() =>
+          props.navigation.navigate({
+            name: 'DetailsScreen',
+            params: {apparel: item.item, isFromCartScreen: true},
+          })
+        }>
         <ImageBackground
           source={{uri: item.item.imageUrl}}
           resizeMode="cover"
-          style={styles.imageBackground}>
-          <TouchableOpacity
-            onPress={favoriteHandler.bind(this, item.item)}
-            style={styles.favorite}>
-            <Icon size={25} color={Colors.primaryColor} name="ios-heart"></Icon>
-          </TouchableOpacity>
-        </ImageBackground>
+          style={styles.imageBackground}></ImageBackground>
         <View style={styles.details}>
-          <BaseText>{item.item.title}</BaseText>
-          <BaseText color={Colors.primaryColor} style={{fontWeight: '700'}}>
-            ${item.item.price}
-          </BaseText>
+          <View>
+            <BaseText>{item.item.title}</BaseText>
+            <BaseText color={Colors.primaryColor} style={{fontWeight: '700'}}>
+              ${item.item.price}
+            </BaseText>
+            <BaseText size={14} color={'grey'}>
+              Size: {item.item.size}
+            </BaseText>
+          </View>
+
+          <TouchableOpacity
+            onPress={cartHandler.bind(this, item.item)}
+            style={styles.favorite}>
+            <Icon
+              size={25}
+              color={Colors.primaryColor}
+              name="ios-trash-outline"></Icon>
+          </TouchableOpacity>
         </View>
       </TouchableOpacity>
     );
   };
   if (data.length <= 0) {
     return (
-      <View>
-        <Text>No items in your cart yet 🛒</Text>
+      <View
+        style={{
+          backgroundColor: 'white',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100%',
+        }}>
+        <Text style={{fontSize: 20}}>No items in your cart yet 🛒</Text>
       </View>
     );
   }
   return (
     <View style={styles.screen}>
       <FlatList
-        numColumns={1}
+        numColumns={2}
         data={data}
         renderItem={renderItemHandler}></FlatList>
+      <View
+        style={{
+          justifyContent: 'space-between',
+          height: 150,
+          backgroundColor: 'white',
+
+          shadowColor: '#000',
+          shadowOffset: {
+            width: 0,
+            height: 3,
+          },
+          shadowOpacity: 0.8,
+
+          elevation: 20,
+          padding: 15,
+        }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: 10,
+          }}>
+          <BaseText size={30} color="black">
+            Total
+          </BaseText>
+          <BaseText size={30} color="black">
+            ${totalPrice}
+          </BaseText>
+        </View>
+        <BaseButton
+          onPress={() => dispatch({type: 'ADD_TO_CART', apparel})}
+          fontSize={18}
+          width="100%"
+          title="Process checkout"
+          style={{
+            backgroundColor: '#50C878',
+            height: 50,
+            justifyContent: 'center',
+            borderRadius: 4,
+          }}
+          type="flat"></BaseButton>
+      </View>
     </View>
   );
 };
@@ -69,8 +133,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flex: 1,
     height: '100%',
-    paddingLeft: 10,
-    paddingRight: 10,
+    // paddingLeft: 10,
+    // paddingRight: 10,
   },
   box: {
     width: '50%',
@@ -81,6 +145,7 @@ const styles = StyleSheet.create({
   },
   imageBackground: {
     position: 'relative',
+    width: '100%',
     flex: 1,
   },
   favorite: {

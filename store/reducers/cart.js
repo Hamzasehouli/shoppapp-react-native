@@ -10,7 +10,7 @@ const cartReducer = function (state = initialReducer, action) {
       state.cart.push(action.apparel);
       // console.log(state.favorites);
       return state;
-    case 'removeCart':
+    case 'removeFromCart':
       const ind = state.cart.findIndex(f => f.id === action.apparel.id);
 
       // state.favorites.push(action.apparel);

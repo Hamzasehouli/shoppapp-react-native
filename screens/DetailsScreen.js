@@ -19,7 +19,7 @@ import {useDispatch} from 'react-redux';
 const {width: screenWidth} = Dimensions.get('window');
 
 const MyCarousel = props => {
-  const [selectedLanguage, setSelectedLanguage] = useState('jjjjjjjjjjjjj');
+  const [selectedLanguage, setSelectedLanguage] = useState('');
   const [apparel, setApparel] = useState(props.route.params.apparel);
   const dispatch = useDispatch();
   useLayoutEffect(() => {
@@ -31,9 +31,17 @@ const MyCarousel = props => {
     carouselRef.current.snapToNext();
   };
 
-  // useEffect(() => {
-  //   setEntries(ENTRIES1);
-  // }, []);
+  const IsFromCart = props.route.params.isFromCartScreen && (
+    <View>
+      <Text>ssss</Text>
+    </View>
+  );
+
+  useEffect(() => {
+    // setEntries(ENTRIES1);
+    console.log('ddddddddddddddddd');
+    console.log(props.route.params.isFromCartScreen);
+  }, []);
 
   const renderItem = ({item, index}, parallaxProps) => {
     return (
@@ -55,7 +63,11 @@ const MyCarousel = props => {
   return (
     <View>
       <ScrollView
-        style={{width: screenWidth, backgroundColor: 'white', height: '90%'}}>
+        style={{
+          width: screenWidth,
+          backgroundColor: 'white',
+          height: props.route.params.isFromCartScreen ? '100%' : '90%',
+        }}>
         {/* <View style={styles.container}> */}
         <Carousel
           ref={carouselRef}
@@ -92,25 +104,35 @@ const MyCarousel = props => {
           <Text style={{...styles.marginBottom3}}>Ref 28864/9927</Text>
         </View>
       </ScrollView>
-      <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-        <Picker
-          style={{backgroundColor: 'white', width: 180}}
-          selectedValue={selectedLanguage}
-          onValueChange={(itemValue, itemIndex) =>
-            setSelectedLanguage(itemValue)
-          }>
-          <Picker.Item label="Select size" invalid />
-          {apparel.sizes?.map(s => (
-            <Picker.Item label={s} value={s} />
-          ))}
-        </Picker>
-        <BaseButton
-          onPress={() => dispatch({type: 'ADD_TO_CART', apparel})}
-          fontSize={15}
-          width="50%"
-          title="Add"
-          type="flat"></BaseButton>
-      </View>
+
+      {!props.route.params.isFromCartScreen && (
+        <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+          <Picker
+            style={{backgroundColor: 'white', width: 180}}
+            selectedValue={selectedLanguage}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedLanguage(itemValue)
+            }>
+            <Picker.Item label="Select size" invalid />
+            {apparel.sizes?.map(s => (
+              <Picker.Item label={s} value={s} />
+            ))}
+          </Picker>
+
+          <BaseButton
+            onPress={() => {
+              if (selectedLanguage === '') return;
+              dispatch({
+                type: 'ADD_TO_CART',
+                apparel: {...apparel, size: selectedLanguage},
+              });
+            }}
+            fontSize={15}
+            width="50%"
+            title="Add"
+            type="flat"></BaseButton>
+        </View>
+      )}
     </View>
   );
 };
