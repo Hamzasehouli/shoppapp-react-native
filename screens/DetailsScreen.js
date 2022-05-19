@@ -1,4 +1,10 @@
-import React, {useRef, useState, useLayoutEffect, useEffect} from 'react';
+import React, {
+  useRef,
+  useState,
+  useLayoutEffect,
+  useEffect,
+  useCallback,
+} from 'react';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
 import {Picker} from '@react-native-picker/picker';
 import {
@@ -24,7 +30,7 @@ const MyCarousel = props => {
   const dispatch = useDispatch();
   useLayoutEffect(() => {
     setApparel(props.route.params.apparel);
-  }, [apparel]);
+  }, []);
   useEffect(
     () =>
       props.navigation.setOptions({
@@ -40,9 +46,10 @@ const MyCarousel = props => {
 
   const renderItem = ({item, index}, parallaxProps) => {
     return (
-      <View style={styles.item}>
+      <View key={item.id} style={styles.item}>
         <ParallaxImage
-          source={{uri: item.imageUrl}}
+          key={item.id}
+          source={{uri: item}}
           containerStyle={styles.imageContainer}
           style={styles.image}
           parallaxFactor={0}
@@ -112,7 +119,7 @@ const MyCarousel = props => {
             }>
             <Picker.Item label="Select size" invalid />
             {apparel.sizes?.map(s => (
-              <Picker.Item label={s} value={s} />
+              <Picker.Item key={s} label={s} value={s} />
             ))}
           </Picker>
 

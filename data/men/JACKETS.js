@@ -3,13 +3,17 @@ export const JACKETS = [
   new Apparel(
     'j1',
     'Standard Pattern Men Jean Jacket',
+
     'https://lcw-ma.akinoncdn.com/products/2022/02/22/3097854/97f85db2-7ec0-43a2-9eed-7d8b3ec913d2_size561x730.jpg',
+
     29.99,
     'Shirts',
     ['S', 'M', 'L', 'XL'],
     [
       'https://lcw-ma.akinoncdn.com/products/2022/01/14/3097806/a8002016-da40-4141-8209-9b85ddcff467_size561x730.jpg',
+
       'https://lcw-ma.akinoncdn.com/products/2022/01/14/3097806/bbf8e8ef-77e4-43fe-a410-4ea89ef90cdc_size561x730.jpg',
+
       'https://lcw-ma.akinoncdn.com/products/2022/01/14/3097806/b8712167-e4e0-4860-b613-1232d7a15565_size561x730.jpg',
     ],
     true,
@@ -18,7 +22,9 @@ export const JACKETS = [
   new Apparel(
     'j2',
     'Slim Fit High Collar Suede Jacket',
+
     'https://lcw-ma.akinoncdn.com/products/2021/10/25/1310206/1fb03f67-367a-4432-a3a6-0d751bcf0d7c_size561x730.jpg',
+
     25.99,
     'Shirts',
     ['S', 'M', 'L', 'XL'],

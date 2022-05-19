@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {SNEAKERS, BAGS} from '../data/data';
+import {BAGS} from '../data/men/BAGS.js';
+import {SNEAKERS} from '../data/men/SNEAKERS.js';
 import {JEANS} from '../data/men/JEANS.js';
 import {CAPS} from '../data/men/CAPS.js';
 import {PULLOVER} from '../data/men/PULLOVER.js';
@@ -189,7 +190,7 @@ const Apparel = function (props) {
           })
         }>
         <ImageBackground
-          source={{uri: item.item.imageUrl.imageUrl}}
+          source={{uri: item.item.imageUrl}}
           resizeMode="cover"
           style={styles.imageBackground}>
           <TouchableOpacity
