@@ -25,21 +25,24 @@ const MyCarousel = props => {
   useLayoutEffect(() => {
     setApparel(props.route.params.apparel);
   }, [apparel]);
+  useEffect(
+    () =>
+      props.navigation.setOptions({
+        title: '',
+      }),
+    [],
+  );
   const carouselRef = useRef(null);
 
   // const goForward = () => {
   //   carouselRef.current.snapToNext();
   // };
 
-  props.navigation.setOptions({
-    title: '',
-  });
-
   const renderItem = ({item, index}, parallaxProps) => {
     return (
       <View style={styles.item}>
         <ParallaxImage
-          source={{uri: item}}
+          source={{uri: item.imageUrl}}
           containerStyle={styles.imageContainer}
           style={styles.image}
           parallaxFactor={0}
@@ -61,15 +64,17 @@ const MyCarousel = props => {
           height: props.route.params.isFromCartScreen ? '100%' : '90%',
         }}>
         {/* <View style={styles.container}> */}
-        <Carousel
-          ref={carouselRef}
-          sliderWidth={screenWidth}
-          sliderHeight={screenWidth}
-          itemWidth={screenWidth}
-          data={[apparel.imageUrl, ...apparel.images]}
-          renderItem={renderItem}
-          hasParallaxImages={true}
-        />
+        <View>
+          <Carousel
+            ref={carouselRef}
+            sliderWidth={screenWidth}
+            sliderHeight={screenWidth}
+            itemWidth={screenWidth}
+            data={[apparel.imageUrl, ...apparel.images]}
+            renderItem={renderItem}
+            hasParallaxImages={true}
+          />
+        </View>
         {/* </View> */}
         <View style={{padding: 9}}>
           <BaseText>{apparel.title}</BaseText>

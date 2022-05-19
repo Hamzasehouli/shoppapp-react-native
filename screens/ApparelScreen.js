@@ -189,7 +189,7 @@ const Apparel = function (props) {
           })
         }>
         <ImageBackground
-          source={{uri: item.item.imageUrl}}
+          source={{uri: item.item.imageUrl.imageUrl}}
           resizeMode="cover"
           style={styles.imageBackground}>
           <TouchableOpacity

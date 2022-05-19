@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import BaseText from '../components/BaseText';
 import SaleScreen from './SaleScreen';
 import Colors from '../constants/Colors';
@@ -18,7 +18,11 @@ import {
   SaleCataegories as Sale,
 } from '../data/data';
 
+import {useSelector} from 'react-redux';
+
 const HomeScreen = function ({navigation, route}) {
+  const language = useSelector(state => state.language.language);
+  const [idioma, setIdioma] = useState(language);
   React.useLayoutEffect(() => {
     navigation.setOptions({
       title: route.params.collection?.split(' ')[0] + ' ' + 'Collection',

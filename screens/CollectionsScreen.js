@@ -13,16 +13,20 @@ import BaseScreen from '../components/BaseScreen';
 import BaseText from '../components/BaseText';
 import Colors from '../constants/Colors';
 import Blue from '../assets/images/Blue.svg';
-
-const collectionsData = [
-  {id: 'cl1', title: 'Men'},
-  {id: 'cl2', title: 'Women'},
-  //   {id: 'cl3', title: 'Kids'},
-  //   {id: 'cl4', title: 'Baby'},
-  {id: 'cl5', title: 'Sale'},
-];
+import {useSelector} from 'react-redux';
 
 const CollectionsScreen = function (props) {
+  const language = useSelector(state => state.language.language);
+  const collectionsData = [
+    {
+      id: 'cl1',
+      title: language === 'English' ? 'Men' : 'French' ? 'Hommes' : 'rijal',
+    },
+    {id: 'cl2', title: 'Women'},
+    //   {id: 'cl3', title: 'Kids'},
+    //   {id: 'cl4', title: 'Baby'},
+    {id: 'cl5', title: 'Sale'},
+  ];
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
