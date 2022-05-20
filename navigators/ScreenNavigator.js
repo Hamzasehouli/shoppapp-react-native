@@ -26,7 +26,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 const Stack = createNativeStackNavigator();
 
-const Home = function () {
+const Home = function (props) {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -43,7 +43,9 @@ const Home = function () {
         options={{headerShown: false}}
         name="Collections"
         component={CollectionsScreen}></Stack.Screen>
-      <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen>
+      <Stack.Screen name="Categories">
+        {props => <HomeScreen {...props} fav={props.language}></HomeScreen>}
+      </Stack.Screen>
       <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>
       <Stack.Screen name="ApparelScreen">
         {props => <ApparelScreen {...props} fav={props.favs}></ApparelScreen>}
@@ -136,10 +138,21 @@ const Account = function (props) {
   );
 };
 
-const Settings = function () {
-  return <SettingsScreen />;
+const Settings = function (props) {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName="SettingsScreen">
+      <Stack.Screen name="SettingsScreen">
+        {function (props) {
+          return <SettingsScreen {...props}></SettingsScreen>;
+        }}
+      </Stack.Screen>
+    </Stack.Navigator>
+  );
 };
-
 const Favorites = function (props) {
   return (
     <Stack.Navigator
@@ -172,6 +185,7 @@ const MainStackScreen = function () {
   const data = useSelector(state => state.favorites.favorites);
   const cartData = useSelector(state => state.cart.cart);
   const initData = useSelector(state => state.auth);
+  const language = useSelector(state => state.language);
 
   return (
     <Tab.Navigator
@@ -197,7 +211,7 @@ const MainStackScreen = function () {
         }}
         name="Home">
         {function (props) {
-          return <Home favs={data}></Home>;
+          return <Home language={language} favs={data}></Home>;
         }}
       </Tab.Screen>
       <Tab.Screen

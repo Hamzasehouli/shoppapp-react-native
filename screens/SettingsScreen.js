@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, FlatList, Text} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import Blue from '../assets/images/Blue.svg';
 import BaseButton from '../components/BaseButton';
@@ -15,7 +15,8 @@ const data = [
 ];
 
 const SettingsScreen = function (props) {
-  const [selectedLanguage, setSelectedLanguage] = useState('En');
+  const language = useSelector(state => state.language);
+  const [selectedLanguage, setSelectedLanguage] = useState(language);
   const [selectedRegion, setSelectedRegion] = useState('US');
   const dispatch = useDispatch();
   // const renderItemHandler = function (item) {
@@ -89,10 +90,16 @@ const SettingsScreen = function (props) {
             onValueChange={(itemValue, itemIndex) => {
               setSelectedLanguage(itemValue);
               dispatch({type: 'language', language: itemValue});
+              props.navigation.navigate({name: 'Splash'});
             }}>
+            <Picker.Item
+              enabled={false}
+              label={'Select a language'}
+              value={''}
+            />
+            <Picker.Item label={'English'} value={'English'} />
             <Picker.Item label={'Arabic'} value={'Arabic'} />
             <Picker.Item label={'French'} value={'French'} />
-            <Picker.Item label={'English'} value={'English'} />
           </Picker>
         </View>
       </View>

@@ -1,5 +1,5 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React from 'react';
+import React, {useState, useLayoutEffect} from 'react';
 import {
   View,
   FlatList,
@@ -16,17 +16,46 @@ import Blue from '../assets/images/Blue.svg';
 import {useSelector} from 'react-redux';
 
 const CollectionsScreen = function (props) {
-  const language = useSelector(state => state.language.language);
+  const Rawlanguage = useSelector(state => state.language.language);
+
+  const [language, setLanguage] = useState(Rawlanguage);
+
   const collectionsData = [
     {
       id: 'cl1',
-      title: language === 'English' ? 'Men' : 'French' ? 'Hommes' : 'rijal',
+      title:
+        language === 'Arabic'
+          ? 'رجال'
+          : language === 'French'
+          ? 'Hommes'
+          : language === 'English'
+          ? 'Men'
+          : '',
     },
-    {id: 'cl2', title: 'Women'},
-    //   {id: 'cl3', title: 'Kids'},
-    //   {id: 'cl4', title: 'Baby'},
-    {id: 'cl5', title: 'Sale'},
+    {
+      id: 'cl2',
+      title:
+        language === 'Arabic'
+          ? 'نساء'
+          : language === 'French'
+          ? 'Femmes'
+          : language === 'English'
+          ? 'Women'
+          : '',
+    },
+    {
+      id: 'cl3',
+      title:
+        language === 'Arabic'
+          ? 'التخفيضات'
+          : language === 'French'
+          ? 'Soldes'
+          : language === 'English'
+          ? 'Sales'
+          : '',
+    },
   ];
+
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
@@ -95,7 +124,11 @@ const CollectionsScreen = function (props) {
             textAlign: 'center',
             width: '50%',
           }}>
-          Up to -50% off sales
+          {language === 'English'
+            ? 'Up to -50% off sales'
+            : language === 'French'
+            ? "Jusqu'à -50% sur les soldes"
+            : 'خصم يصل إلى -50٪ على المبيعات'}
         </Text>
       </ImageBackground>
     </View>
