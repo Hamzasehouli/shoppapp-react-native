@@ -15,6 +15,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useEffect, useState} from 'react';
 
 const FavoritesScreen = function (props) {
+  console.log(props);
   const dispatch = useDispatch();
   const [data, setData] = useState(props.data);
   useEffect(() => setData(props.data));
@@ -77,7 +78,13 @@ const FavoritesScreen = function (props) {
           alignItems: 'center',
           height: '100%',
         }}>
-        <Text style={{fontSize: 20}}>Your favorites list is empty🖤</Text>
+        <Text style={{fontSize: 20}}>
+          {props.language.language === 'Arabic'
+            ? 'قائمة المفضلة لديك فارغة🖤'
+            : props.language.language === 'French'
+            ? 'Votre liste de favoris est vide🖤'
+            : 'Your favorites list is empty🖤'}
+        </Text>
       </View>
     );
   }

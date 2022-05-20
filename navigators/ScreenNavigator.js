@@ -232,9 +232,15 @@ const MainStackScreen = function () {
             );
           },
         }}
-        name="Bag">
+        name={
+          language.language === 'Arabic'
+            ? 'سلة'
+            : language.language === 'French'
+            ? 'Panier'
+            : 'Cart'
+        }>
         {function (props) {
-          return <Cart {...props} cartData={cartData} />;
+          return <Cart language={language} {...props} cartData={cartData} />;
         }}
       </Tab.Screen>
       <Tab.Screen
@@ -251,9 +257,15 @@ const MainStackScreen = function () {
             return <TouchableOpacity style={{color: red}}></TouchableOpacity>;
           },
         }}
-        name="Favorites">
+        name={
+          language.language === 'Arabic'
+            ? 'المفضلة'
+            : language.language === 'French'
+            ? 'Favoris'
+            : 'Favorites'
+        }>
         {function (props) {
-          return <Favorites {...props} data={data} />;
+          return <Favorites language={language} {...props} data={data} />;
         }}
       </Tab.Screen>
       <Tab.Screen
@@ -267,7 +279,13 @@ const MainStackScreen = function () {
             );
           },
         }}
-        name="Account">
+        name={
+          language.language === 'Arabic'
+            ? 'الحساب'
+            : language.language === 'French'
+            ? 'Compte'
+            : 'Account'
+        }>
         {function (props) {
           return <Account navigation={props.navigation} data={initData} />;
         }}
@@ -280,7 +298,13 @@ const MainStackScreen = function () {
             );
           },
         }}
-        name="Settings"
+        name={
+          language.language === 'Arabic'
+            ? 'إعدادات'
+            : language.language === 'French'
+            ? 'Réglages'
+            : 'Setting'
+        }
         component={Settings}
       />
     </Tab.Navigator>

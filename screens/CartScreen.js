@@ -71,7 +71,13 @@ const CartScreen = function (props) {
           alignItems: 'center',
           height: '100%',
         }}>
-        <Text style={{fontSize: 20}}>No items in your cart yet 🛒</Text>
+        <Text style={{fontSize: 20}}>
+          {props.language.language === 'Arabic'
+            ? 'لا توجد عناصر في عربة التسوق الخاصة بك حتى الآن🛒'
+            : props.language.language === 'French'
+            ? 'Aucun article dans votre panier pour le moment 🛒'
+            : 'No items in your cart yet 🛒'}
+        </Text>
       </View>
     );
   }

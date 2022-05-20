@@ -17,14 +17,6 @@ import {TextInput} from 'react-native-paper';
 import BaseButton from '../components/BaseButton';
 import {useDispatch, useSelector} from 'react-redux';
 
-const collectionsData = [
-  {id: 'cl1', title: 'Men'},
-  {id: 'cl2', title: 'Women'},
-  //   {id: 'cl3', title: 'Kids'},
-  //   {id: 'cl4', title: 'Baby'},
-  {id: 'cl5', title: 'Sale'},
-];
-
 const LoginScreen = function (props) {
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
@@ -62,8 +54,7 @@ const LoginScreen = function (props) {
       if (!res.ok) {
         throw new Error('errr');
       }
-      // setEmail('');
-      // setPassword('');
+
       dispatch({
         type: '',
         status: true,
