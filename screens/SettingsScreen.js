@@ -64,6 +64,7 @@ const SettingsScreen = function (props) {
             onValueChange={(itemValue, itemIndex) => {
               setSelectedRegion(itemValue);
               dispatch({type: 'region', region: itemValue});
+              props.navigation.navigate({name: 'Splash'});
             }}>
             <Picker.Item label={'Morocco'} value={'Morocco'} />
             <Picker.Item label={'US'} value={'US'} />

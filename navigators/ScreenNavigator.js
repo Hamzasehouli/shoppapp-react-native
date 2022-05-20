@@ -27,6 +27,7 @@ const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const Home = function (props) {
+  const {region} = props;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -46,9 +47,11 @@ const Home = function (props) {
       <Stack.Screen name="Categories">
         {props => <HomeScreen {...props} fav={props.language}></HomeScreen>}
       </Stack.Screen>
-      <Stack.Screen name="CartScreen" component={CartScreen}></Stack.Screen>
+      <Stack.Screen name="CartScreen">
+        {props => <CartScreen {...props} fav={props.favs}></CartScreen>}
+      </Stack.Screen>
       <Stack.Screen name="ApparelScreen">
-        {props => <ApparelScreen {...props} fav={props.favs}></ApparelScreen>}
+        {props => <ApparelScreen region={region} {...props}></ApparelScreen>}
       </Stack.Screen>
       <Stack.Screen
         options={{
@@ -58,8 +61,9 @@ const Home = function (props) {
             backgroundColor: 'transparent',
           },
         }}
-        name="DetailsScreen"
-        component={DetailsScreen}></Stack.Screen>
+        name="DetailsScreen">
+        {props => <DetailsScreen {...props}></DetailsScreen>}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };
@@ -196,6 +200,7 @@ const MainStackScreen = function () {
   const cartData = useSelector(state => state.cart.cart);
   const initData = useSelector(state => state.auth);
   const language = useSelector(state => state.language);
+  const region = useSelector(state => state.region);
 
   return (
     <Tab.Navigator
@@ -226,8 +231,8 @@ const MainStackScreen = function () {
             ? 'Acceuil'
             : 'Home'
         }>
-        {function (props) {
-          return <Home language={language} favs={data}></Home>;
+        {function () {
+          return <Home region={region} language={language} favs={data}></Home>;
         }}
       </Tab.Screen>
       <Tab.Screen
@@ -249,7 +254,14 @@ const MainStackScreen = function () {
             : 'Cart'
         }>
         {function (props) {
-          return <Cart language={language} {...props} cartData={cartData} />;
+          return (
+            <Cart
+              region={region}
+              language={language}
+              {...props}
+              cartData={cartData}
+            />
+          );
         }}
       </Tab.Screen>
       <Tab.Screen
@@ -274,7 +286,14 @@ const MainStackScreen = function () {
             : 'Favorites'
         }>
         {function (props) {
-          return <Favorites language={language} {...props} data={data} />;
+          return (
+            <Favorites
+              region={region}
+              language={language}
+              {...props}
+              data={data}
+            />
+          );
         }}
       </Tab.Screen>
       <Tab.Screen

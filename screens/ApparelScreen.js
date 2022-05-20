@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {
   View,
   Text,
@@ -29,10 +29,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 import BaseText from '../components/BaseText';
 import {favoriteToggler} from '../store/actions/favoritesAction';
-import {CommonActions} from '@react-navigation/native';
+import currencyConverter from '../converters/LanguageConverter';
 
 const Apparel = function (props) {
   const [data, setData] = useState([]);
+  const [region, setRegion] = useState(props.region.region);
   const favs = useSelector(state => state.favorites.favorites);
   const [favorites, setFavorites] = useState(favs);
   const dispatch = useDispatch();
@@ -47,6 +48,11 @@ const Apparel = function (props) {
 
     props.navigation.setParams({apparel});
   };
+
+  // const currencyConverter = useCallback(LanguageConverter.bind(props, price), [
+  //   props.region,
+  // ]);
+
   useEffect(() => {
     switch (props.route.params.title) {
       case 'Sneakers men':
@@ -221,11 +227,25 @@ const Apparel = function (props) {
                     }
                   : {}
               }>
-              ${item.item.price}
+              {props.region.region === 'Morocco'
+                ? 'MAD '
+                : props.region.region === 'UK'
+                ? '£ '
+                : '$ '}
+              {Number(currencyConverter(item.item.price, region)).toFixed(2)}
             </Text>
           </BaseText>
           <BaseText color={'red'} style={{fontWeight: '700'}} size={18}>
-            {item.item.discountPrice && `$${item.item.discountPrice}`}
+            {item.item.discountPrice &&
+              `${
+                props.region.region === 'Morocco'
+                  ? 'MAD '
+                  : props.region.region === 'UK'
+                  ? '£ '
+                  : '$ '
+              }${Number(
+                currencyConverter(item.item.discountPrice, region),
+              ).toFixed(2)}`}
           </BaseText>
         </View>
       </TouchableOpacity>
