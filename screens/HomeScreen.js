@@ -25,14 +25,35 @@ const HomeScreen = function ({navigation, route}) {
   const [idioma, setIdioma] = useState(language);
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: route.params.collection?.split(' ')[0] + ' ' + 'Collection',
+      title: route.params.collection?.split(' ')[0],
     });
   }, [navigation]);
   const collection = route.params.collection;
-  const isSale = collection === 'Sale' ? true : false;
+  const isSale =
+    collection === 'Sales'
+      ? true
+      : collection === 'Soldes'
+      ? true
+      : collection === 'التخفيضات'
+      ? true
+      : false;
   const saleApparel = route.params.saleApparel ? true : false;
 
-  const categories = collection === 'Men' ? Men : 'Women' ? Women : [];
+  const categories =
+    collection === 'Men'
+      ? Men
+      : collection === 'Hommes'
+      ? Men
+      : collection === 'رجال'
+      ? Men
+      : collection === 'Women'
+      ? Women
+      : collection === 'Femmes'
+      ? Women
+      : collection === 'نساء'
+      ? Women
+      : [];
+  console.log(route.params);
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
