@@ -53,7 +53,6 @@ const HomeScreen = function ({navigation, route}) {
       : collection === 'نساء'
       ? Women
       : [];
-  console.log(route.params);
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity

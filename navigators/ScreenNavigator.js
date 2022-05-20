@@ -186,6 +186,7 @@ const MainStackScreen = function () {
   const cartData = useSelector(state => state.cart.cart);
   const initData = useSelector(state => state.auth);
   const language = useSelector(state => state.language);
+  console.log(language);
 
   return (
     <Tab.Navigator
@@ -209,7 +210,13 @@ const MainStackScreen = function () {
             );
           },
         }}
-        name="Home">
+        name={
+          language.language === 'Arabic'
+            ? 'الرئيسية'
+            : language.language === 'French'
+            ? 'Acceuil'
+            : 'Home'
+        }>
         {function (props) {
           return <Home language={language} favs={data}></Home>;
         }}
