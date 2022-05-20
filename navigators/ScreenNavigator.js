@@ -109,17 +109,27 @@ const Account = function (props) {
         },
       }}
       initialRouteName={status ? 'Test' : 'Login'}>
-      <Stack.Screen
-        options={{headerShown: false}}
-        name="Login"
-        component={LoginScreen}></Stack.Screen>
-      <Stack.Screen
-        options={{headerShown: false}}
-        name="Signup"
-        component={SignupScreen}></Stack.Screen>
-      <Stack.Screen
-        name="Reset Password"
-        component={ForgetScreen}></Stack.Screen>
+      <Stack.Screen options={{headerShown: false}} name="Login">
+        {function () {
+          return (
+            <LoginScreen {...props} language={props.language}></LoginScreen>
+          );
+        }}
+      </Stack.Screen>
+      <Stack.Screen options={{headerShown: false}} name="Signup">
+        {function () {
+          return (
+            <SignupScreen {...props} language={props.language}></SignupScreen>
+          );
+        }}
+      </Stack.Screen>
+      <Stack.Screen options={{headerShown: false}} name="Reset Password">
+        {function () {
+          return (
+            <ForgetScreen {...props} language={props.language}></ForgetScreen>
+          );
+        }}
+      </Stack.Screen>
       <Stack.Screen options={{headerShown: false}} name="Test">
         {() => {
           if (status) {
@@ -186,7 +196,6 @@ const MainStackScreen = function () {
   const cartData = useSelector(state => state.cart.cart);
   const initData = useSelector(state => state.auth);
   const language = useSelector(state => state.language);
-  console.log(language);
 
   return (
     <Tab.Navigator
@@ -287,7 +296,14 @@ const MainStackScreen = function () {
             : 'Account'
         }>
         {function (props) {
-          return <Account navigation={props.navigation} data={initData} />;
+          return (
+            <Account
+              {...props}
+              language={language}
+              navigation={props.navigation}
+              data={initData}
+            />
+          );
         }}
       </Tab.Screen>
       <Tab.Screen

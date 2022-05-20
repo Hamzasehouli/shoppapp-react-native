@@ -15,7 +15,6 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useEffect, useState} from 'react';
 
 const FavoritesScreen = function (props) {
-  console.log(props);
   const dispatch = useDispatch();
   const [data, setData] = useState(props.data);
   useEffect(() => setData(props.data));

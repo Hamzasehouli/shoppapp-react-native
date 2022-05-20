@@ -18,6 +18,7 @@ import BaseButton from '../components/BaseButton';
 import {useDispatch, useSelector} from 'react-redux';
 
 const LoginScreen = function (props) {
+  console.log(props);
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -67,48 +68,7 @@ const LoginScreen = function (props) {
     }
   }
 
-  const renderItemHandler = function (item) {
-    return (
-      <TouchableOpacity
-        style={{marginBottom: 20}}
-        onPress={() => {
-          if (item.item.title === 'Sale') {
-            props.navigation.navigate({
-              name: 'Sale',
-            });
-          } else {
-            props.navigation.navigate({
-              name: 'Categories',
-              params: {collection: item.item.title},
-            });
-          }
-        }}>
-        <BaseText
-          style={{
-            textAlign: 'center',
-            fontWeight: '700',
-            fontFamily: 'Roboto-Bold',
-          }}
-          color={Colors.primaryColor}
-          size={30}>
-          {item.item.title}
-        </BaseText>
-      </TouchableOpacity>
-    );
-  };
   return (
-    // <ImageBackground
-    //   resizeMode="cover"
-    //   style={{
-    //     width: '100%',
-    //     height: '100%',
-    //     justifyContent: 'center',
-    //     alignItems: 'center',
-    //   }}
-    //   source={{
-    //     uri: 'https://images.unsplash.com/photo-1543076447-215ad9ba6923?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8amFja2V0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=700&q=60',
-    //   }}>
-    // </ImageBackground>
     <KeyboardAvoidingView
       behavior="position"
       style={{backgroundColor: 'white'}}>
@@ -122,7 +82,11 @@ const LoginScreen = function (props) {
             fontSize: 30,
             marginBottom: 30,
           }}>
-          Login
+          {props.language.language === 'Arabic'
+            ? 'دخول'
+            : props.language.language === 'French'
+            ? 'Connexion'
+            : 'Log in'}
         </Text>
         <View style={{flexDirection: 'column', width: '70%'}}>
           <TextInput
@@ -130,28 +94,54 @@ const LoginScreen = function (props) {
               marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
+              textAlign:
+                props.language.language === 'Arabic' ? 'right' : 'left',
             }}
             onChangeText={v => setEmail(v)}
             keyboardType="email-address"
-            placeholder="Email"></TextInput>
+            placeholder={
+              props.language.language === 'Arabic'
+                ? 'البريد الإلكتروني'
+                : 'Email'
+            }></TextInput>
           <TextInput
             style={{
               marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
+              textAlign:
+                props.language.language === 'Arabic' ? 'right' : 'left',
             }}
             onChangeText={v => setPassword(v)}
             secureTextEntry={true}
-            placeholder="Password"></TextInput>
+            placeholder={
+              props.language.language === 'Arabic'
+                ? 'كلمه السر'
+                : props.language.language === 'French'
+                ? 'Mot de passe'
+                : 'Password'
+            }></TextInput>
           <BaseButton
             onPress={handleSubmit}
             width="100%"
-            title="Login"
+            title={
+              props.language.language === 'Arabic'
+                ? 'دخول'
+                : props.language.language === 'French'
+                ? 'Se connecter'
+                : 'Log in'
+            }
             type="flat"></BaseButton>
           <BaseButton
             onPress={() => props.navigation.push('Reset Password')}
             width="100%"
-            title="Forget password ?"
+            title={
+              props.language.language === 'Arabic'
+                ? 'نسيت كلمة المرور'
+                : props.language.language === 'French'
+                ? 'Mot de passe oublié ?'
+                : 'Forget password ?'
+            }
             type="ghost"></BaseButton>
         </View>
         <View style={{marginTop: 40}}>
@@ -159,7 +149,13 @@ const LoginScreen = function (props) {
             onPress={() => props.navigation.replace('Signup')}
             fontSize={15}
             width="50%"
-            title="Do not have an accout yet? Register here"
+            title={
+              props.language.language === 'Arabic'
+                ? 'تسجيل'
+                : props.language.language === 'French'
+                ? "S'inscrire"
+                : 'Sign up'
+            }
             type="ghost"></BaseButton>
         </View>
       </View>

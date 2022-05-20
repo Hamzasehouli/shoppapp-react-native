@@ -59,11 +59,37 @@ const ForgetScreen = function (props) {
               marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
+              textAlign:
+                props.language.language === 'Arabic' ? 'right' : 'left',
             }}
             keyboardType="email-address"
-            placeholder="Email"></TextInput>
+            placeholder={
+              props.language.language === 'Arabic'
+                ? 'البريد الإلكتروني'
+                : 'Email'
+            }></TextInput>
 
-          <BaseButton width="100%" title="Reset" type="flat"></BaseButton>
+          <BaseButton
+            width="100%"
+            title={
+              props.language.language === 'Arabic'
+                ? 'إرسال'
+                : props.language.language === 'French'
+                ? 'Confirmer'
+                : 'Submit'
+            }
+            type="flat"></BaseButton>
+          <BaseButton
+            onPress={() => props.navigation.replace('Login')}
+            width="100%"
+            title={
+              props.language.language === 'Arabic'
+                ? 'دخول'
+                : props.language.language === 'French'
+                ? 'Connexion'
+                : 'Log in'
+            }
+            type="ghost"></BaseButton>
         </View>
       </View>
     </KeyboardAvoidingView>

@@ -21,8 +21,6 @@ const SignupScreen = function (props) {
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
   const [password, setPasword] = useState();
-  const [emailStateError, setEmailStateError] = useState(false);
-  const [passwordStateError, setPaswordStateError] = useState(false);
   async function handleSubmit() {
     let emailError = false;
     let passwordError = false;
@@ -64,35 +62,6 @@ const SignupScreen = function (props) {
     }
   }
 
-  // const renderItemHandler = function (item) {
-  //   return (
-  //     <TouchableOpacity
-  //       style={{marginBottom: 20}}
-  //       onPress={() => {
-  //         if (item.item.title === 'Sale') {
-  //           props.navigation.navigate({
-  //             name: 'Sale',
-  //           });
-  //         } else {
-  //           props.navigation.navigate({
-  //             name: 'Categories',
-  //             params: {collection: item.item.title},
-  //           });
-  //         }
-  //       }}>
-  //       <BaseText
-  //         style={{
-  //           textAlign: 'center',
-  //           fontWeight: '700',
-  //           fontFamily: 'Roboto-Bold',
-  //         }}
-  //         color={Colors.primaryColor}
-  //         size={30}>
-  //         {item.item.title}
-  //       </BaseText>
-  //     </TouchableOpacity>
-  //   );
-  // };
   return (
     <KeyboardAvoidingView
       style={{backgroundColor: 'white'}}
@@ -107,7 +76,11 @@ const SignupScreen = function (props) {
             fontSize: 30,
             marginBottom: 30,
           }}>
-          Signup
+          {props.language.language === 'Arabic'
+            ? 'تسجيل'
+            : props.language.language === 'French'
+            ? "S'inscrire"
+            : 'Sign up'}
         </Text>
         <View style={{flexDirection: 'column', width: '70%'}}>
           <TextInput
@@ -115,28 +88,54 @@ const SignupScreen = function (props) {
               marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
+              textAlign:
+                props.language.language === 'Arabic' ? 'right' : 'left',
             }}
             onChangeText={val => setEmail(val)}
             keyboardType="email-address"
-            placeholder="Email"></TextInput>
+            placeholder={
+              props.language.language === 'Arabic'
+                ? 'البريد الإلكتروني'
+                : 'Email'
+            }></TextInput>
           <TextInput
             style={{
               marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
+              textAlign:
+                props.language.language === 'Arabic' ? 'right' : 'left',
             }}
             secureTextEntry={true}
             onChangeText={val => setPasword(val)}
-            placeholder="Password"></TextInput>
+            placeholder={
+              props.language.language === 'Arabic'
+                ? 'كلمه السر'
+                : props.language.language === 'French'
+                ? 'Mot de passe'
+                : 'Password'
+            }></TextInput>
           <BaseButton
             onPress={handleSubmit}
             width="100%"
-            title="Signup"
+            title={
+              props.language.language === 'Arabic'
+                ? 'تسجيل'
+                : props.language.language === 'French'
+                ? "S'inscrire"
+                : 'Sign up'
+            }
             type="flat"></BaseButton>
           <BaseButton
             onPress={() => props.navigation.replace('Login')}
             width="100%"
-            title="Login"
+            title={
+              props.language.language === 'Arabic'
+                ? 'دخول'
+                : props.language.language === 'French'
+                ? 'Se connecter'
+                : 'Log in'
+            }
             type="ghost"></BaseButton>
         </View>
       </View>
