@@ -76,9 +76,7 @@ const SettingsScreen = function (props) {
           <Picker
             style={{backgroundColor: 'white', width: 180}}
             selectedValue={selectedRegion}
-            onValueChange={(itemValue, itemIndex) => {
-              selectRegion;
-            }}>
+            onValueChange={selectRegion}>
             <Picker.Item label={'Morocco'} value={'Morocco'} />
             <Picker.Item label={'US'} value={'US'} />
             <Picker.Item label={'UK'} value={'UK'} />

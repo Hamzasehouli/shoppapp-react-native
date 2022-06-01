@@ -16,11 +16,14 @@ import Blue from '../assets/images/Blue.svg';
 import {TextInput} from 'react-native-paper';
 import BaseButton from '../components/BaseButton';
 import {useDispatch, useSelector} from 'react-redux';
+import axios from 'axios';
 
 const SignupScreen = function (props) {
   const dispatch = useDispatch();
+  const [name, setName] = useState();
   const [email, setEmail] = useState();
-  const [password, setPasword] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
   async function handleSubmit() {
     let emailError = false;
     let passwordError = false;
@@ -31,34 +34,55 @@ const SignupScreen = function (props) {
       if (!password || password.length < 8) {
         passwordError = true;
       }
-      setEmailStateError(emailError);
-      setPaswordStateError(passwordError);
-      if (emailError || passwordError) {
-        throw new Error('error');
-      }
-      const res = await fetch(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAhMHIC_IVXX0deef5sMnqrOnN617B0rmc`,
-        {
-          method: 'POST',
-          header: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify({email, password}),
+      // setEmailStateError(emailError);
+      // setPaswordStateError(passwordError);
+      // if (emailError || passwordError) {
+      //   throw new Error('error');
+      // }
+      console.log({
+        name,
+        email,
+        password,
+        confirmPassword,
+      });
+      const res = await axios({
+        method: 'post',
+        url: 'https://shoppyapp-backend.herokuapp.com/api/v1/users/register',
+        data: {
+          name,
+          email,
+          password,
+          confirmPassword,
         },
-      );
+      });
+      // const res = await fetch(
+      //   `https://shoppyapp-backend.herokuapp.com/api/v1/users/register`,
+      //   {
+      //     method: 'POST',
+      //     header: {
+      //       'Content-type': 'application/json',
+      //     },
+      //     body: JSON.stringify({
+      //       name,
+      //       email,
+      //       password,
+      //       confirmPassword,
+      //     }),
+      //   },
+      // );
 
-      const data = await res.json();
-      if (!res.ok) {
+      if (res.status != 201) {
+        console.log(res.status);
         throw new Error('errr');
       }
       dispatch({
         type: '',
         status: true,
-        email: data.email,
-        tokenId: data.idToken,
+        email: res.email,
       });
+      props.navigation.replace('MainStackScreen');
     } catch (err) {
-      console.log('error');
+      console.log(err);
     }
   }
 
@@ -91,6 +115,20 @@ const SignupScreen = function (props) {
               textAlign:
                 props.language.language === 'Arabic' ? 'right' : 'left',
             }}
+            onChangeText={val => setName(val)}
+            placeholder={
+              props.language.language === 'Arabic'
+                ? 'البريد الإلكتروني'
+                : 'Name'
+            }></TextInput>
+          <TextInput
+            style={{
+              marginBottom: 20,
+              backgroundColor: 'transparent',
+              fontSize: 20,
+              textAlign:
+                props.language.language === 'Arabic' ? 'right' : 'left',
+            }}
             onChangeText={val => setEmail(val)}
             keyboardType="email-address"
             placeholder={
@@ -107,13 +145,30 @@ const SignupScreen = function (props) {
                 props.language.language === 'Arabic' ? 'right' : 'left',
             }}
             secureTextEntry={true}
-            onChangeText={val => setPasword(val)}
+            onChangeText={val => setPassword(val)}
             placeholder={
               props.language.language === 'Arabic'
                 ? 'كلمه السر'
                 : props.language.language === 'French'
                 ? 'Mot de passe'
                 : 'Password'
+            }></TextInput>
+          <TextInput
+            style={{
+              marginBottom: 20,
+              backgroundColor: 'transparent',
+              fontSize: 20,
+              textAlign:
+                props.language.language === 'Arabic' ? 'right' : 'left',
+            }}
+            secureTextEntry={true}
+            onChangeText={val => setConfirmPassword(val)}
+            placeholder={
+              props.language.language === 'Arabic'
+                ? 'كلمه السر'
+                : props.language.language === 'French'
+                ? 'Mot de passe'
+                : 'Confirm Password'
             }></TextInput>
           <BaseButton
             onPress={handleSubmit}
