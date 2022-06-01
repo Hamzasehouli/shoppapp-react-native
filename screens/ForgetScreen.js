@@ -35,10 +35,10 @@ const ForgetScreen = function (props) {
       if (res.status != 200) {
         throw new Error('errr');
       }
-      dispatch({
-        type: '',
-        status: true,
-      });
+      // dispatch({
+      //   type: '',
+      //   status: true,
+      // });
       props.navigation.push('MainStackScreen');
     } catch (err) {
       console.log('error');
@@ -64,7 +64,7 @@ const ForgetScreen = function (props) {
             placeholder={
               props.language.language === 'Arabic'
                 ? 'البريد الإلكتروني'
-                : 'Emailll'
+                : 'Email'
             }></TextInput>
 
           <BaseButton

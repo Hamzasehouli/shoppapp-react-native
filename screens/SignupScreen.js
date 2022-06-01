@@ -102,7 +102,9 @@ const SignupScreen = function (props) {
             onChangeText={val => setName(val)}
             placeholder={
               props.language.language === 'Arabic'
-                ? 'البريد الإلكتروني'
+                ? 'الاسم الكامل'
+                : props.language.language === 'French'
+                ? 'Noun'
                 : 'Name'
             }></TextInput>
           <TextInput
@@ -149,9 +151,9 @@ const SignupScreen = function (props) {
             onChangeText={val => setConfirmPassword(val)}
             placeholder={
               props.language.language === 'Arabic'
-                ? 'كلمه السر'
+                ? 'اعد كلمه السر'
                 : props.language.language === 'French'
-                ? 'Mot de passe'
+                ? 'Confirmer mot de passe'
                 : 'Confirm Password'
             }></TextInput>
           <BaseButton
