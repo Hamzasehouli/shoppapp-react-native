@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import {View, StyleSheet, FlatList, Text} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -16,9 +16,24 @@ const data = [
 
 const SettingsScreen = function (props) {
   const language = useSelector(state => state.language);
-  const [selectedLanguage, setSelectedLanguage] = useState(language);
-  const [selectedRegion, setSelectedRegion] = useState('US');
+  const region = useSelector(state => state.region);
+  const [selectedLanguage, setSelectedLanguage] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState('');
+  useLayoutEffect(() => {
+    console.log(language);
+    setSelectedLanguage(language.language);
+    setSelectedRegion(region.region);
+  }, []);
   const dispatch = useDispatch();
+  const selectLanguage = (itemValue, itemIndex) => {
+    dispatch({type: 'language', language: itemValue});
+    props.navigation.navigate({name: 'Splash'});
+  };
+  const selectRegion = (itemValue, itemIndex) => {
+    dispatch({type: 'region', region: itemValue});
+    props.navigation.navigate({name: 'Splash'});
+  };
+
   // const renderItemHandler = function (item) {
   //   return (
   //     <View
@@ -62,9 +77,7 @@ const SettingsScreen = function (props) {
             style={{backgroundColor: 'white', width: 180}}
             selectedValue={selectedRegion}
             onValueChange={(itemValue, itemIndex) => {
-              setSelectedRegion(itemValue);
-              dispatch({type: 'region', region: itemValue});
-              props.navigation.navigate({name: 'Splash'});
+              selectRegion;
             }}>
             <Picker.Item label={'Morocco'} value={'Morocco'} />
             <Picker.Item label={'US'} value={'US'} />
@@ -88,16 +101,12 @@ const SettingsScreen = function (props) {
           <Picker
             style={{backgroundColor: 'white', width: 180}}
             selectedValue={selectedLanguage}
-            onValueChange={(itemValue, itemIndex) => {
-              setSelectedLanguage(itemValue);
-              dispatch({type: 'language', language: itemValue});
-              props.navigation.navigate({name: 'Splash'});
-            }}>
-            <Picker.Item
+            onValueChange={selectLanguage}>
+            {/* <Picker.Item
               enabled={false}
               label={'Select a language'}
               value={''}
-            />
+            /> */}
             <Picker.Item label={'English'} value={'English'} />
             <Picker.Item label={'Arabic'} value={'Arabic'} />
             <Picker.Item label={'French'} value={'French'} />
