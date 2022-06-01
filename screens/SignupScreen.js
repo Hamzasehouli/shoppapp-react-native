@@ -55,24 +55,8 @@ const SignupScreen = function (props) {
           confirmPassword,
         },
       });
-      // const res = await fetch(
-      //   `https://shoppyapp-backend.herokuapp.com/api/v1/users/register`,
-      //   {
-      //     method: 'POST',
-      //     header: {
-      //       'Content-type': 'application/json',
-      //     },
-      //     body: JSON.stringify({
-      //       name,
-      //       email,
-      //       password,
-      //       confirmPassword,
-      //     }),
-      //   },
-      // );
 
       if (res.status != 201) {
-        console.log(res.status);
         throw new Error('errr');
       }
       dispatch({

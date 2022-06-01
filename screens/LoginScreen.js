@@ -16,9 +16,9 @@ import Blue from '../assets/images/Blue.svg';
 import {TextInput} from 'react-native-paper';
 import BaseButton from '../components/BaseButton';
 import {useDispatch, useSelector} from 'react-redux';
+import axios from 'axios';
 
 const LoginScreen = function (props) {
-  console.log(props);
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -40,27 +40,23 @@ const LoginScreen = function (props) {
       if (emailError || passwordError) {
         throw new Error('error');
       }
-      const res = await fetch(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAhMHIC_IVXX0deef5sMnqrOnN617B0rmc`,
-        {
-          method: 'POST',
-          header: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify({email, password}),
+      const res = await axios({
+        method: 'post',
+        url: 'https://shoppyapp-backend.herokuapp.com/api/v1/users/login',
+        data: {
+          email,
+          password,
         },
-      );
+      });
 
-      const data = await res.json();
-      if (!res.ok) {
+      if (res.status != 200) {
         throw new Error('errr');
       }
 
       dispatch({
         type: '',
         status: true,
-        email: data.email,
-        tokenId: data.idToken,
+        email: res.email,
       });
       props.navigation.replace('MainStackScreen');
     } catch (err) {

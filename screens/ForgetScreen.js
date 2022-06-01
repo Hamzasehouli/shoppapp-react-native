@@ -5,6 +5,7 @@ import Blue from '../assets/images/Blue.svg';
 import {TextInput} from 'react-native-paper';
 import BaseButton from '../components/BaseButton';
 import {useSelector, useDispatch} from 'react-redux';
+import axios from 'axios';
 
 const ForgetScreen = function (props) {
   const dispatch = useDispatch();
@@ -18,29 +19,25 @@ const ForgetScreen = function (props) {
       }
 
       setEmailStateError(emailError);
-      if (emailError || passwordError) {
+      if (emailError) {
         throw new Error('error');
       }
-      const res = await fetch(
-        `https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyAhMHIC_IVXX0deef5sMnqrOnN617B0rmc`,
-        {
-          method: 'POST',
-          header: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify({email}),
-        },
-      );
 
-      const data = await res.json();
-      if (!res.ok) {
+      const res = await axios({
+        method: 'post',
+        url: 'https://shoppyapp-backend.herokuapp.com/api/v1/users/forget-password',
+        data: {
+          email,
+        },
+      });
+      console.log(res);
+
+      if (res.status != 200) {
         throw new Error('errr');
       }
       dispatch({
         type: '',
         status: true,
-        email: data.email,
-        tokenId: data.idToken,
       });
       props.navigation.push('MainStackScreen');
     } catch (err) {
@@ -55,6 +52,7 @@ const ForgetScreen = function (props) {
         <Blue width={100} height={100} style={{marginBottom: 14}}></Blue>
         <View style={{flexDirection: 'column', width: '70%'}}>
           <TextInput
+            onChangeText={v => setEmail(v)}
             style={{
               marginBottom: 20,
               backgroundColor: 'transparent',
@@ -66,10 +64,11 @@ const ForgetScreen = function (props) {
             placeholder={
               props.language.language === 'Arabic'
                 ? 'البريد الإلكتروني'
-                : 'Email'
+                : 'Emailll'
             }></TextInput>
 
           <BaseButton
+            onPress={handleSubmit}
             width="100%"
             title={
               props.language.language === 'Arabic'
