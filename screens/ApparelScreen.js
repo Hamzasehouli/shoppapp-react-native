@@ -29,7 +29,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../constants/Colors';
 import BaseText from '../components/BaseText';
 import {favoriteToggler} from '../store/actions/favoritesAction';
-import currencyConverter from '../converters/LanguageConverter';
+import currencyConverter from '../converters/currencyConverter';
+import regionChecker from '../converters/regionChecker';
 
 const Apparel = function (props) {
   const [data, setData] = useState([]);
@@ -48,10 +49,6 @@ const Apparel = function (props) {
 
     props.navigation.setParams({apparel});
   };
-
-  // const currencyConverter = useCallback(LanguageConverter.bind(props, price), [
-  //   props.region,
-  // ]);
 
   useEffect(() => {
     switch (props.route.params.title) {
@@ -227,25 +224,16 @@ const Apparel = function (props) {
                     }
                   : {}
               }>
-              {props.region.region === 'Morocco'
-                ? 'MAD '
-                : props.region.region === 'UK'
-                ? '£ '
-                : '$ '}
-              {Number(currencyConverter(item.item.price, region)).toFixed(2)}
+              {regionChecker(props.region.region)}
+              {currencyConverter(item.item.price, region)}
             </Text>
           </BaseText>
           <BaseText color={'red'} style={{fontWeight: '700'}} size={18}>
             {item.item.discountPrice &&
-              `${
-                props.region.region === 'Morocco'
-                  ? 'MAD '
-                  : props.region.region === 'UK'
-                  ? '£ '
-                  : '$ '
-              }${Number(
-                currencyConverter(item.item.discountPrice, region),
-              ).toFixed(2)}`}
+              `${regionChecker(props.region.region)}${currencyConverter(
+                item.item.discountPrice,
+                region,
+              )}`}
           </BaseText>
         </View>
       </TouchableOpacity>

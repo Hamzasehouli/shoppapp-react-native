@@ -20,7 +20,6 @@ const SettingsScreen = function (props) {
   const [selectedLanguage, setSelectedLanguage] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
   useLayoutEffect(() => {
-    console.log(language);
     setSelectedLanguage(language.language);
     setSelectedRegion(region.region);
   }, []);

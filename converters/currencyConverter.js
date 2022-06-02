@@ -1,9 +1,11 @@
 export default (price, region) => {
+  let cur;
   if (region === 'US') {
-    return price;
+    cur = price;
   } else if (region === 'UK') {
-    return price * 1.1;
+    cur = price * 1.1;
   } else {
-    return price * 7;
+    cur = price * 7;
   }
+  return Number(cur).toFixed(2);
 };

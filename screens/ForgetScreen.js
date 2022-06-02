@@ -30,7 +30,6 @@ const ForgetScreen = function (props) {
           email,
         },
       });
-      console.log(res);
 
       if (res.status != 200) {
         throw new Error('errr');

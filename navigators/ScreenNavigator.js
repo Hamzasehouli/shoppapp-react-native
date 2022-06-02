@@ -62,7 +62,7 @@ const Home = function (props) {
           },
         }}
         name="DetailsScreen">
-        {props => <DetailsScreen {...props}></DetailsScreen>}
+        {props => <DetailsScreen region={region} {...props}></DetailsScreen>}
       </Stack.Screen>
     </Stack.Navigator>
   );

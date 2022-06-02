@@ -21,10 +21,13 @@ import BaseButton from '../components/BaseButton';
 import BaseText from '../components/BaseText';
 import Colors from '../constants/Colors';
 import {useDispatch} from 'react-redux';
+import currencyConverter from '../converters/currencyConverter';
+import regionChecker from '../converters/regionChecker';
 
 const {width: screenWidth} = Dimensions.get('window');
 
 const MyCarousel = props => {
+  const [region, setRegion] = useState(props.region.region);
   const [selectedLanguage, setSelectedLanguage] = useState('');
   const [apparel, setApparel] = useState(props.route.params.apparel);
   const dispatch = useDispatch();
@@ -98,11 +101,16 @@ const MyCarousel = props => {
                     }
                   : {}
               }>
-              ${apparel.price}
+              {regionChecker(region)}
+              {currencyConverter(apparel.price, region)}
             </Text>
           </BaseText>
           <BaseText color={'red'} style={{fontWeight: '700'}} size={18}>
-            {apparel.discountPrice && `$${apparel.discountPrice}`}
+            {apparel.discountPrice &&
+              `${regionChecker(region)}${currencyConverter(
+                apparel.discountPrice,
+                region,
+              )}`}
           </BaseText>
 
           <Text style={{...styles.marginBottom3}}>Ref 28864/9927</Text>

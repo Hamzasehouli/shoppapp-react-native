@@ -39,12 +39,7 @@ const SignupScreen = function (props) {
       // if (emailError || passwordError) {
       //   throw new Error('error');
       // }
-      console.log({
-        name,
-        email,
-        password,
-        confirmPassword,
-      });
+
       const res = await axios({
         method: 'post',
         url: 'https://shoppyapp-backend.herokuapp.com/api/v1/users/register',
