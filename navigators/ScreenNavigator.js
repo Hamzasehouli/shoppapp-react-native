@@ -50,6 +50,7 @@ const Home = function (props) {
       <Stack.Screen name="CartScreen">
         {props => <CartScreen {...props} fav={props.favs}></CartScreen>}
       </Stack.Screen>
+      <Stack.Screen name="Sale" component={SaleScreen}></Stack.Screen>
       <Stack.Screen name="ApparelScreen">
         {props => <ApparelScreen region={region} {...props}></ApparelScreen>}
       </Stack.Screen>
@@ -352,7 +353,7 @@ const StackNavigator = (
       options={{headerShown: false}}
       name="Splash"
       component={SplashScreen}></Stack.Screen>
-    <Stack.Screen name="Sale" component={SaleScreen}></Stack.Screen>
+    {/* <Stack.Screen name="Sale" component={SaleScreen}></Stack.Screen> */}
     <Stack.Screen
       options={{headerShown: false}}
       name="Start"

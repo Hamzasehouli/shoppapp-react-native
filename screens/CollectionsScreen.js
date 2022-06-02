@@ -61,7 +61,7 @@ const CollectionsScreen = function (props) {
       <TouchableOpacity
         style={{marginBottom: 20}}
         onPress={() => {
-          if (item.item.title === 'Sale') {
+          if (item.item.title === 'Sales') {
             props.navigation.navigate({
               name: 'Sale',
             });
