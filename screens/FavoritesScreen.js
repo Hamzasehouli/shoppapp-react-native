@@ -13,9 +13,12 @@ import BaseText from '../components/BaseText';
 import Colors from '../constants/Colors';
 import {useSelector, useDispatch} from 'react-redux';
 import {useEffect, useState} from 'react';
+import currencyConverter from '../converters/currencyConverter';
+import regionChecker from '../converters/regionChecker';
 
 const FavoritesScreen = function (props) {
   const dispatch = useDispatch();
+  const [region, setRegion] = useState(props.region.region);
   const [data, setData] = useState(props.data);
   useEffect(() => setData(props.data));
   const favoriteHandler = apparel => {
@@ -58,11 +61,16 @@ const FavoritesScreen = function (props) {
                     }
                   : {}
               }>
-              ${item.item.price}
+              {regionChecker(region)}
+              {currencyConverter(item.item.price, region)}
             </Text>
           </BaseText>
           <BaseText color={'red'} style={{fontWeight: '700'}} size={18}>
-            {item.item.discountPrice && `$${item.item.discountPrice}`}
+            {item.item.discountPrice &&
+              `${regionChecker(region)} ${currencyConverter(
+                item.item.discountPrice,
+                region,
+              )}`}
           </BaseText>
         </View>
       </TouchableOpacity>

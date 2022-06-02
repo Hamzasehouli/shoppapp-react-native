@@ -14,11 +14,14 @@ import BaseButton from '../components/BaseButton';
 import Colors from '../constants/Colors';
 import {useSelector, useDispatch} from 'react-redux';
 import {useEffect, useState} from 'react';
+import currencyConverter from '../converters/currencyConverter';
+import regionChecker from '../converters/regionChecker';
 
 const CartScreen = function (props) {
+  const [region, setRegion] = useState(props.region.region);
   const dispatch = useDispatch();
   const [data, setData] = useState(props.cartData);
-  const totalPrice = data.reduce((a, v) => v.price + a, 0);
+  const totalPrice = data.reduce((a, v) => v.discountPrice ?? v.price + a, 0);
   useEffect(() => setData(props.cartData));
   const cartHandler = apparel => {
     setData(props.cartData.filter(a => a.id !== apparel.id));
@@ -43,7 +46,15 @@ const CartScreen = function (props) {
           <View>
             <BaseText>{item.item.title}</BaseText>
             <BaseText color={Colors.primaryColor} style={{fontWeight: '700'}}>
-              ${item.item.price}
+              {item.item.discountPrice
+                ? `${regionChecker(region)} ${currencyConverter(
+                    item.item.discountPrice,
+                    region,
+                  )}`
+                : `${
+                    regionChecker(region) +
+                    currencyConverter(item.item.price, region)
+                  }`}
             </BaseText>
             <BaseText size={14} color={'grey'}>
               Size: {item.item.size}
@@ -114,7 +125,8 @@ const CartScreen = function (props) {
             Total
           </BaseText>
           <BaseText size={30} color="black">
-            ${totalPrice}
+            {regionChecker(region)}
+            {currencyConverter(totalPrice, region)}
           </BaseText>
         </View>
         <BaseButton
