@@ -9,12 +9,29 @@ import {
 } from 'react-native';
 import BaseText from '../components/BaseText';
 
-const collectionsData = [
-  {id: 'cl1', title: 'Men Sales'},
-  {id: 'cl2', title: 'Women Sales'},
-];
-
 const SaleScreen = function (props) {
+  const {language} = props.language;
+  const collectionsData = [
+    {
+      id: 'cl1',
+      title:
+        language === 'French'
+          ? 'Soldes hommes'
+          : language === 'Arabic'
+          ? 'تخفيضات رجال'
+          : 'Men Sales',
+    },
+    {
+      id: 'cl2',
+      title:
+        language === 'French'
+          ? 'Soldes femmes'
+          : language === 'Arabic'
+          ? 'تخفيضات نساء'
+          : 'Women Sales',
+    },
+  ];
+  console.log(language);
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity

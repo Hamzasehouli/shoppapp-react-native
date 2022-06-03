@@ -28,6 +28,7 @@ const Stack = createNativeStackNavigator();
 
 const Home = function (props) {
   const {region} = props;
+  const {language} = props;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -50,7 +51,14 @@ const Home = function (props) {
       <Stack.Screen name="CartScreen">
         {props => <CartScreen {...props} fav={props.favs}></CartScreen>}
       </Stack.Screen>
-      <Stack.Screen name="Sale" component={SaleScreen}></Stack.Screen>
+      <Stack.Screen name="Sale">
+        {props => (
+          <SaleScreen
+            region={region}
+            language={language}
+            {...props}></SaleScreen>
+        )}
+      </Stack.Screen>
       <Stack.Screen name="ApparelScreen">
         {props => <ApparelScreen region={region} {...props}></ApparelScreen>}
       </Stack.Screen>
