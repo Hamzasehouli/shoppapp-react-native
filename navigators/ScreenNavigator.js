@@ -249,9 +249,11 @@ const MainStackScreen = function () {
           tabBarIcon: function () {
             return (
               <Icon
-                color={Colors.primaryColor}
-                name="ios-cart-outline"
-                size={25}></Icon>
+                color={cartData.length > 0 ? 'red' : Colors.primaryColor}
+                name={cartData.length <= 0 ? 'ios-cart-outline' : 'ios-cart'}
+                size={25}>
+                <Text>ssssqqqqqqqqqqqqqqq</Text>
+              </Icon>
             );
           },
         }}
@@ -278,8 +280,8 @@ const MainStackScreen = function () {
           tabBarIcon: function () {
             return (
               <Icon
-                color={Colors.primaryColor}
-                name="ios-heart-outline"
+                color={data.length > 0 ? 'red' : Colors.primaryColor}
+                name={data.length <= 0 ? 'ios-heart-outline' : 'ios-heart'}
                 size={25}></Icon>
             );
           },
