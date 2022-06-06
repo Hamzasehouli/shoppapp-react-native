@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useLayoutEffect} from 'react';
 import {
   View,
@@ -18,22 +19,21 @@ import currencyConverter from '../converters/currencyConverter';
 import regionChecker from '../converters/regionChecker';
 
 const CartScreen = function (props) {
-  const [region, setRegion] = useState(props.region.region);
-  console.log(region);
+  const [region, setRegion] = useState('');
   const dispatch = useDispatch();
   const [data, setData] = useState(props.cartData);
-  const [totalPrice, setTotalPrice] = useState(
-    data.reduce((a, v) => v.price + a, 0),
-  );
+  const [totalPrice, setTotalPrice] = useState(0);
   useLayoutEffect(() => {
     const total = data?.reduce((a, v) => {
       let price = v.discountPrice ?? v.price;
 
       return price + a;
     }, 0);
+    setRegion(props.region.region);
     setTotalPrice(total);
+    setData(props.cartData);
   });
-  useEffect(() => setData(props.cartData));
+
   const cartHandler = apparel => {
     setData(props.cartData.filter(a => a.id !== apparel.id));
     dispatch({type: 'removeFromCart', apparel});
@@ -84,6 +84,7 @@ const CartScreen = function (props) {
       </TouchableOpacity>
     );
   };
+
   if (data.length <= 0) {
     return (
       <View
@@ -103,6 +104,7 @@ const CartScreen = function (props) {
       </View>
     );
   }
+
   return (
     <View style={styles.screen}>
       <FlatList

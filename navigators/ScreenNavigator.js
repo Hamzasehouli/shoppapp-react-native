@@ -87,7 +87,12 @@ const Cart = function (props) {
       {/* <Stack.Screen name="Categories" component={HomeScreen}></Stack.Screen> */}
       <Stack.Screen name="CartScreen">
         {function () {
-          return <CartScreen {...props} cartData={props.cartData}></CartScreen>;
+          return (
+            <CartScreen
+              region={region}
+              {...props}
+              cartData={props.cartData}></CartScreen>
+          );
         }}
       </Stack.Screen>
       <Stack.Screen

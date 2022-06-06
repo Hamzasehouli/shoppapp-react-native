@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState, useLayoutEffect} from 'react';
 import {
   View,
   Text,
@@ -12,14 +12,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import BaseText from '../components/BaseText';
 import Colors from '../constants/Colors';
 import {useSelector, useDispatch} from 'react-redux';
-import {useEffect, useState} from 'react';
 import currencyConverter from '../converters/currencyConverter';
 import regionChecker from '../converters/regionChecker';
 
 const FavoritesScreen = function (props) {
   const dispatch = useDispatch();
-  const [region, setRegion] = useState(props.region.region);
+  const [region, setRegion] = useState('');
   const [data, setData] = useState([]);
+  useLayoutEffect(() => setRegion(props.region.region));
   useEffect(() => setData(props.data));
   const favoriteHandler = apparel => {
     setData(props.data.filter(a => a.id !== apparel.id));
