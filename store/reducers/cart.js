@@ -5,7 +5,7 @@ const initialReducer = {
 };
 (async function () {
   const jsonValue = await AsyncStorage.getItem('@cart');
-  initialReducer.cart = JSON.parse(jsonValue);
+  initialReducer.cart = JSON.parse(jsonValue) ?? [];
 })();
 
 const cartReducer = function (state = initialReducer, action) {
