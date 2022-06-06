@@ -138,7 +138,7 @@ const MyCarousel = props => {
                 type: 'ADD_TO_CART',
                 apparel: {...apparel, size: selectedLanguage},
               });
-              props.navigation.navigate('Cart');
+              // props.navigation.navigate('CartScreen');
             }}
             fontSize={15}
             width="50%"

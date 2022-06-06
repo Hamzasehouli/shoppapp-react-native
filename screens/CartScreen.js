@@ -143,7 +143,7 @@ const CartScreen = function (props) {
           </BaseText>
         </View>
         <BaseButton
-          onPress={() => dispatch({type: 'ADD_TO_CART', apparel})}
+          onPress={() => console.log('dd')}
           fontSize={18}
           width="100%"
           title="Process checkout"
