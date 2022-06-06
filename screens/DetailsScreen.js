@@ -27,7 +27,7 @@ import regionChecker from '../converters/regionChecker';
 const {width: screenWidth} = Dimensions.get('window');
 
 const MyCarousel = props => {
-  const [region, setRegion] = useState(props.region.region);
+  const [region, setRegion] = useState(props?.region?.region);
   const [selectedLanguage, setSelectedLanguage] = useState('');
   const [apparel, setApparel] = useState(props.route.params.apparel);
   const dispatch = useDispatch();

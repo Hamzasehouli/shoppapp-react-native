@@ -77,6 +77,7 @@ const Home = function (props) {
   );
 };
 const Cart = function (props) {
+  const {region} = props;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -97,8 +98,9 @@ const Cart = function (props) {
             backgroundColor: 'transparent',
           },
         }}
-        name="DetailsScreen"
-        component={DetailsScreen}></Stack.Screen>
+        name="DetailsScreenCart">
+        {props => <DetailsScreen region={region} {...props}></DetailsScreen>}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };
@@ -177,21 +179,24 @@ const Settings = function (props) {
   );
 };
 const Favorites = function (props) {
+  const {region} = props;
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="Your favorites">
-      <Stack.Screen name="Your favorites">
+      initialRouteName="FavoritesScreen">
+      <Stack.Screen name="FavoritesScreen">
         {function () {
           return (
-            <FavoritesScreen {...props} data={props.data}></FavoritesScreen>
+            <FavoritesScreen
+              region={region}
+              {...props}
+              data={props.data}></FavoritesScreen>
           );
         }}
       </Stack.Screen>
       <Stack.Screen
-        name="DetailsScreen"
         options={{
           headerShown: true,
           headerTransparent: true,
@@ -199,7 +204,9 @@ const Favorites = function (props) {
             backgroundColor: 'transparent',
           },
         }}
-        component={DetailsScreen}></Stack.Screen>
+        name="DetailsScreenFavorit">
+        {props => <DetailsScreen region={region} {...props}></DetailsScreen>}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };

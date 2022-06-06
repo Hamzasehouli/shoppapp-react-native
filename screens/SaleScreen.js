@@ -31,7 +31,7 @@ const SaleScreen = function (props) {
           : 'Women Sales',
     },
   ];
-  console.log(language);
+
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity

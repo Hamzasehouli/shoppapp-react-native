@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {
   View,
   Text,
@@ -19,9 +19,20 @@ import regionChecker from '../converters/regionChecker';
 
 const CartScreen = function (props) {
   const [region, setRegion] = useState(props.region.region);
+  console.log(region);
   const dispatch = useDispatch();
   const [data, setData] = useState(props.cartData);
-  const totalPrice = data.reduce((a, v) => v.discountPrice ?? v.price + a, 0);
+  const [totalPrice, setTotalPrice] = useState(
+    data.reduce((a, v) => v.price + a, 0),
+  );
+  useLayoutEffect(() => {
+    const total = data?.reduce((a, v) => {
+      let price = v.discountPrice ?? v.price;
+
+      return price + a;
+    }, 0);
+    setTotalPrice(total);
+  });
   useEffect(() => setData(props.cartData));
   const cartHandler = apparel => {
     setData(props.cartData.filter(a => a.id !== apparel.id));
@@ -34,7 +45,7 @@ const CartScreen = function (props) {
         style={styles.box}
         onPress={() =>
           props.navigation.navigate({
-            name: 'DetailsScreen',
+            name: 'DetailsScreenCart',
             params: {apparel: item.item, isFromCartScreen: true},
           })
         }>

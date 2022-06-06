@@ -19,7 +19,7 @@ import regionChecker from '../converters/regionChecker';
 const FavoritesScreen = function (props) {
   const dispatch = useDispatch();
   const [region, setRegion] = useState(props.region.region);
-  const [data, setData] = useState(props.data);
+  const [data, setData] = useState([]);
   useEffect(() => setData(props.data));
   const favoriteHandler = apparel => {
     setData(props.data.filter(a => a.id !== apparel.id));
@@ -32,7 +32,7 @@ const FavoritesScreen = function (props) {
         style={styles.box}
         onPress={() =>
           props.navigation.navigate({
-            name: 'DetailsScreen',
+            name: 'DetailsScreenFavorit',
             params: {apparel: item.item},
           })
         }>
