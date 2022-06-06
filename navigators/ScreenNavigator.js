@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, Button} from 'react-native';
 import CartScreen from '../screens/CartScreen';
 import ApparelScreen from '../screens/ApparelScreen';
+import PaymentScreen from '../screens/PaymentScreen';
 import SaleScreen from '../screens/SaleScreen';
 import SplashScreen from '../screens/SplashScreen';
 import COLORS from '../constants/Colors';
@@ -105,6 +106,17 @@ const Cart = function (props) {
         }}
         name="DetailsScreenCart">
         {props => <DetailsScreen region={region} {...props}></DetailsScreen>}
+      </Stack.Screen>
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTransparent: true,
+          headerStyle: {
+            backgroundColor: 'transparent',
+          },
+        }}
+        name="PaymentScreen">
+        {props => <PaymentScreen region={region} {...props}></PaymentScreen>}
       </Stack.Screen>
     </Stack.Navigator>
   );
@@ -263,9 +275,7 @@ const MainStackScreen = function () {
               <Icon
                 color={cartData.length > 0 ? 'red' : Colors.primaryColor}
                 name={cartData.length <= 0 ? 'ios-cart-outline' : 'ios-cart'}
-                size={25}>
-                <Text>ssssqqqqqqqqqqqqqqq</Text>
-              </Icon>
+                size={25}></Icon>
             );
           },
         }}

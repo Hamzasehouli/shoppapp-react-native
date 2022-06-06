@@ -143,7 +143,9 @@ const CartScreen = function (props) {
           </BaseText>
         </View>
         <BaseButton
-          onPress={() => console.log('dd')}
+          onPress={() => {
+            props.navigation.replace('PaymentScreen');
+          }}
           fontSize={18}
           width="100%"
           title="Process checkout"
