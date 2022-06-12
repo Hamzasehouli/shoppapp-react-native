@@ -42,14 +42,6 @@ const LoginScreen = function (props) {
       if (emailError || passwordError) {
         throw new Error('error');
       }
-      // const res = await axios({
-      //   method: 'post',
-      //   url: '172.20.192.1:3000/api/v1/users/login',
-      //   data: {
-      //     email,
-      //     password,
-      //   },
-      // });
 
       const res = await fetch('http://172.20.192.1:3000/api/v1/users/login', {
         method: 'post',
@@ -111,7 +103,6 @@ const LoginScreen = function (props) {
         <View style={{flexDirection: 'column', width: '70%'}}>
           <TextInput
             style={{
-              marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
               textAlign:
@@ -130,7 +121,6 @@ const LoginScreen = function (props) {
 
           <TextInput
             style={{
-              marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
               textAlign:
@@ -146,36 +136,29 @@ const LoginScreen = function (props) {
                 : 'Password'
             }></TextInput>
           <Text style={{color: 'red'}}>{passwordStateError}</Text>
-          {isLoading ? (
-            <BaseButton
-              onPress={handleSubmit}
-              width="100%"
-              title=". . ."
-              type="flat"></BaseButton>
-          ) : (
-            <BaseButton
-              onPress={handleSubmit}
-              width="100%"
-              title={
-                props.language.language === 'Arabic'
-                  ? 'دخول'
-                  : props.language.language === 'French'
-                  ? 'Se connecter'
-                  : 'Log in'
-              }
-              type="flat"></BaseButton>
-          )}
-          {/* <BaseButton
-            onPress={handleSubmit}
-            width="100%"
-            title={
-              props.language.language === 'Arabic'
-                ? 'دخول'
-                : props.language.language === 'French'
-                ? 'Se connecter'
-                : 'Log in'
-            }
-            type="flat"></BaseButton> */}
+          <View style={{marginTop: 20}}>
+            {isLoading ? (
+              <BaseButton
+                onPress={() => {
+                  return;
+                }}
+                width="100%"
+                title=". . ."
+                type="flat"></BaseButton>
+            ) : (
+              <BaseButton
+                onPress={handleSubmit}
+                width="100%"
+                title={
+                  props.language.language === 'Arabic'
+                    ? 'دخول'
+                    : props.language.language === 'French'
+                    ? 'Se connecter'
+                    : 'Log in'
+                }
+                type="flat"></BaseButton>
+            )}
+          </View>
           <BaseButton
             onPress={() => props.navigation.push('Reset Password')}
             width="100%"

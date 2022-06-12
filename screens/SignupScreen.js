@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import BaseScreen from '../components/BaseScreen';
@@ -20,38 +21,65 @@ import axios from 'axios';
 
 const SignupScreen = function (props) {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
+  const [nameStateError, setNameStateError] = useState('');
+  const [emailStateError, setEmailStateError] = useState('');
+  const [passwordStateError, setPaswordStateError] = useState('');
+  const [confirmPasswordStateError, setConfirmPasswordStateError] =
+    useState('');
+
   async function handleSubmit() {
-    let emailError = false;
-    let passwordError = false;
+    setIsLoading(true);
+    let nameError = '';
+    let emailError = '';
+    let passwordError = '';
+    let confirmPasswordError = '';
     try {
+      if (!name || name.length < 4) {
+        nameError =
+          'Please enter a valid name; name should contain at least 4 chars';
+      }
       if (!email || !email.includes('@')) {
-        emailError = true;
+        emailError = 'Please enter a valid email';
       }
       if (!password || password.length < 8) {
-        passwordError = true;
+        passwordError = 'Please enter a valid password';
       }
-      // setEmailStateError(emailError);
-      // setPaswordStateError(passwordError);
-      // if (emailError || passwordError) {
-      //   throw new Error('error');
-      // }
+      if (
+        !confirmPassword ||
+        confirmPassword.length < 8 ||
+        confirmPassword !== password
+      ) {
+        confirmPasswordError = 'Password and confirm password do not match';
+      }
 
-      const res = await axios({
-        method: 'post',
-        url: 'https://shoppyapp-backend.herokuapp.com/api/v1/users/register',
-        data: {
-          name,
-          email,
-          password,
-          confirmPassword,
+      if (nameError || emailError || passwordError || confirmPasswordError) {
+        throw new Error('error');
+      }
+
+      const res = await fetch(
+        'http://172.20.192.1:3000/api/v1/users/register',
+        {
+          method: 'post',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+            confirmPassword,
+          }),
         },
-      });
+      );
+      const data = await res.json();
 
       if (res.status != 201) {
+        Alert.alert('Sign up failed', data.error + ' ' + data.statusCode);
         throw new Error('errr');
       }
       dispatch({
@@ -59,9 +87,19 @@ const SignupScreen = function (props) {
         status: true,
         email: res.email,
       });
-      props.navigation.replace('MainStackScreen');
+      Alert.alert('Sign up succeded', '', [
+        {
+          text: 'OK',
+          onPress: () => props.navigation.replace('MainStackScreen'),
+        },
+      ]);
     } catch (err) {
-      console.log(err);
+      setNameStateError(nameError);
+      setEmailStateError(emailError);
+      setConfirmPasswordStateError(confirmPasswordError);
+      setPaswordStateError(passwordError);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -88,7 +126,6 @@ const SignupScreen = function (props) {
         <View style={{flexDirection: 'column', width: '70%'}}>
           <TextInput
             style={{
-              marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
               textAlign:
@@ -102,9 +139,11 @@ const SignupScreen = function (props) {
                 ? 'Noun'
                 : 'Name'
             }></TextInput>
+          {nameStateError !== '' && (
+            <Text style={{color: 'red'}}>{nameStateError}</Text>
+          )}
           <TextInput
             style={{
-              marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
               textAlign:
@@ -117,9 +156,11 @@ const SignupScreen = function (props) {
                 ? 'البريد الإلكتروني'
                 : 'Email'
             }></TextInput>
+          {emailStateError !== '' && (
+            <Text style={{color: 'red'}}>{emailStateError}</Text>
+          )}
           <TextInput
             style={{
-              marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
               textAlign:
@@ -134,9 +175,11 @@ const SignupScreen = function (props) {
                 ? 'Mot de passe'
                 : 'Password'
             }></TextInput>
+          {passwordStateError !== '' && (
+            <Text style={{color: 'red'}}>{passwordStateError}</Text>
+          )}
           <TextInput
             style={{
-              marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
               textAlign:
@@ -151,17 +194,32 @@ const SignupScreen = function (props) {
                 ? 'Confirmer mot de passe'
                 : 'Confirm Password'
             }></TextInput>
-          <BaseButton
-            onPress={handleSubmit}
-            width="100%"
-            title={
-              props.language.language === 'Arabic'
-                ? 'تسجيل'
-                : props.language.language === 'French'
-                ? "S'inscrire"
-                : 'Sign up'
-            }
-            type="flat"></BaseButton>
+          {confirmPasswordStateError !== '' && (
+            <Text style={{color: 'red'}}>{confirmPasswordStateError}</Text>
+          )}
+          <View style={{marginTop: 20}}>
+            {isLoading ? (
+              <BaseButton
+                onPress={() => {
+                  return;
+                }}
+                width="100%"
+                title=". . ."
+                type="flat"></BaseButton>
+            ) : (
+              <BaseButton
+                onPress={handleSubmit}
+                width="100%"
+                title={
+                  props.language.language === 'Arabic'
+                    ? 'تسجيل'
+                    : props.language.language === 'French'
+                    ? "S'inscrire"
+                    : 'Sign up'
+                }
+                type="flat"></BaseButton>
+            )}
+          </View>
           <BaseButton
             onPress={() => props.navigation.replace('Login')}
             width="100%"
