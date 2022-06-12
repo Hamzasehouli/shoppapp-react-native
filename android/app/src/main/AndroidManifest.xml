@@ -2,6 +2,10 @@
   package="com.bnkinp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- added -->
+     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- s -->
 
     <application
       android:name=".MainApplication"

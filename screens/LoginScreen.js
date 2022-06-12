@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import BaseScreen from '../components/BaseScreen';
@@ -21,35 +22,50 @@ import axios from 'axios';
 const LoginScreen = function (props) {
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const [password, setPassword] = useState();
-  const [emailStateError, setEmailStateError] = useState(false);
-  const [passwordStateError, setPaswordStateError] = useState(false);
+  const [emailStateError, setEmailStateError] = useState('');
+  const [passwordStateError, setPaswordStateError] = useState('');
 
   async function handleSubmit() {
+    setIsLoading(true);
     let emailError = false;
     let passwordError = false;
     try {
       if (!email || !email.includes('@')) {
-        emailError = true;
+        emailError = 'Please enter a valid email';
       }
       if (!password || password.length < 8) {
-        passwordError = true;
+        passwordError = 'Please enter a valid password';
       }
-      setEmailStateError(emailError);
-      setPaswordStateError(passwordError);
+
       if (emailError || passwordError) {
         throw new Error('error');
       }
-      const res = await axios({
+      // const res = await axios({
+      //   method: 'post',
+      //   url: '172.20.192.1:3000/api/v1/users/login',
+      //   data: {
+      //     email,
+      //     password,
+      //   },
+      // });
+
+      const res = await fetch('http://172.20.192.1:3000/api/v1/users/login', {
         method: 'post',
-        url: 'https://shoppyapp-backend.herokuapp.com/api/v1/users/login',
-        data: {
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
           email,
           password,
-        },
+        }),
       });
+      const data = await res.json();
 
       if (res.status != 200) {
+        console.log('data');
+        Alert.alert('Log in failed', data.error + ' ' + data.statusCode);
         throw new Error('errr');
       }
 
@@ -58,9 +74,17 @@ const LoginScreen = function (props) {
         status: true,
         email: res.email,
       });
-      props.navigation.replace('MainStackScreen');
+      Alert.alert('Log in succeded', '', [
+        {
+          text: 'OK',
+          onPress: () => props.navigation.replace('MainStackScreen'),
+        },
+      ]);
     } catch (err) {
-      console.log('error');
+      setEmailStateError(emailError);
+      setPaswordStateError(passwordError);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -100,6 +124,10 @@ const LoginScreen = function (props) {
                 ? 'البريد الإلكتروني'
                 : 'Email'
             }></TextInput>
+          {emailStateError !== '' && (
+            <Text style={{color: 'red'}}>{emailStateError}</Text>
+          )}
+
           <TextInput
             style={{
               marginBottom: 20,
@@ -117,7 +145,27 @@ const LoginScreen = function (props) {
                 ? 'Mot de passe'
                 : 'Password'
             }></TextInput>
-          <BaseButton
+          <Text style={{color: 'red'}}>{passwordStateError}</Text>
+          {isLoading ? (
+            <BaseButton
+              onPress={handleSubmit}
+              width="100%"
+              title=". . ."
+              type="flat"></BaseButton>
+          ) : (
+            <BaseButton
+              onPress={handleSubmit}
+              width="100%"
+              title={
+                props.language.language === 'Arabic'
+                  ? 'دخول'
+                  : props.language.language === 'French'
+                  ? 'Se connecter'
+                  : 'Log in'
+              }
+              type="flat"></BaseButton>
+          )}
+          {/* <BaseButton
             onPress={handleSubmit}
             width="100%"
             title={
@@ -127,7 +175,7 @@ const LoginScreen = function (props) {
                 ? 'Se connecter'
                 : 'Log in'
             }
-            type="flat"></BaseButton>
+            type="flat"></BaseButton> */}
           <BaseButton
             onPress={() => props.navigation.push('Reset Password')}
             width="100%"

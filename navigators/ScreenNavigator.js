@@ -49,9 +49,10 @@ const Home = function (props) {
       <Stack.Screen name="Categories">
         {props => <HomeScreen {...props} fav={props.language}></HomeScreen>}
       </Stack.Screen>
-      <Stack.Screen name="CartScreen">
-        {props => <CartScreen {...props} fav={props.favs}></CartScreen>}
-      </Stack.Screen>
+      {/* <Stack.Screen name="CartScreen">
+        {props => <CartScreen region={region}
+            language={language} {...props} fav={props.favs}></CartScreen>}
+      </Stack.Screen> */}
       <Stack.Screen name="Sale">
         {props => (
           <SaleScreen
