@@ -56,15 +56,15 @@ const LoginScreen = function (props) {
       const data = await res.json();
 
       if (res.status != 200) {
-        console.log('data');
-        Alert.alert('Log in failed', data.error + ' ' + data.statusCode);
-        throw new Error('errr');
+        throw new Error('Log in failed ' + data.error + ' ' + data.statusCode);
       }
 
       dispatch({
         type: '',
         status: true,
-        email: res.email,
+        email: data.data.user.email,
+        name: data.data.user.name,
+        token: data.token,
       });
       Alert.alert('Log in succeded', '', [
         {
@@ -75,6 +75,7 @@ const LoginScreen = function (props) {
     } catch (err) {
       setEmailStateError(emailError);
       setPaswordStateError(passwordError);
+      Alert.alert(err.message);
     } finally {
       setIsLoading(false);
     }

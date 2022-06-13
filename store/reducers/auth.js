@@ -1,13 +1,16 @@
 const initialReducer = {
   isLoggedin: false,
   email: '',
-  tokenId: '',
+  name: '',
+  token: '',
 };
 
 const auth = function (state = initialReducer, action) {
+  console.log(action);
   state.isLoggedin = action.status;
   state.email = action.email;
-  state.tokenId = action.tokenId;
+  state.name = action.name;
+  state.token = action.token;
   return state;
 };
 

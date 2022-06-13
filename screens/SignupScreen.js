@@ -79,13 +79,14 @@ const SignupScreen = function (props) {
       const data = await res.json();
 
       if (res.status != 201) {
-        Alert.alert('Sign up failed', data.error + ' ' + data.statusCode);
-        throw new Error('errr');
+        throw new Error('Sign up failed ' + data.error + ' ' + data.statusCode);
       }
       dispatch({
         type: '',
         status: true,
-        email: res.email,
+        email: data.data.user.email,
+        name: data.data.user.name,
+        token: data.token,
       });
       Alert.alert('Sign up succeded', '', [
         {
@@ -98,6 +99,7 @@ const SignupScreen = function (props) {
       setEmailStateError(emailError);
       setConfirmPasswordStateError(confirmPasswordError);
       setPaswordStateError(passwordError);
+      Alert.alert(err.message);
     } finally {
       setIsLoading(false);
     }
