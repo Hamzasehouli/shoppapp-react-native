@@ -1,8 +1,16 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, KeyboardAvoidingView} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  KeyboardAvoidingView,
+  TextInput,
+  Linking,
+  Text,
+  Alert,
+} from 'react-native';
 
 import Blue from '../assets/images/Blue.svg';
-import {TextInput} from 'react-native-paper';
+// import {TextInput} from 'react-native-paper';
 import BaseButton from '../components/BaseButton';
 import {useSelector, useDispatch} from 'react-redux';
 import axios from 'axios';
@@ -10,22 +18,24 @@ import axios from 'axios';
 const ForgetScreen = function (props) {
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
-  const [emailStateError, setEmailStateError] = useState(false);
+  const [emailStateError, setEmailStateError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   async function handleSubmit() {
+    setIsLoading(true);
     let emailError = false;
     try {
       if (!email || !email.includes('@')) {
-        emailError = true;
+        emailError = 'Please enter a valid email';
       }
 
-      setEmailStateError(emailError);
       if (emailError) {
-        throw new Error('error');
+        throw new Error(emailError);
       }
 
       const res = await axios({
         method: 'post',
-        url: 'https://shoppyapp-backend.herokuapp.com/api/v1/users/forget-password',
+        url: 'http://172.20.192.1:3000/api/v1/users/forget-password',
+        // url: 'https://shoppyapp-backend.herokuapp.com/api/v1/users/forget-password',
         data: {
           email,
         },
@@ -34,13 +44,17 @@ const ForgetScreen = function (props) {
       if (res.status != 200) {
         throw new Error('errr');
       }
-      // dispatch({
-      //   type: '',
-      //   status: true,
-      // });
-      props.navigation.push('MainStackScreen');
+      Alert.alert('Email is sent successfully', '', [
+        {
+          text: 'OK',
+          onPress: () => props.navigation.replace('LoginScreen'),
+        },
+      ]);
     } catch (err) {
-      console.log('error');
+      setEmailStateError(emailError);
+      Alert.alert(err.message);
+    } finally {
+      setIsLoading(false);
     }
   }
   return (
@@ -53,7 +67,6 @@ const ForgetScreen = function (props) {
           <TextInput
             onChangeText={v => setEmail(v)}
             style={{
-              marginBottom: 20,
               backgroundColor: 'transparent',
               fontSize: 20,
               textAlign:
@@ -65,18 +78,32 @@ const ForgetScreen = function (props) {
                 ? 'البريد الإلكتروني'
                 : 'Email'
             }></TextInput>
-
-          <BaseButton
-            onPress={handleSubmit}
-            width="100%"
-            title={
-              props.language.language === 'Arabic'
-                ? 'إرسال'
-                : props.language.language === 'French'
-                ? 'Confirmer'
-                : 'Submit'
-            }
-            type="flat"></BaseButton>
+          {emailStateError !== '' && (
+            <Text style={{color: 'red'}}>{emailStateError}</Text>
+          )}
+          <View style={{marginTop: 20}}>
+            {isLoading ? (
+              <BaseButton
+                onPress={() => {
+                  return;
+                }}
+                width="100%"
+                title=". . ."
+                type="flat"></BaseButton>
+            ) : (
+              <BaseButton
+                onPress={handleSubmit}
+                width="100%"
+                title={
+                  props.language.language === 'Arabic'
+                    ? 'إرسال'
+                    : props.language.language === 'French'
+                    ? 'Confirmer'
+                    : 'Submit'
+                }
+                type="flat"></BaseButton>
+            )}
+          </View>
           <BaseButton
             onPress={() => props.navigation.replace('Login')}
             width="100%"
