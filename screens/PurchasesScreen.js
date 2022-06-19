@@ -25,7 +25,7 @@ const CartScreen = function (props) {
   useLayoutEffect(() => {
     (async function () {
       const res = await fetch(
-        `http://192.168.42.83:3000/api/v1/purchase/${auth.email}`,
+        `https://shoppyapp-backend.herokuapp.com/api/v1/purchase/${auth.email}`,
       );
       const data = await res.json();
 

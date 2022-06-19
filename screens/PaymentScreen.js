@@ -11,7 +11,7 @@ function PaymentScreen(props) {
     (async function () {
       try {
         const res = await fetch(
-          'http://192.168.42.83:3000/api/v1/purchase/create',
+          'https://shoppyapp-backend.herokuapp.com/api/v1/purchase/create',
           {
             method: 'post',
             headers: {

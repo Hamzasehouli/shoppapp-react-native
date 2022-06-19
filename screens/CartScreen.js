@@ -53,7 +53,7 @@ const CartScreen = function (props) {
     });
 
     const res = await fetch(
-      'http://192.168.42.83:3000/api/v1/purchase/checkout-session',
+      'https://shoppyapp-backend.herokuapp.com/api/v1/purchase/checkout-session',
       {
         method: 'POST',
         headers: {
