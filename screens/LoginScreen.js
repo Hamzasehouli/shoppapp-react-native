@@ -72,7 +72,7 @@ const LoginScreen = function (props) {
         name: data.data.user.name,
         token: data.token,
       });
-      Alert.alert('Log in succeded', '', [
+      Alert.alert('Log in successfull', '', [
         {
           text: 'OK',
           onPress: () => props.navigation.replace('MainStackScreen'),
@@ -149,10 +149,11 @@ const LoginScreen = function (props) {
           <View style={{marginTop: hp(2), alignItems: 'center'}}>
             {isLoading ? (
               <BaseButton
+                fontSize={wp(6)}
                 onPress={() => {
                   return;
                 }}
-                width={wp('100%')}
+                width={wp(60)}
                 title=". . ."
                 type="flat"></BaseButton>
             ) : (

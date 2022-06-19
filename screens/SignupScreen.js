@@ -214,10 +214,11 @@ const SignupScreen = function (props) {
           <View style={{marginTop: hp(4), alignItems: 'center'}}>
             {isLoading ? (
               <BaseButton
+                fontSize={wp(6)}
                 onPress={() => {
                   return;
                 }}
-                width="100%"
+                width={wp(60)}
                 title=". . ."
                 type="flat"></BaseButton>
             ) : (
