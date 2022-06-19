@@ -28,7 +28,7 @@ const CartScreen = function (props) {
         `http://192.168.42.83:3000/api/v1/purchase/${auth.email}`,
       );
       const data = await res.json();
-      console.log(data.data.purchases);
+
       setData(data.data.purchases);
     })();
   }, []);

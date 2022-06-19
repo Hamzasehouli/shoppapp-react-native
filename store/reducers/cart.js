@@ -29,7 +29,6 @@ const cartReducer = function (state = initialReducer, action) {
       // console.log(state.favorites, 'after');
       return state;
     case 'deleteCart':
-      console.log('deleteeeee');
       state.cart = [];
       AsyncStorage.removeItem('@cart').then(() => {
         action.props.navigation.goBack();

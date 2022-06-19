@@ -10,6 +10,7 @@ function PaymentScreen(props) {
   const handleSubmit = useCallback(() => {
     (async function () {
       try {
+        console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
         const res = await fetch(
           'http://192.168.42.83:3000/api/v1/purchase/create',
           {
@@ -29,7 +30,7 @@ function PaymentScreen(props) {
             }),
           },
         );
-        console.log(res);
+
         dispatch({
           type: 'deleteCart',
           props,
@@ -42,8 +43,10 @@ function PaymentScreen(props) {
   return (
     <WebView
       source={{uri: props.route.params.url}}
-      onNavigationStateChange={navState => {
-        if (!navState.url.includes('success')) return;
+      automaticallyAdjustContentInsets="false"
+      onLoadStart={navState => {
+        console.log(navState.nativeEvent.url);
+        if (!navState.nativeEvent.url.includes('success')) return;
         handleSubmit();
       }}
     />
