@@ -13,6 +13,7 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import CollectionsScreen from '../screens/CollectionsScreen';
 import StartScreen from '../screens/StartScreen';
 import LoginScreen from '../screens/LoginScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import SignupScreen from '../screens/SignupScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import Colors from '../constants/Colors';
@@ -117,7 +118,12 @@ const Cart = function (props) {
           },
         }}
         name="PaymentScreen">
-        {props => <PaymentScreen region={region} {...props}></PaymentScreen>}
+        {props => (
+          <PaymentScreen
+            cartData={props.cartData}
+            region={region}
+            {...props}></PaymentScreen>
+        )}
       </Stack.Screen>
     </Stack.Navigator>
   );
@@ -141,7 +147,7 @@ const Account = function (props) {
           fontWeight: 'bold',
         },
       }}
-      initialRouteName={status ? 'Test' : 'Login'}>
+      initialRouteName={status ? 'Profile' : 'Login'}>
       <Stack.Screen options={{headerShown: false}} name="Login">
         {function () {
           return (
@@ -163,17 +169,10 @@ const Account = function (props) {
           );
         }}
       </Stack.Screen>
-      <Stack.Screen options={{headerShown: false}} name="Test">
+      <Stack.Screen options={{headerShown: false}} name="Profile">
         {() => {
           if (status) {
-            return (
-              <View>
-                <Text>sss</Text>
-                <Button
-                  title="logout"
-                  onPress={() => props.navigation.replace('Login')}></Button>
-              </View>
-            );
+            return <ProfileScreen {...props} language={props.language} />;
           }
         }}
       </Stack.Screen>

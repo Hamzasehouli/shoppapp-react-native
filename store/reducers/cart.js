@@ -14,9 +14,7 @@ const cartReducer = function (state = initialReducer, action) {
       if (state.cart.some(f => f.id === action.apparel.id)) return state;
       state.cart.push(action.apparel);
       const jsonValue = JSON.stringify(state.cart);
-      AsyncStorage.setItem('@cart', jsonValue).then(() =>
-        console.log('stored'),
-      );
+      AsyncStorage.setItem('@cart', jsonValue).then(() => {});
       // console.log(state.favorites);
       return state;
     case 'removeFromCart':
@@ -29,6 +27,13 @@ const cartReducer = function (state = initialReducer, action) {
       const val = JSON.stringify(state.cart);
       AsyncStorage.setItem('@cart', val).then(() => console.log('removed'));
       // console.log(state.favorites, 'after');
+      return state;
+    case 'deleteCart':
+      console.log('deleteeeee');
+      state.cart = [];
+      AsyncStorage.removeItem('@cart').then(() => {
+        action.props.navigation.goBack();
+      });
       return state;
 
     default:

@@ -14,9 +14,7 @@ const favoritesReducer = function (state = initialReducer, action) {
       if (state.favorites.some(f => f.id === action.apparel.id)) return state;
       state.favorites.push(action.apparel);
       const jsonValue = JSON.stringify(state.favorites);
-      AsyncStorage.setItem('@favorites', jsonValue).then(() =>
-        console.log('stored'),
-      );
+      AsyncStorage.setItem('@favorites', jsonValue).then(() => {});
       // console.log(state.favorites);
       return state;
     case 'removeFavorite':
@@ -27,9 +25,7 @@ const favoritesReducer = function (state = initialReducer, action) {
       // console.log(state.favorites, 'before');
       state.favorites.splice(ind, 1);
       const val = JSON.stringify(state.favorites);
-      AsyncStorage.setItem('@favorites', val).then(() =>
-        console.log('removed'),
-      );
+      AsyncStorage.setItem('@favorites', val).then(() => {});
       // console.log(state.favorites, 'after');
       return state;
 

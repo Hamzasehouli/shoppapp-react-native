@@ -12,9 +12,7 @@ const languageReducer = function (state = initialReducer, action) {
     case 'language':
       state.language = action.language;
       const jsonValue = JSON.stringify(state.language);
-      AsyncStorage.setItem('@language', jsonValue).then(() =>
-        console.log('stored'),
-      );
+      AsyncStorage.setItem('@language', jsonValue).then(() => {});
       return state;
 
     default:

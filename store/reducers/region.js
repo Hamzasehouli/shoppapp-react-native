@@ -12,9 +12,7 @@ const regionReducer = function (state = initialReducer, action) {
     case 'region':
       state.region = action.region;
       const jsonValue = JSON.stringify(state.region);
-      AsyncStorage.setItem('@region', jsonValue).then(() =>
-        console.log('stored'),
-      );
+      AsyncStorage.setItem('@region', jsonValue).then(() => {});
       return state;
 
     default:

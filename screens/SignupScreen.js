@@ -62,7 +62,7 @@ const SignupScreen = function (props) {
       }
 
       const res = await fetch(
-        'http://172.20.192.1:3000/api/v1/users/register',
+        'http://192.168.42.83:3000/api/v1/users/register',
         {
           method: 'post',
           headers: {

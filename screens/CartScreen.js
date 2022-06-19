@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   FlatList,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -21,6 +22,10 @@ import regionChecker from '../converters/regionChecker';
 const CartScreen = function (props) {
   const [region, setRegion] = useState('');
   const dispatch = useDispatch();
+  const isLoggedin = useSelector(state => state.auth.isLoggedin);
+  const currency = useSelector(state => state.region.region);
+
+  const email = useSelector(state => state.auth.email);
   const [data, setData] = useState(props.cartData);
   const [totalPrice, setTotalPrice] = useState(0);
   useLayoutEffect(() => {
@@ -33,6 +38,44 @@ const CartScreen = function (props) {
     setTotalPrice(total);
     setData(props.cartData);
   });
+
+  async function purchaseHandler() {
+    if (!isLoggedin) {
+      Alert.alert('Action not allowed', 'please log in to proceed checkout');
+      return;
+    }
+
+    const hh = JSON.parse(JSON.stringify(data)).map(d => {
+      d.price = currencyConverter(d.price, region);
+      d.discountPrice = currencyConverter(d.discountPrice, region);
+
+      return d;
+    });
+
+    console.log(hh);
+    const res = await fetch(
+      'http://192.168.42.83:3000/api/v1/purchase/checkout-session',
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          data: hh,
+          currency:
+            currency === 'Morocco' ? 'mad' : currency === 'UK' ? 'gbp' : 'usd',
+          email,
+        }),
+      },
+    );
+
+    const dt = await res.json();
+
+    props.navigation.navigate({
+      name: 'PaymentScreen',
+      params: {url: dt.session.url},
+    });
+  }
 
   const cartHandler = apparel => {
     setData(props.cartData.filter(a => a.id !== apparel.id));
@@ -143,9 +186,7 @@ const CartScreen = function (props) {
           </BaseText>
         </View>
         <BaseButton
-          onPress={() => {
-            props.navigation.replace('PaymentScreen');
-          }}
+          onPress={purchaseHandler}
           fontSize={18}
           width="100%"
           title="Process checkout"

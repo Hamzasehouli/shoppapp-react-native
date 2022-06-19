@@ -34,7 +34,7 @@ const ForgetScreen = function (props) {
 
       const res = await axios({
         method: 'post',
-        url: 'http://172.20.192.1:3000/api/v1/users/forget-password',
+        url: 'http://192.168.42.83:3000/api/v1/users/forget-password',
         // url: 'https://shoppyapp-backend.herokuapp.com/api/v1/users/forget-password',
         data: {
           email,
@@ -47,7 +47,7 @@ const ForgetScreen = function (props) {
       Alert.alert('Email is sent successfully', '', [
         {
           text: 'OK',
-          onPress: () => props.navigation.replace('LoginScreen'),
+          onPress: () => props.navigation.replace('Login'),
         },
       ]);
     } catch (err) {

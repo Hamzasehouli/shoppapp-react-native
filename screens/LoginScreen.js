@@ -43,7 +43,7 @@ const LoginScreen = function (props) {
         throw new Error('error');
       }
 
-      const res = await fetch('http://172.20.192.1:3000/api/v1/users/login', {
+      const res = await fetch('http://192.168.42.83:3000/api/v1/users/login', {
         method: 'post',
         headers: {
           'content-type': 'application/json',
@@ -60,7 +60,7 @@ const LoginScreen = function (props) {
       }
 
       dispatch({
-        type: '',
+        type: 'auth',
         status: true,
         email: data.data.user.email,
         name: data.data.user.name,
