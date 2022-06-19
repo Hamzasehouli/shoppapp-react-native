@@ -43,16 +43,19 @@ const LoginScreen = function (props) {
         throw new Error('error');
       }
 
-      const res = await fetch('http://192.168.42.83:3000/api/v1/users/login', {
-        method: 'post',
-        headers: {
-          'content-type': 'application/json',
+      const res = await fetch(
+        'https://shoppyapp-backend.herokuapp.com/api/v1/users/login',
+        {
+          method: 'post',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
         },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      );
       const data = await res.json();
 
       if (res.status != 200) {
