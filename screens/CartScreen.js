@@ -52,7 +52,6 @@ const CartScreen = function (props) {
       return d;
     });
 
-    console.log(hh);
     const res = await fetch(
       'http://192.168.42.83:3000/api/v1/purchase/checkout-session',
       {
@@ -73,7 +72,7 @@ const CartScreen = function (props) {
 
     props.navigation.navigate({
       name: 'PaymentScreen',
-      params: {url: dt.session.url},
+      params: {url: dt.session.url, data: hh},
     });
   }
 

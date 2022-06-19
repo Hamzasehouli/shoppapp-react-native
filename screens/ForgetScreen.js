@@ -32,17 +32,31 @@ const ForgetScreen = function (props) {
         throw new Error(emailError);
       }
 
-      const res = await axios({
-        method: 'post',
-        url: 'http://192.168.42.83:3000/api/v1/users/forget-password',
-        // url: 'https://shoppyapp-backend.herokuapp.com/api/v1/users/forget-password',
-        data: {
-          email,
+      const res = await fetch(
+        'http://192.168.42.83:3000/api/v1/users/forget-password',
+        {
+          method: 'post',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+          }),
         },
-      });
+      );
+      const data = await res.json();
+
+      // const res = await axios({
+      //   method: 'post',
+      //   url: 'http://192.168.42.83:3000/api/v1/users/forget-password',
+      //   // url: 'https://shoppyapp-backend.herokuapp.com/api/v1/users/forget-password',
+      //   data: {
+      //     email,
+      //   },
+      // });
 
       if (res.status != 200) {
-        throw new Error('errr');
+        throw new Error('Log in failed ' + data.error + ' ' + data.statusCode);
       }
       Alert.alert('Email is sent successfully', '', [
         {

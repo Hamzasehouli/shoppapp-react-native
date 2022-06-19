@@ -82,7 +82,7 @@ const SignupScreen = function (props) {
         throw new Error('Sign up failed ' + data.error + ' ' + data.statusCode);
       }
       dispatch({
-        type: '',
+        type: 'auth',
         status: true,
         email: data.data.user.email,
         name: data.data.user.name,

@@ -4,6 +4,7 @@ import {View, Text, Button} from 'react-native';
 import CartScreen from '../screens/CartScreen';
 import ApparelScreen from '../screens/ApparelScreen';
 import PaymentScreen from '../screens/PaymentScreen';
+import PurchasesScreen from '../screens/PurchasesScreen';
 import SaleScreen from '../screens/SaleScreen';
 import SplashScreen from '../screens/SplashScreen';
 import COLORS from '../constants/Colors';
@@ -173,6 +174,13 @@ const Account = function (props) {
         {() => {
           if (status) {
             return <ProfileScreen {...props} language={props.language} />;
+          }
+        }}
+      </Stack.Screen>
+      <Stack.Screen name="Purchases">
+        {() => {
+          if (status) {
+            return <PurchasesScreen {...props} language={props.language} />;
           }
         }}
       </Stack.Screen>
