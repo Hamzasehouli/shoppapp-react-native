@@ -18,6 +18,10 @@ import {TextInput} from 'react-native-paper';
 import BaseButton from '../components/BaseButton';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const SignupScreen = function (props) {
   const dispatch = useDispatch();
@@ -107,16 +111,20 @@ const SignupScreen = function (props) {
 
   return (
     <KeyboardAvoidingView
-      style={{backgroundColor: 'white'}}
+      style={{backgroundColor: 'white', height: hp(0)}}
       behavior="position">
       <View style={styles.screen}>
-        <Blue width={100} height={100} style={{marginBottom: 14}}></Blue>
+        <Blue
+          width={wp(100)}
+          height={hp(20)}
+          style={{marginBottom: hp(1)}}></Blue>
         <Text
           style={{
+            height: hp(7),
             fontWeight: '700',
             textAlign: 'left',
             color: Colors.primaryColor,
-            fontSize: 30,
+            fontSize: hp(3.5),
             marginBottom: 30,
           }}>
           {props.language.language === 'Arabic'
@@ -128,8 +136,9 @@ const SignupScreen = function (props) {
         <View style={{flexDirection: 'column', width: '70%'}}>
           <TextInput
             style={{
+              height: hp(7),
               backgroundColor: 'transparent',
-              fontSize: 20,
+              fontSize: hp(3),
               textAlign:
                 props.language.language === 'Arabic' ? 'right' : 'left',
             }}
@@ -146,8 +155,9 @@ const SignupScreen = function (props) {
           )}
           <TextInput
             style={{
+              height: hp(7),
               backgroundColor: 'transparent',
-              fontSize: 20,
+              fontSize: hp(3),
               textAlign:
                 props.language.language === 'Arabic' ? 'right' : 'left',
             }}
@@ -163,8 +173,9 @@ const SignupScreen = function (props) {
           )}
           <TextInput
             style={{
+              height: hp(7),
               backgroundColor: 'transparent',
-              fontSize: 20,
+              fontSize: hp(3),
               textAlign:
                 props.language.language === 'Arabic' ? 'right' : 'left',
             }}
@@ -182,8 +193,9 @@ const SignupScreen = function (props) {
           )}
           <TextInput
             style={{
+              height: hp(7),
               backgroundColor: 'transparent',
-              fontSize: 20,
+              fontSize: hp(3),
               textAlign:
                 props.language.language === 'Arabic' ? 'right' : 'left',
             }}
@@ -199,7 +211,7 @@ const SignupScreen = function (props) {
           {confirmPasswordStateError !== '' && (
             <Text style={{color: 'red'}}>{confirmPasswordStateError}</Text>
           )}
-          <View style={{marginTop: 20}}>
+          <View style={{marginTop: hp(4), alignItems: 'center'}}>
             {isLoading ? (
               <BaseButton
                 onPress={() => {
@@ -210,8 +222,9 @@ const SignupScreen = function (props) {
                 type="flat"></BaseButton>
             ) : (
               <BaseButton
+                fontSize={wp(6)}
                 onPress={handleSubmit}
-                width="100%"
+                width={wp(60)}
                 title={
                   props.language.language === 'Arabic'
                     ? 'تسجيل'
@@ -223,8 +236,10 @@ const SignupScreen = function (props) {
             )}
           </View>
           <BaseButton
+            style={{alignItems: 'center', marginTop: hp(2.5)}}
+            fontSize={wp(5)}
             onPress={() => props.navigation.replace('Login')}
-            width="100%"
+            width={wp(60)}
             title={
               props.language.language === 'Arabic'
                 ? 'دخول'
@@ -242,8 +257,8 @@ const SignupScreen = function (props) {
 const styles = StyleSheet.create({
   screen: {
     justifyContent: 'flex-start',
-    width: '100%',
-    height: '100%',
+    width: wp('100%'),
+    height: hp('100%'),
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: 'white',

@@ -19,6 +19,10 @@ import {
 } from '../data/data';
 
 import {useSelector} from 'react-redux';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const HomeScreen = function ({navigation, route}) {
   const language = useSelector(state => state.language.language);
@@ -87,7 +91,7 @@ const HomeScreen = function ({navigation, route}) {
               borderRadius: 10,
             }}
             color="white"
-            size={20}>
+            size={hp(3)}>
             <Text style={{fontWeight: '400'}}>
               {item.item.title.split(' ')[0]}
             </Text>
@@ -116,16 +120,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
+    padding: hp(1),
   },
   container: {
-    width: 170,
-    height: 200,
+    width: wp(43),
+    height: hp(25),
     borderRadius: 5,
     // backgroundColor: 'red',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    margin: 7,
+    margin: hp(1),
     shadowColor: 'black',
     shadowOpacity: 0.66,
     shadowOffset: {width: 20, height: 30},

@@ -1,5 +1,5 @@
 import React, {useLayoutEffect, useState} from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, useWindowDimensions} from 'react-native';
 import Colors from '../constants/Colors';
 import BaseButton from '../components/BaseButton';
 import BaseText from '../components/BaseText';
@@ -8,8 +8,14 @@ import Catalog from '../assets/illustrations/start-illus.svg';
 import Blue from '../assets/images/Blue.svg';
 import {StatusBar} from 'react-native';
 import {useSelector} from 'react-redux';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const SplashScreen = function ({navigation}) {
+  const window = useWindowDimensions();
+  console.log(window);
   const storeLanguage = useSelector(state => state.language);
   const [language, setLanguage] = useState(storeLanguage);
   const [title1, setTitle1] = useState('Sustainable shopping choices');
@@ -40,14 +46,14 @@ const SplashScreen = function ({navigation}) {
         barStyle="dark-content"
       />
       <Blue
-        style={{padding: 10, marginBottom: -70}}
-        height={150}
+        style={{padding: hp(10), marginBottom: wp(-20)}}
+        height={hp(10)}
         fill={'red'}></Blue>
-      <Catalog width={280} height={280} />
+      <Catalog width={wp(66)} height={hp(50)} />
       <View>
         <Text
           style={{
-            fontSize: 18,
+            fontSize: hp(3),
             fontFamily: 'Roboto-Black',
             fontWeight: '700',
             textAlign: 'center',
@@ -56,14 +62,17 @@ const SplashScreen = function ({navigation}) {
         </Text>
         <Text
           style={{
-            fontSize: 16,
+            fontSize: hp(3),
             fontFamily: 'Roboto-Black',
+            width: wp(80),
+            textAlign: 'center',
           }}>
           {title2}
         </Text>
       </View>
       <BaseButton
-        width={'65%'}
+        fontSize={wp(6)}
+        width={wp(60)}
         onPress={() => navigation.replace('MainStackScreen')}
         title={btn}
         type="flat"></BaseButton>
@@ -73,14 +82,14 @@ const SplashScreen = function ({navigation}) {
 
 const styles = StyleSheet.create({
   screen: {
-    width: '100%',
-    height: '100%',
+    width: wp(100),
+    height: hp(80),
     backgroundColor: 'white',
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingBottom: 40,
-    paddingTop: 50,
+    paddingBottom: wp(4),
+    paddingTop: wp(5),
   },
   text: {
     color: 'white',

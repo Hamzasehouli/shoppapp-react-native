@@ -23,6 +23,10 @@ import Colors from '../constants/Colors';
 import {useDispatch} from 'react-redux';
 import currencyConverter from '../converters/currencyConverter';
 import regionChecker from '../converters/regionChecker';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const {width: screenWidth} = Dimensions.get('window');
 
@@ -71,7 +75,7 @@ const MyCarousel = props => {
         style={{
           width: screenWidth,
           backgroundColor: 'white',
-          height: props.route.params.isFromCartScreen ? '100%' : '90%',
+          height: props.route.params.isFromCartScreen ? '96%' : '89%',
         }}>
         {/* <View style={styles.container}> */}
         <View>
@@ -86,11 +90,11 @@ const MyCarousel = props => {
           />
         </View>
         {/* </View> */}
-        <View style={{padding: 9}}>
+        <View style={{padding: hp(2)}}>
           <BaseText>{apparel.title}</BaseText>
           <BaseText
             color={Colors.primaryColor}
-            size={apparel.sale ? 15 : 18}
+            size={apparel.sale ? wp(6) : wp(5)}
             style={{fontWeight: '700'}}>
             <Text
               style={
@@ -120,7 +124,7 @@ const MyCarousel = props => {
       {!props.route.params.isFromCartScreen && (
         <View style={{flexDirection: 'row', justifyContent: 'center'}}>
           <Picker
-            style={{backgroundColor: 'white', width: 180}}
+            style={{backgroundColor: 'white', width: wp(50)}}
             selectedValue={selectedLanguage}
             onValueChange={(itemValue, itemIndex) =>
               setSelectedLanguage(itemValue)
@@ -140,8 +144,8 @@ const MyCarousel = props => {
               });
               props.navigation.navigate('Cart');
             }}
-            fontSize={15}
-            width="50%"
+            fontSize={hp(3)}
+            width={wp('40%')}
             title="Add"
             type="flat"></BaseButton>
         </View>
@@ -155,7 +159,7 @@ export default MyCarousel;
 const styles = StyleSheet.create({
   item: {
     width: screenWidth,
-    height: 500,
+    height: wp(100),
   },
   imageContainer: {
     flex: 1,

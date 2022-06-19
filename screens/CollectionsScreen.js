@@ -14,6 +14,10 @@ import BaseText from '../components/BaseText';
 import Colors from '../constants/Colors';
 import Blue from '../assets/images/Blue.svg';
 import {useSelector} from 'react-redux';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const CollectionsScreen = function (props) {
   const Rawlanguage = useSelector(state => state.language.language);
@@ -59,7 +63,7 @@ const CollectionsScreen = function (props) {
   const renderItemHandler = function (item) {
     return (
       <TouchableOpacity
-        style={{marginBottom: 20}}
+        style={{marginBottom: hp(2)}}
         onPress={() => {
           if (
             item.item.title === 'Sales' ||
@@ -88,7 +92,7 @@ const CollectionsScreen = function (props) {
             fontFamily: 'Roboto-Bold',
           }}
           color={Colors.primaryColor}
-          size={30}>
+          size={hp(5)}>
           {item.item.title}
         </BaseText>
       </TouchableOpacity>
@@ -108,13 +112,13 @@ const CollectionsScreen = function (props) {
     //   }}>
     // </ImageBackground>
     <View style={styles.screen}>
-      <Blue width={200} height={200} style={{marginBottom: 40}}></Blue>
+      <Blue width={wp(40)} height={hp(20)} style={{marginBottom: hp(2)}}></Blue>
       <FlatList data={collectionsData} renderItem={renderItemHandler} />
       <ImageBackground
         resizeMode="cover"
         style={{
-          width: '100%',
-          height: 200,
+          width: wp(100),
+          height: hp(45),
           justifyContent: 'center',
           alignItems: 'center',
         }}
@@ -124,9 +128,10 @@ const CollectionsScreen = function (props) {
         <Text
           style={{
             color: 'white',
-            fontSize: 40,
+            fontSize: hp(4.5),
             textAlign: 'center',
-            width: '50%',
+            width: wp('60%'),
+            height: '50%',
           }}>
           {language === 'English'
             ? 'Up to -50% off sales'
@@ -142,8 +147,8 @@ const CollectionsScreen = function (props) {
 const styles = StyleSheet.create({
   screen: {
     justifyContent: 'center',
-    width: '100%',
-    height: '100%',
+    width: wp(100),
+    height: hp(100),
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: 'rgba(255, 255, 255, 0.5)',

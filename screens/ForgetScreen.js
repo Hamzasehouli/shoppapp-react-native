@@ -14,6 +14,11 @@ import Blue from '../assets/images/Blue.svg';
 import BaseButton from '../components/BaseButton';
 import {useSelector, useDispatch} from 'react-redux';
 import axios from 'axios';
+import {wrapSync} from 'async';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const ForgetScreen = function (props) {
   const dispatch = useDispatch();
@@ -73,7 +78,7 @@ const ForgetScreen = function (props) {
   }
   return (
     <KeyboardAvoidingView
-      style={{backgroundColor: 'white'}}
+      style={{backgroundColor: 'white', height: hp(0)}}
       behavior="position">
       <View style={styles.screen}>
         <Blue width={100} height={100} style={{marginBottom: 14}}></Blue>
@@ -138,8 +143,8 @@ const ForgetScreen = function (props) {
 const styles = StyleSheet.create({
   screen: {
     justifyContent: 'flex-start',
-    width: '100%',
-    height: '100%',
+    width: wp('100%'),
+    height: hp('100%'),
     alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: 'white',
